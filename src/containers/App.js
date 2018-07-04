@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import Header from '../components/Header/Header'
-import '../style/App.css';
+// import 'styles/bootstrap.scss';
+// // custom
+// import 'styles/layout.scss';
+// import 'styles/theme.scss';
+// import 'styles/ui.scss';
+import 'style/app.scss';
 
 class App extends React.Component {
   render() {

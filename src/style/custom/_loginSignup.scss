@@ -1,0 +1,66 @@
+#signupModal{
+	button.close{position:absolute; right:10px; top:8px; z-index:1}
+	
+	@media screen and (min-width:1025px){
+		.modal-dialog {margin:0 auto; 
+			#signup-form{width:80%}
+		}
+	}
+	@media only screen and (min-width:1100px){
+		.modal-dialog{max-width:980px}
+	}
+}
+
+
+.reset-password-quad{
+	@media screen and (min-width:320px){
+		margin:0 auto; border:solid 1px rgba(0,0,0,0.05); padding:60px 90px 84px 90px; border-radius:2px; box-shadow:0px 1px 3px rgba(0,0,0,0.05); background:#fff; width:80%; padding:40px 30px 30px 30px; 
+			h3{font-weight:400; font-size:1.4rem; margin-bottom:0; padding-bottom:24px; span{font-weight:600}
+		}
+		button{margin-bottom:0; margin-top:0}
+	}
+	@media screen and (min-width:768px){
+		max-width:450px; padding:60px 90px 84px 90px
+	}
+}
+#signupModal .or-seprator span,
+#loginModal .or-seprator span{font-weight:600; font-size:14px; height:1px; display:block; max-width:50%; background:#ced4da; position:relative;}
+#signupModal .or-seprator span:before,
+#loginModal .or-seprator span:before{content:"OR"; position:absolute; left:42%; top:-10px; background:#fff; padding:0 10px; color:#ced4da}
+.email-confirmation-message-page, .reset-password-page{position:relative; height:100vh; background:#f9fafb}
+.email-confirmation-message-page .bx-body,
+.extra-pages-wrapper .bx-body,
+.reset-password-page .bx-body{height:calc(100vh - 155px)}
+.email-confirmation-message-page footer.bx-footer,
+.reset-password-page footer.bx-footer{position:absolute; left:0; right:0; bottom:60px; padding-bottom:10px}
+.email-confirmation-message-quad .login-box {max-width: 400px; background: #fff; margin: 0 auto; padding: 0px 30px 10px 30px; box-shadow: -1px 1px 6px rgba(204, 204, 204, 0.45); 
+	.login-btn{background: #0088e8; width: 100%; color: #fff; border: none; line-height: 32px; border-radius: 4px; margin-bottom: 7px;}
+}
+.email-confirmation-message-quad,
+.reset-password-quad{font-size:14px; padding:0 30px}
+.email-confirmation-message-quad{text-align:center}
+
+@media only screen and (min-width:320px){
+	#signupModal h4,
+	#loginModal h4{margin-bottom:16px; margin-top:32px; text-align:center}
+	#signupModal h4 span{font-weight:600}
+	#signupModal .create-account-btn,
+	#loginModal .login-btn,
+	.reset-password-quad button,
+	.profile-building-nav button.next-btn{background:#2B87E6; border:solid 1px #2B87E6; color:#fff; border-radius:5px; height:40px; text-align:center; width:100%; margin-top:14px; font-size:14px; font-weight:600; margin-bottom:35px}
+	#loginModal .login-btn{margin-bottom:10px; margin-top:5px}
+	#loginModal .form-control,
+	#signupModal .form-control{box-shadow:none}
+	#loginModal a,
+	#signupModal a{color:#2B87E6; padding:0}
+	.bx-signup-image{display:none; background:#f0f0f0 url('../assets/images/signup-image.png') repeat-y; background-size:contain}
+	.bx-trending-feed-quad1 .container{width:90%}
+	.bx-trending-feed-quad1 h2{font-size:1.5rem}
+	.bx-logSign-footer p{margin-bottom:0; line-height:43px; border-top:solid 1px #ced4da; padding-top:3px}
+	#loginModal .modal-dialog,
+	#signupModal .modal-dialog{display:table; height:calc(100vh - 60px)}
+	#loginModal .modal-content,
+	#signupModal .modal-content{display:table-cell; vertical-align:middle; background:transparent; box-shadow:none; border:0}
+
+	#signupModal .modal-content-inner{border:0}
+}
