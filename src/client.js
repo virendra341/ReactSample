@@ -41,13 +41,14 @@ const rootRoute = {
   childRoutes: [{
     path: '/',
     component: require('./containers/App'),
-    indexRoute: { onEnter: (nextState, replace) => replace('/app/dashboard') },
+    indexRoute: { onEnter: (nextState, replace) => replace('/landingPage/home') },
     childRoutes: [
       require('./routes/app'),
       require('./routes/404'),
       require('./routes/500'),
       require('./routes/confirmEmail'),
       require('./routes/forgotPassword'),
+      require('./routes/landingPage'),
       require('./routes/login'),
       require('./routes/signUp'), {
         path: '*',
