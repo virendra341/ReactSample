@@ -1,9 +1,10 @@
-import React, { Fragment, PureComponent } from 'react'
+import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { Link} from 'react-router'
-import { Button, FormGroup, Input,Label, FormFeedback,Card,CardHeader, CardFooter, CardBody,
-    CardTitle,Col,Row} from 'reactstrap'
-   
+import { Link } from 'react-router'
+import { Button, FormGroup, Input, Label, Card, CardHeader, CardFooter, CardBody, CardTitle, Col, Row } from 'reactstrap'
+
+import { renderTextField } from 'reduxFormComponent'
+
 const validate = values => {
     const errors = {}
     const requiredFields = [
@@ -24,24 +25,6 @@ const validate = values => {
     return errors
 }
 
-const renderTextField = ({
-    input,
-    label,
-    name,
-    meta: { touched, error },
-    ...custom
-}) => (
-        <Fragment>
-            <FormGroup>
-                <Input
-                    invalid={touched && error}
-                    {...input}
-                    {...custom}
-                />
-                {error && <FormFeedback>{error}</FormFeedback>}
-            </FormGroup>
-        </Fragment>
-    )
 
 
 class SignUp extends PureComponent {
@@ -54,12 +37,11 @@ class SignUp extends PureComponent {
         console.log(values);
     }
     render() {
-        const { handleSubmit, valid } = this.props;
-        console.log('Props ', this.props);
+        const { handleSubmit, invalid, submitting, pristine } = this.props;
 
         return (
             [
-                
+
                 <Card className="col-sm-3 pd0 sb-card-sigup">
                     <CardHeader>
                         <div className="sb-login-logo">
@@ -70,51 +52,51 @@ class SignUp extends PureComponent {
                         <CardTitle>REGISTER IN WITH SECBERUS</CardTitle>
                         <form onSubmit={handleSubmit((values) => this.showResults(values))}>
                             <Row>
-                            <Col sm="12">    
-                            <Field component={renderTextField} name="fullname" type="text" placeholder="Full Name"/>
-                            </Col>
+                                <Col sm="12">
+                                    <Field component={renderTextField} name="fullname" type="text" placeholder="Full Name" />
+                                </Col>
                             </Row>
                             <Row>
-                            <Col sm="12">
-                            <Field component={renderTextField} name="cname" type="text" placeholder="Company Name"/>
-                            </Col>
+                                <Col sm="12">
+                                    <Field component={renderTextField} name="cname" type="text" placeholder="Company Name" />
+                                </Col>
                             </Row>
                             <Row>
-                            <Col sm="6">
-                                <Field component={renderTextField} name="country" type="text" placeholder="country"/>
-                            </Col>
-                            <Col sm="6">
-                                <Field component={renderTextField} name="state" type="text" placeholder="state"/>
-                            </Col>
+                                <Col sm="6">
+                                    <Field component={renderTextField} name="country" type="text" placeholder="country" />
+                                </Col>
+                                <Col sm="6">
+                                    <Field component={renderTextField} name="state" type="text" placeholder="state" />
+                                </Col>
                             </Row>
                             <Row>
-                            <Col sm="3">
-                                <Field component={renderTextField} name="countryCode" type="text" placeholder="+ 91"/>
-                            </Col>
-                            <Col sm="9">
-                                <Field component={renderTextField} name="contactNumber" type="text" placeholder="Contact Number"/>
-                            </Col>
+                                <Col sm="3">
+                                    <Field component={renderTextField} name="countryCode" type="text" placeholder="+ 91" />
+                                </Col>
+                                <Col sm="9">
+                                    <Field component={renderTextField} name="contactNumber" type="text" placeholder="Contact Number" />
+                                </Col>
                             </Row>
                             <Row>
-                            <Col sm="12">    
-                            <Field component={renderTextField} name="emailId" type="text" placeholder="Email Id"/>
-                            </Col>
+                                <Col sm="12">
+                                    <Field component={renderTextField} name="emailId" type="text" placeholder="Email Id" />
+                                </Col>
                             </Row>
                             <Row>
-                            <Col sm="12">
-                            <Field component={renderTextField} name="password" type="text" placeholder="Password"/>
-                            </Col>
+                                <Col sm="12">
+                                    <Field component={renderTextField} name="password" type="text" placeholder="Password" />
+                                </Col>
                             </Row>
                             <FormGroup>
-                                    <Label check>
-                                        <Input type="checkbox" />{' '}
-                                       I am agree with of
+                                <Label check>
+                                    <Input type="checkbox" />{' '}
+                                    I am agree with of
                                     </Label>
-                                    {' '}
+                                {' '}
                                 <a href="#">Service agreement</a>
                             </FormGroup>
                             <div>
-                                <Button className="btn-green" disabled={!valid}>Register</Button>{' '}
+                                <Button className="btn-green" disabled={invalid || submitting || pristine}>Register</Button>{' '}
                             </div>
                         </form>
                     </CardBody>
@@ -123,8 +105,8 @@ class SignUp extends PureComponent {
                         <Link className="btn btn-green-boder mrT10" to="/login">Sign In</Link>
                     </CardFooter>
                 </Card>
-                
-               
+
+
             ]
         )
     }
