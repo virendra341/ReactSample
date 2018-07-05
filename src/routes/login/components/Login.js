@@ -1,14 +1,13 @@
 import React, { Fragment, PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { Button, FormGroup, Input, FormFeedback } from 'reactstrap'
-
-import 'bootstrap/dist/css/bootstrap.min.css'
-
-
+import { Link} from 'react-router'
+import { Button, FormGroup, Input, FormFeedback,Card,CardHeader, CardFooter, CardBody,
+    CardTitle} from 'reactstrap'
+   
 const validate = values => {
     const errors = {}
     const requiredFields = [
-        'email',
+        'emailId',
         'password'
     ]
     requiredFields.forEach(field => {
@@ -17,10 +16,10 @@ const validate = values => {
         }
     })
     if (
-        values.email &&
-        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+        values.emailId &&
+        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.emailId)
     ) {
-        errors.email = 'Invalid email address'
+        errors.emailId = 'Invalid email address'
     }
     return errors
 }
@@ -60,13 +59,33 @@ class Login extends PureComponent {
 
         return (
             [
-                <form onSubmit={handleSubmit((values) => this.showResults(values))}>
-                    <Field component={renderTextField} name="emailId" type="text" placeholder="Email Id" className="ABC"/>
-                    <Field component={renderTextField} name="password" type="password" placeholder="Password" className="ABC"/>
-                    <div>
-                        <Button disabled={!valid}>Submit</Button>{' '}
-                    </div>
-                </form>
+                
+                <Card className="col-sm-3 pd0">
+                    <CardHeader>
+                        <div className="sb-login-logo">
+                            <img src="assets/images/secberus-logo.png" />
+                        </div>
+                    </CardHeader>
+                    <CardBody>
+                        <CardTitle>SIGN IN WITH SECBERUS</CardTitle>
+                        <form onSubmit={handleSubmit((values) => this.showResults(values))}>
+                            <Field component={renderTextField} name="emailId" type="text" placeholder="Email Id" className="ABC" />
+                            <Field component={renderTextField} name="password" type="password" placeholder="Password" className="ABC" />
+                            <FormGroup>
+                                <a href="#">Forgot Password</a>
+                            </FormGroup>
+                            <div>
+                                <Button className="btn-green mrT10" disabled={!valid}>Sign in</Button>{' '}
+                            </div>
+                        </form>
+                    </CardBody>
+                    <CardFooter>
+                        <p>Not Registered yet ?</p>
+                        <Link className="btn btn-green-boder mrT10" to="/sign-up">Register</Link>
+                    </CardFooter>
+                </Card>
+                
+               
             ]
         )
     }
