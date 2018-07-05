@@ -31,7 +31,7 @@ a{color: #0289ea;}
 a:hover{color: #0289ea !important; text-decoration: none !important;}
 
 .bg-trans{background-color: transparent;}
-
+.mr0{margin:0 !important}
 .mrT0{margin-top:0 !important}
 .mrT5{margin-top:5px}
 .mrT10{margin-top:10px}
@@ -51,6 +51,9 @@ a:hover{color: #0289ea !important; text-decoration: none !important;}
 .mrB15{margin-bottom:15px}
 .mrB20{margin-bottom:20px}
 .mrB25{margin-bottom:25px}
+.mrB30{margin-bottom:30px}
+.mrB35{margin-bottom:35px}
+.mrB40{margin-bottom:40px}
 
 .mrL0{margin-left:0 !important}
 .mrL5{margin-left:5px}
@@ -194,14 +197,17 @@ color: #CCC;
     &:hover{
             background: $bg_green-color_2 !important;
             border-color: $bg_green-color_2 !important;
+            color: #fff!important;
     }
     &:focus{
         background: $bg_green-color_2 !important;
         border-color: $bg_green-color_2 !important;
+        color: #fff!important;
     }
     &:active{
         background: $bg_green-color_2 !important;
         border-color: $bg_green-color_2 !important;
+        color: #fff!important;
     }
 }
 

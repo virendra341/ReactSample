@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 
 class LoginSignUpHeader extends PureComponent {
 
-  render() {
+  render() { 
     return (
       <div>
         <div className="bx-header">

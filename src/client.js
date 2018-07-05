@@ -41,15 +41,20 @@ const rootRoute = {
   childRoutes: [{
     path: '/',
     component: require('./containers/App'),
-    indexRoute: { onEnter: (nextState, replace) => replace('/login') },
+    indexRoute: { onEnter: (nextState, replace) => replace('/dashboard/home') },
     childRoutes: [
       require('./routes/app'),
       require('./routes/404'),
       require('./routes/500'),
-      require('./routes/confirmEmail'),
-      require('./routes/forgotPassword'),
       require('./routes/login'),
-      require('./routes/signUp'), {
+      require('./routes/signUp'),
+      require('./routes/signupSuccess'),
+      require('./routes/resetPassword'),
+      require('./routes/forgotPassword'),
+      require('./routes/forgotPasswordEmail'),
+
+      require('./routes/dashboard'),
+      {
         path: '*',
         indexRoute: { onEnter: (nextState, replace) => replace('/404') },
       }

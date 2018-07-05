@@ -1,14 +1,14 @@
 import React, { Fragment, PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { Link} from 'react-router'
-import { Button, FormGroup, Input, FormFeedback,Card,CardHeader, CardFooter, CardBody,
+import { Button, FormGroup, Input, FormFeedback,Card,CardHeader, CardBody,
     CardTitle} from 'reactstrap'
    
 const validate = values => {
     const errors = {}
     const requiredFields = [
-        'emailId',
-        'password'
+        'password',
+        'cpassword'
     ]
     requiredFields.forEach(field => {
         if (!values[field]) {
@@ -44,7 +44,7 @@ const renderTextField = ({
     )
 
 
-class Login extends PureComponent {
+class ResetPassword extends PureComponent {
 
     componentWillMount() {
         this.props.reset();
@@ -67,25 +67,17 @@ class Login extends PureComponent {
                         </div>
                     </CardHeader>
                     <CardBody>
-                        <CardTitle className="mrT0">SIGN IN WITH SECBERUS</CardTitle>
+                        <CardTitle className="mrB25 mrT0">NEW PASSWORD</CardTitle>
                         <form onSubmit={handleSubmit((values) => this.showResults(values))}>
-                            <Field component={renderTextField} name="emailId" type="text" placeholder="Email Id" className="ABC" />
-                            <Field component={renderTextField} name="password" type="password" placeholder="Password" className="ABC" />
-                            <FormGroup>
-                                <Link to="/forgot-password">Forgot Password</Link>
-                            </FormGroup>
+                            <Field component={renderTextField} name="password" type="password" placeholder="Password"/>
+                            <Field component={renderTextField} name="cpassword" type="password" placeholder="Confirm Password"/>
                             <div>
-                                <Button className="btn-green mrT10" disabled={!valid}>Sign in</Button>{' '}
+                                <Button className="btn-green mrT20" disabled={!valid}>Save</Button>{' '}
                             </div>
                         </form>
                     </CardBody>
-                    <CardFooter>
-                        <p>Not Registered yet ?</p>
-                        <Link className="btn btn-green-boder mrT10" to="/sign-up">Register</Link>
-                    </CardFooter>
                 </Card>
-                
-               
+
             ]
         )
     }
@@ -93,8 +85,8 @@ class Login extends PureComponent {
 
 
 module.exports = reduxForm({
-    form: 'login',
+    form: 'resetpassword',
     validate,
     destroyOnUnmount: true,
     forceUnregisterOnUnmount: true
-})(Login);
+})(ResetPassword);
