@@ -71,7 +71,7 @@ class ForgotPasswordEmail extends PureComponent {
                         <form onSubmit={handleSubmit((values) => this.showResults(values))}>
                             <div>
                                 {/* <Button className="btn-green mrT20" disabled={!valid}>Done</Button>{' '} */}
-                                <Link className="btn btn-green mrT20" to="/login">Done</Link>
+                                <Link className="btn btn-green mrT20" to="/reset-password">Done</Link>
                             </div>
                         </form>
                     </CardBody>

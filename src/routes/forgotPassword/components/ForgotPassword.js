@@ -69,9 +69,10 @@ class ForgotPassword extends PureComponent {
                         <CardTitle className="mr0">FORGOT PASSWORD</CardTitle>
                         <CardText className="mrB15 mrT15">Please enter your email id to request a password reset</CardText>
                         <form onSubmit={handleSubmit((values) => this.showResults(values))}>
-                            <Field component={renderTextField} name="emailId" type="text" placeholder="Email Id"/>
+                            <Field component={renderTextField} name="emailId" type="text" placeholder="Email"/>
                             <div>
-                                <Button className="btn-green mrT10" disabled={!valid}>Password Reset</Button>{' '}
+                                {/* <Button className="btn-green mrT10" disabled={!valid}>Password Reset</Button> */}
+                                <Link className="btn btn-green mrT20" to="/forgot-password-email">Password Reset</Link>
                             </div>
                         </form>
                     </CardBody>

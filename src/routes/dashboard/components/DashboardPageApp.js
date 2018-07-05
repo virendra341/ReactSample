@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'; 
 import Header from 'components/Header' 
+import Sidebar from 'components/Sidebar'
 
 class DashboardPageApp extends PureComponent {
   render() {
@@ -7,6 +8,9 @@ class DashboardPageApp extends PureComponent {
 
     return (
       <div className="main-app-container">
+      <div>
+      <Sidebar/>
+      </div>
       <Header/>
         <section id="page-container" className="app-page-container">
          

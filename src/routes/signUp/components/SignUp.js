@@ -81,10 +81,10 @@ class SignUp extends PureComponent {
                             </Row>
                             <Row>
                             <Col sm="6">
-                                <Field component={renderTextField} name="country" type="text" placeholder="country"/>
+                                <Field component={renderTextField} name="country" type="text" placeholder="Country"/>
                             </Col>
                             <Col sm="6">
-                                <Field component={renderTextField} name="state" type="text" placeholder="state"/>
+                                <Field component={renderTextField} name="state" type="text" placeholder="State"/>
                             </Col>
                             </Row>
                             <Row>
@@ -97,7 +97,7 @@ class SignUp extends PureComponent {
                             </Row>
                             <Row>
                             <Col sm="12">    
-                            <Field component={renderTextField} name="emailId" type="text" placeholder="Email Id"/>
+                            <Field component={renderTextField} name="emailId" type="text" placeholder="Email"/>
                             </Col>
                             </Row>
                             <Row>

@@ -72,7 +72,8 @@ class ResetPassword extends PureComponent {
                             <Field component={renderTextField} name="password" type="password" placeholder="Password"/>
                             <Field component={renderTextField} name="cpassword" type="password" placeholder="Confirm Password"/>
                             <div>
-                                <Button className="btn-green mrT20" disabled={!valid}>Save</Button>{' '}
+                                {/* <Button className="btn-green mrT20" disabled={!valid}>Save</Button> */}
+                                <Link className="btn btn-green mrT20" to="/Login">Save</Link>
                             </div>
                         </form>
                     </CardBody>

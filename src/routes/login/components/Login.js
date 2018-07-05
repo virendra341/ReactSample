@@ -69,7 +69,7 @@ class Login extends PureComponent {
                     <CardBody>
                         <CardTitle className="mrT0">SIGN IN WITH SECBERUS</CardTitle>
                         <form onSubmit={handleSubmit((values) => this.showResults(values))}>
-                            <Field component={renderTextField} name="emailId" type="text" placeholder="Email Id" className="ABC" />
+                            <Field component={renderTextField} name="emailId" type="text" placeholder="Email" className="ABC" />
                             <Field component={renderTextField} name="password" type="password" placeholder="Password" className="ABC" />
                             <FormGroup>
                                 <Link to="/forgot-password">Forgot Password</Link>

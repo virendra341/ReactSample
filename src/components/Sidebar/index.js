@@ -9,6 +9,8 @@ class SideBar extends PureComponent {
         return (
             <div>
                 <Nav className="app-sidebar" vertical>
+                    <section className="sidebar-header">
+                    </section>
                     <NavItem>
                         <NavLink href="#">Link</NavLink>
                     </NavItem>
