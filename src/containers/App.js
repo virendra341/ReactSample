@@ -15,7 +15,7 @@ class App extends React.Component {
         <Header />
         <Container>
           <Row>
-            <Col>Hello React</Col>
+            <Col></Col>
           </Row>
           <Row>
             {this.props.children}
