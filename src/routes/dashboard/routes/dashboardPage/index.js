@@ -1,8 +1,8 @@
 module.exports = {
-  path: 'confirm-email',
+  path: 'home',
   getComponent(nextState, cb) {
     require.ensure([], (require) => {
-      cb(null, require('./components/ConfirmEmail'));
+      cb(null, require('./components/DashboardPage'));
     });
   }
 };

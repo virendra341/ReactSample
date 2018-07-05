@@ -1,14 +1,13 @@
 import React, { Fragment, PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { Link} from 'react-router'
-import { Button, FormGroup, Input, FormFeedback,Card,CardHeader, CardFooter, CardBody,
-    CardTitle} from 'reactstrap'
+import { Button, FormGroup, Input, FormFeedback,Card,CardHeader, CardBody,
+    CardTitle,CardText} from 'reactstrap'
    
 const validate = values => {
     const errors = {}
     const requiredFields = [
         'emailId',
-        'password'
     ]
     requiredFields.forEach(field => {
         if (!values[field]) {
@@ -44,7 +43,7 @@ const renderTextField = ({
     )
 
 
-class Login extends PureComponent {
+class SignupSuccess extends PureComponent {
 
     componentWillMount() {
         this.props.reset();
@@ -67,22 +66,15 @@ class Login extends PureComponent {
                         </div>
                     </CardHeader>
                     <CardBody>
-                        <CardTitle className="mrT0">SIGN IN WITH SECBERUS</CardTitle>
+                        <CardTitle className="mr0">Sign Up Sucessfully</CardTitle>
+                        <CardText className="mrB15 mrT15">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</CardText>
                         <form onSubmit={handleSubmit((values) => this.showResults(values))}>
-                            <Field component={renderTextField} name="emailId" type="text" placeholder="Email Id" className="ABC" />
-                            <Field component={renderTextField} name="password" type="password" placeholder="Password" className="ABC" />
-                            <FormGroup>
-                                <Link to="/forgot-password">Forgot Password</Link>
-                            </FormGroup>
                             <div>
-                                <Button className="btn-green mrT10" disabled={!valid}>Sign in</Button>{' '}
+                                {/* <Button className="btn-green mrT20" disabled={!valid}>Done</Button>{' '} */}
+                                <Link className="btn btn-green mrT20" to="">Resent</Link>
                             </div>
                         </form>
                     </CardBody>
-                    <CardFooter>
-                        <p>Not Registered yet ?</p>
-                        <Link className="btn btn-green-boder mrT10" to="/sign-up">Register</Link>
-                    </CardFooter>
                 </Card>
                 
                
@@ -93,8 +85,8 @@ class Login extends PureComponent {
 
 
 module.exports = reduxForm({
-    form: 'login',
+    form: 'signupsuccess',
     validate,
     destroyOnUnmount: true,
     forceUnregisterOnUnmount: true
-})(Login);
+})(SignupSuccess);
