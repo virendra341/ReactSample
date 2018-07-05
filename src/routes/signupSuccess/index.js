@@ -1,8 +1,8 @@
 module.exports = {
-  path: 'forgot-password',
+  path: 'welcome',
   getComponent(nextState, cb) {
     require.ensure([], (require) => {
-      cb(null, require('./components/ForgotPasswordPage'));
+      cb(null, require('./components/SignupSuccessPage'));
     });
   }
 };

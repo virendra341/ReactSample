@@ -1,8 +1,8 @@
 /*
  * @Author: Virendra Patidar 
  * @Date: 2018-07-05 18:18:44 
- * @Last Modified by:   Virendra Patidar 
- * @Last Modified time: 2018-07-05 18:18:44 
+ * @Last Modified by: Virendra Patidar
+ * @Last Modified time: 2018-07-05 18:58:26
  */
 import React, { PureComponent } from 'react'
 
@@ -41,7 +41,7 @@ class Login extends PureComponent {
     showResults = (values) => {
         console.log(values);
     }
-    
+
     render() {
         const { handleSubmit, invalid, submitting, pristine } = this.props;
         return (
@@ -52,12 +52,12 @@ class Login extends PureComponent {
                     </div>
                 </CardHeader>
                 <CardBody>
-                    <CardTitle>SIGN IN WITH SECBERUS</CardTitle>
+                    <CardTitle className="mrT0">SIGN IN WITH SECBERUS</CardTitle>
                     <form onSubmit={handleSubmit((values) => this.showResults(values))}>
-                        <Field component={renderTextField} name="emailId" type="text" placeholder="Email Id" className="ABC" />
+                        <Field component={renderTextField} name="emailId" type="text" placeholder="Email" className="ABC" />
                         <Field component={renderTextField} name="password" type="password" placeholder="Password" className="ABC" />
                         <FormGroup>
-                            <a href="#">Forgot Password</a>
+                            <Link to="/forgot-password">Forgot Password</Link>
                         </FormGroup>
                         <div>
                             <Button className="btn-green mrT10" disabled={invalid || submitting || pristine}>Sign in</Button>{' '}
