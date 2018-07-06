@@ -1,2 +1,0 @@
-webpackJsonp([2],{718:function(e,t,a){"use strict";var n=a(6),l=function(e){return e&&e.__esModule?e:{default:e}}(n),u=function(){return l.default.createElement("div",{className:"body-inner"})},r=function(){return l.default.createElement("div",{className:"page-auth page-confirm-email"},l.default.createElement("div",{className:"main-body"},l.default.createElement("div",{key:"1"},l.default.createElement(u,null))))};e.exports=r}});
-//# sourceMappingURL=2.06760363b508d6277312.bundle.map
