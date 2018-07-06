@@ -1,6 +1,6 @@
 
 import React, { PureComponent } from 'react'
-import 'style/bootstrap.scss';
+
 // custom
 import 'style/layout.scss';
 import 'style/theme.scss';

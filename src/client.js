@@ -10,7 +10,6 @@ import { syncHistoryWithStore, routerMiddleware, push } from 'react-router-redux
 import reducers from './reducers'
 import { } from 'babel-polyfill'
 // import reducers from './reducers';
-import 'bootstrap/dist/css/bootstrap.css';
 // import App from './containers/App';
 
 export const store = createStore(

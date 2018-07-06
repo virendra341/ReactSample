@@ -2,13 +2,13 @@
  * @Author: Virendra Patidar 
  * @Date: 2018-07-05 18:18:44 
  * @Last Modified by: Virendra Patidar
- * @Last Modified time: 2018-07-05 18:58:26
+ * @Last Modified time: 2018-07-06 16:42:36
  */
 import React, { PureComponent } from 'react'
 
 import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router'
-import { Button, FormGroup, Card, CardHeader, CardFooter, CardBody, CardTitle } from 'reactstrap'
+import Button from '@material-ui/core/Button'
 
 import { renderTextField } from 'reduxFormComponent'
 
@@ -45,30 +45,18 @@ class Login extends PureComponent {
     render() {
         const { handleSubmit, invalid, submitting, pristine } = this.props;
         return (
-            <Card className="col-sm-3 pd0">
-                <CardHeader>
-                    <div className="sb-login-logo">
-                        <img src="assets/images/secberus-logo.png" />
-                    </div>
-                </CardHeader>
-                <CardBody>
-                    <CardTitle className="mrT0">SIGN IN WITH SECBERUS</CardTitle>
-                    <form onSubmit={handleSubmit((values) => this.showResults(values))}>
-                        <Field component={renderTextField} name="emailId" type="text" placeholder="Email" className="ABC" />
-                        <Field component={renderTextField} name="password" type="password" placeholder="Password" className="ABC" />
-                        <FormGroup>
-                            <Link to="/forgot-password">Forgot Password</Link>
-                        </FormGroup>
-                        <div>
-                            <Button className="btn-green mrT10" disabled={invalid || submitting || pristine}>Sign in</Button>{' '}
-                        </div>
-                    </form>
-                </CardBody>
-                <CardFooter>
-                    <p>Not Registered yet ?</p>
-                    <Link className="btn btn-green-boder mrT10" to="/sign-up">Register</Link>
-                </CardFooter>
-            </Card>
+
+            <form onSubmit={handleSubmit((values) => this.showResults(values))}>
+                <Field component={renderTextField} name="emailId" type="text" placeholder="Email" />
+                <Field component={renderTextField} name="password" type="password" placeholder="Password" />
+              
+                    <Link to="/forgot-password">Forgot Password</Link>
+           
+                <div>
+                    <Button className="btn-green mrT10" disabled={invalid || submitting || pristine}>Sign in</Button>{' '}
+                </div>
+            </form>
+
         )
     }
 }

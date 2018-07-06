@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react'
-import { FormGroup, Input, FormFeedback, Label } from 'reactstrap'
-import { Typeahead } from 'react-bootstrap-typeahead'
+import React from 'react'
+import TextField from '@material-ui/core/TextField';
+import SelectField from '@material-ui/core/Select'
 
 export const renderTextField = ({
     input,
@@ -9,35 +9,22 @@ export const renderTextField = ({
     meta: { touched, error },
     ...custom
 }) => (
-        <Fragment>
-            <FormGroup>
-                {label && <Label for={label}>{label} {error && <span className="mandatory-field">*</span>} </Label>}
-                <Input
-                    invalid={touched && error}
-                    {...input}
-                    {...custom}
-                />
-                {error && <FormFeedback>{error}</FormFeedback>}
-            </FormGroup>
-        </Fragment>
+        <TextField hintText={label}
+            floatingLabelText={label}
+            errorText={touched && error}
+            {...input}
+            {...custom}
+        />
     )
 
 
 
-export const renderSelectField = ({ input, label,options,labelKey, meta: { touched,error }, children, ...custom }) => (
-    <Fragment>
-        <FormGroup>
-            {label && <Label for={label}>{label} {error && <span className="mandatory-field">*</span>} </Label>}
-
-            <Typeahead 
-               invalid={touched && error}
-                labelKey={labelKey}
-                options={options}
-                {...custom}
-                onChange={input.onChange}
-            />
-            {error && <FormFeedback>{error}</FormFeedback>}
-
-        </FormGroup>
-    </Fragment>
-);
+export const renderSelectField = ({ input, label, meta: { touched, error }, children, ...custom }) => (
+    <SelectField
+        floatingLabelText={label}
+        errorText={touched && error}
+        {...input}
+        onChange={(event, index, value) => input.onChange(value)}
+        children={children}
+        {...custom} />
+)
