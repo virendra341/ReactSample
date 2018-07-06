@@ -1,10 +1,52 @@
 .main-app-container{
     .main-navbar{
-        background-color: #000;
-        left: 80px;
-        img{
-            height: auto;
-            width: 100px
+        background-color: #3D3D3D;
+        left: 0;
+        z-index: 10000;
+        padding: 0.1rem 1rem;
+        .navbar-brand{
+            img{
+                height: auto;
+                width: 140px
+            }
         }
+       
+        .toggle-bar{
+            color: #fff;
+        }
+       .navbar-nav{
+           .dropdown{
+               .nav-link{
+                   color: #fff;
+               }
+               .dropdown-menu{
+                   right: 0;
+                   left: auto;
+                   min-width: 18rem;
+                   padding: 0.2rem 0;
+                   span{
+                    display: block;
+                    border-bottom: 1px solid #ddd;
+                    padding: 0 15px;
+                   }
+                   .dropdown-item{
+                       font-size: 13px;
+                   }
+               }
+               .user-img{
+               height: 30px;
+               width: 30px;
+               border-radius: 50%;
+               }
+           }
+           .user-notification{
+                padding-top: 6px;
+           }
+           .user-profile{
+                .dropdown-menu{
+                    min-width: 8rem;
+                }
+           }
+       }
     }
 }

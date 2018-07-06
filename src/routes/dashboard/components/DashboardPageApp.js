@@ -8,10 +8,11 @@ class DashboardPageApp extends PureComponent {
 
     return (
       <div className="main-app-container">
-      <div>
+       <Header/>
+      
       <Sidebar/>
-      </div>
-      <Header/>
+      
+     
         <section id="page-container" className="app-page-container">
          
           <div className="app-content-wrapper">

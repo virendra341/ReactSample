@@ -12,8 +12,8 @@ import {
     DropdownMenu,
     DropdownItem
 } from 'reactstrap';
-const navbar={
-flexDirection:'row'
+const navbar = {
+    flexDirection: 'row'
 }
 class Header extends PureComponent {
     constructor(props) {
@@ -33,31 +33,34 @@ class Header extends PureComponent {
         return (
             <div>
                 <Navbar expand="md" style={navbar} className="main-navbar">
-                    <NavbarBrand href="/"><img src="assets/images/secberus-logo.png"/></NavbarBrand>
+                    <a href="#" className="toggle-bar"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                    <NavbarBrand href="/" className="mrL15">
+                        <img src="assets/images/secberus-logo.png" />
+                    </NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
-                            <NavItem>
-                                <NavLink href="/components/">Components</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-                            </NavItem>
-                            <UncontrolledDropdown nav inNavbar>
-                                <DropdownToggle nav caret>
-                                    Options
-                </DropdownToggle>
-                                <DropdownMenu right>
-                                    <DropdownItem>
-                                        Option 1
-                  </DropdownItem>
-                                    <DropdownItem>
-                                        Option 2
-                  </DropdownItem>
-                                    <DropdownItem divider />
-                                    <DropdownItem>
-                                        Reset
-                  </DropdownItem>
+                            <UncontrolledDropdown setActiveFromChild className="user-notification">
+                                <DropdownToggle tag="a" className="nav-link">
+                                    <i class="fa fa-bell-o" aria-hidden="true"></i>
+                                </DropdownToggle>
+                                <DropdownMenu>
+                                    <span className="fnt-13"><b> Notification</b></span>
+                                    <DropdownItem tag="a" href="/blah">
+                                    </DropdownItem>
+                                </DropdownMenu>
+                            </UncontrolledDropdown>
+                            <UncontrolledDropdown setActiveFromChild className="user-profile">
+                                <DropdownToggle tag="a" className="nav-link">
+                                    <img className="user-img" src="assets/images/user.jpg"/>
+                                </DropdownToggle>
+                                <DropdownMenu>
+                                    <DropdownItem tag="a" href="/blah">
+                                        My Profile
+                                    </DropdownItem>
+                                    <DropdownItem tag="a" href="/blah">
+                                        Sign Out
+                                    </DropdownItem>
                                 </DropdownMenu>
                             </UncontrolledDropdown>
                         </Nav>

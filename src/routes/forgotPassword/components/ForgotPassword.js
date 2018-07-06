@@ -79,6 +79,7 @@ class ForgotPassword extends PureComponent {
                     <CardFooter>
                         <p>Not Registered yet ?</p>
                         <Link className="btn btn-green-boder mrT10" to="/sign-up">Register</Link>
+                        <Link className="btn btn-green mrT10 mrL10" to="/login">Sign in</Link>
                     </CardFooter>
                 </Card>
                 
