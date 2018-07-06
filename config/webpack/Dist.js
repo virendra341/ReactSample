@@ -43,11 +43,14 @@ class WebpackDistConfig extends WebpackBaseConfig {
         }),
         new webpack.optimize.AggressiveMergingPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
-        // new webpack.ProvidePlugin({
-        //   $: "jquery",
-        //   jQuery: "jquery",
-        //   "window.jQuery": "jquery"
-        // }),
+        // new webpack.ProvidePlugin( {
+        //   $:"jquery", 
+        //   jQuery:"jquery", 
+        //   "window.jQuery":"jquery"
+        // }), 
+        new ExtractTextPlugin({
+          filename: "css/[name].[contenthash].styles.css"
+        }),
         new CopyWebpackPlugin([
           { from: root('public/index.html'), to: root('dist/') },
           { from: root('public/favicon.ico'), to: root('dist/') },
@@ -90,15 +93,19 @@ class WebpackDistConfig extends WebpackBaseConfig {
           //use: "css-loader"
           use: ['css-loader', 'sass-loader']
         })
-      }, {
-        test: /\.css$/,
-        //use: ['style-loader', 'css-loader']
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          //use: "css-loader"
-          use: ['css-loader', 'sass-loader']
-        })
-      }, {
+      }, 
+      
+      // {
+      //   test: /\.css$/,
+      //   //use: ['style-loader', 'css-loader']
+      //   use: ExtractTextPlugin.extract({
+      //     fallback: "style-loader",
+      //     //use: "css-loader"
+      //     use: ['css-loader', 'sass-loader']
+      //   })
+      // }, 
+      
+      {
         test: /^.((?! cssmodule).) * \.(sass | scss)$/,
         loaders: [{ loader: 'style-loader' }, { loader: 'css-loader' }, { loader: 'sass-loader' }
         ]
