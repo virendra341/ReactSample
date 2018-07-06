@@ -3,13 +3,14 @@ import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router'
 import { Button, FormGroup, Input, Label, Card, CardHeader, CardFooter, CardBody, CardTitle, Col, Row } from 'reactstrap'
 
-import { renderTextField } from 'reduxFormComponent'
+import { renderTextField, renderSelectField } from 'reduxFormComponent'
 
 const validate = values => {
     const errors = {}
     const requiredFields = [
         'fullname',
         'cname',
+        'country'
     ]
     requiredFields.forEach(field => {
         if (!values[field]) {
@@ -22,6 +23,12 @@ const validate = values => {
     ) {
         errors.emailId = 'Invalid email address'
     }
+
+    if (
+        values.country===undefined
+    ) {
+        errors.country = 'This field is required'
+    }
     return errors
 }
 
@@ -29,6 +36,9 @@ const validate = values => {
 
 class SignUp extends PureComponent {
 
+    state = {
+        countryList: [{ id: 1, name: 'Indina' }, { id: 2, name: 'japan' }]
+    }
     componentWillMount() {
         this.props.reset();
     }
@@ -37,7 +47,7 @@ class SignUp extends PureComponent {
         console.log(values);
     }
     render() {
-        const { handleSubmit, invalid , submitting , pristine } = this.props;
+        const { handleSubmit, invalid, submitting, pristine } = this.props;
         return (
             <Card className="col-sm-3 pd0 sb-card-sigup">
                 <CardHeader>
@@ -60,7 +70,7 @@ class SignUp extends PureComponent {
                         </Row>
                         <Row>
                             <Col sm="6">
-                                <Field component={renderTextField} name="country" type="text" placeholder="Country" />
+                                <Field name="country" placeholder="Select country" component={renderSelectField} labelKey="name" valueKey="id" options={this.state.countryList}></Field>
                             </Col>
                             <Col sm="6">
                                 <Field component={renderTextField} name="state" type="text" placeholder="State" />
