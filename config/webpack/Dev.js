@@ -26,6 +26,9 @@ class WebpackDevConfig extends WebpackBaseConfig {
         //   jQuery: "jquery",
         //   "window.jQuery": "jquery"
         // })
+        new ExtractTextPlugin({
+          filename: "css/[name].[contenthash].styles.css"
+        }),
       ]
     };
 
