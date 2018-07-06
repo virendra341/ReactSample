@@ -1,9 +1,9 @@
-import React, { Fragment, PureComponent } from 'react'
-import { Field, reduxForm } from 'redux-form'
-import { Link} from 'react-router'
-import { Button, FormGroup, Input, FormFeedback,Card,CardHeader, CardBody,
-    CardTitle,CardText} from 'reactstrap'
-   
+import React, {  PureComponent } from 'react'
+import { reduxForm } from 'redux-form'
+import { Link } from 'react-router'
+
+
+
 const validate = values => {
     const errors = {}
     const requiredFields = [
@@ -23,24 +23,7 @@ const validate = values => {
     return errors
 }
 
-const renderTextField = ({
-    input,
-    label,
-    name,
-    meta: { touched, error },
-    ...custom
-}) => (
-        <Fragment>
-            <FormGroup>
-                <Input
-                    invalid={touched && error}
-                    {...input}
-                    {...custom}
-                />
-                {error && <FormFeedback>{error}</FormFeedback>}
-            </FormGroup>
-        </Fragment>
-    )
+
 
 
 class ForgotPasswordEmail extends PureComponent {
@@ -57,28 +40,12 @@ class ForgotPasswordEmail extends PureComponent {
         console.log('Props ', this.props);
 
         return (
-            [
-                
-                <Card className="col-sm-3 pd0">
-                    <CardHeader>
-                        <div className="sb-login-logo">
-                            <img src="assets/images/secberus-logo.png" />
-                        </div>
-                    </CardHeader>
-                    <CardBody>
-                        <CardTitle className="mr0">PASSWORD RESET EMAIL SEND!</CardTitle>
-                        <CardText className="mrB15 mrT15">An email has been sent to john@gmail.com follow the directions in the email to reset your password</CardText>
-                        <form onSubmit={handleSubmit((values) => this.showResults(values))}>
-                            <div>
-                                {/* <Button className="btn-green mrT20" disabled={!valid}>Done</Button>{' '} */}
-                                <Link className="btn btn-green mrT20" to="/reset-password">Done</Link>
-                            </div>
-                        </form>
-                    </CardBody>
-                </Card>
-                
-               
-            ]
+            <form onSubmit={handleSubmit((values) => this.showResults(values))}>
+                <div>
+                    {/* <Button className="btn-green mrT20" disabled={!valid}>Done</Button>{' '} */}
+                    <Link className="btn btn-green mrT20" to="/reset-password">Done</Link>
+                </div>
+            </form>
         )
     }
 }
