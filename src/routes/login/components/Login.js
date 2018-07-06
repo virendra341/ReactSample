@@ -5,10 +5,13 @@
  * @Last Modified time: 2018-07-06 16:42:36
  */
 import React, { PureComponent } from 'react'
-
 import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router'
 import Button from '@material-ui/core/Button'
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+
 
 import { renderTextField } from 'reduxFormComponent'
 
@@ -45,17 +48,28 @@ class Login extends PureComponent {
     render() {
         const { handleSubmit, invalid, submitting, pristine } = this.props;
         return (
-
-            <form onSubmit={handleSubmit((values) => this.showResults(values))}>
-                <Field component={renderTextField} name="emailId" type="text" placeholder="Email" />
-                <Field component={renderTextField} name="password" type="password" placeholder="Password" />
-              
-                    <Link to="/forgot-password">Forgot Password</Link>
-           
-                <div>
-                    <Button className="btn-green mrT10" disabled={invalid || submitting || pristine}>Sign in</Button>{' '}
-                </div>
-            </form>
+                <Card className="side-login-panel">
+                    <div className="card-header sb-login-logo">
+                        <img src="assets/images/secberus-logo.png" />
+                    </div>
+                    <CardContent className="card-body">
+                        <Typography className="card-title" gutterBottom variant="headline" component="h2">
+                            SIGN IN WITH SECBERUS
+                        </Typography>
+                        <form className="form-login" onSubmit={handleSubmit((values) => this.showResults(values))}>
+                            <Field className="mt-control mrB15" component={renderTextField} name="emailId" type="text" placeholder="Email" />
+                            <Field className="mt-control mrB15" component={renderTextField} name="password" type="password" placeholder="Password" />
+                            <Link to="/forgot-password">Forgot Password</Link>
+                            <div>
+                                <Button className="btn-green mrT20" disabled={invalid || submitting || pristine}>Sign in</Button>
+                            </div>
+                        </form>
+                    </CardContent>
+                    <div className="card-footer">
+                        <p className="mrB25">Not Registered yet ?</p>
+                        <Link className="btn btn-green-boder mrT20" to="/sign-up">Register</Link>
+                    </div>
+                </Card>
 
         )
     }

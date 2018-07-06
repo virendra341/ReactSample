@@ -1,12 +1,11 @@
 
 body{
-    font-size: 13px;
-    background-color: #F1F2F5;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
 }
 
-.btn{
-    font-size: 13px;
-}
 a{
     &:hover{
         color: $bg_green-color_1 !important;

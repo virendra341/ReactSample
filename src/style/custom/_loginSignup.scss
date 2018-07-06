@@ -7,55 +7,62 @@
         position: fixed;
         left: 0;
         top: 0;
+        width: 100%;
     }
-    .card{
-            padding: 0;
-            position: fixed;
-            right: 0;
-            border-radius: 0;
-            text-align: left;
-            height: 100%;
-            margin: 0;
-            background: #fff;
-            overflow: auto;
-            border: none;
-            top: 0;
-            bottom: 0;
-            .card-header {
-                background-color: transparent;
-                border-bottom: none;
-                padding: 80px 40px;
-                .sb-login-logo img{
-                    width: 170px;
-                }
+    .side-login-panel{
+        position: fixed;
+        right: 0;
+        border-radius: 0;
+        height: 100%;
+        border: none;
+        top: 0;
+        bottom: 0;
+        max-width: 25%;
+        .card-header {
+            background-color: transparent;
+            border-bottom: none;
+            padding: 80px 40px;
+            img{
+                width: 170px;
             }
-            .card-title {
-                font-size: 13px;
-            }
-            .card-body{
-                padding: 0 40px;
-                .form-group{
-                    .form-control{
-                        border: none;
-                        border-bottom: 1px solid #ddd;
-                        border-radius: 0;
-                        box-shadow: none;
-                        padding:10px  0;
+        }
+        .card-title{
+            font-size: 13px;
+        }
+        .card-body{
+            padding: 0 40px 80px;
+            .form-login{
+                width: 100%;
+                .mt-control{
+                    width: 100%;
+                    input{
+                        font-size: 13px;
                     }
                 }
             }
-            .card-footer{
-                background-color: transparent;
-                padding: 20px 40px;
-                min-height: 190px;
+        }
+        .card-footer{
+            padding: 0 40px;
+            min-height: 190px;
+            border-top: 1px solid #ddd;
+            a{
+                text-decoration: none;
             }
         }
-        .sb-card-sigup{
-                .card-header{
-                    padding: 40px 40px 20px;
-                }
-                .card-footer{
-                    min-height: 140px;
-                }
+    }
+    .card-signup{
+        .card-header {
+            padding: 40px 40px;
         }
+        .card-body{
+            padding: 0 40px 20px;
+            .mt-checkbox{
+                width: auto;
+            }
+            a{
+                font-size: 13px;
+            }
+        }
+    }
+    
 }

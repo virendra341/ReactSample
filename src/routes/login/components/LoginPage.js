@@ -8,12 +8,11 @@ class LoginPage extends PureComponent {
 
     render() {
         return (
-            
                 <div className="section-login">
-                            <LoginBackground></LoginBackground>,
-                            <Login></Login>
+                    <LoginBackground></LoginBackground>
+                    <Login></Login>
                 </div>
-            
+
         )
     }
 }
