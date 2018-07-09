@@ -1,9 +1,8 @@
 import React, { PureComponent } from 'react'
 import { reduxForm } from 'redux-form'
 import { Link } from 'react-router'
-import { Button, Card, CardContent, Typography } from '@material-ui/core'
+import { Card, CardContent, Typography } from '@material-ui/core'
 
-import { renderTextField } from 'reduxFormComponent'
 
 const validate = values => {
     const errors = {}
@@ -25,7 +24,7 @@ const validate = values => {
 }
 
 
-class SignupSuccess extends PureComponent {
+class Welcome extends PureComponent {
 
     componentWillMount() {
         this.props.reset();
@@ -63,8 +62,8 @@ class SignupSuccess extends PureComponent {
 
 
 module.exports = reduxForm({
-    form: 'signupsuccess',
+    form: 'welcome',
     validate,
     destroyOnUnmount: true,
     forceUnregisterOnUnmount: true
-})(SignupSuccess);
+})(Welcome);

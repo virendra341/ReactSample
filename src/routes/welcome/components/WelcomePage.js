@@ -1,10 +1,10 @@
 
 import React, { PureComponent } from 'react'
 
-import SignupSuccess from './SignupSuccess'
+import Welcome from './Welcome'
 import LoginBackground from 'components/LoginBackground'
 
-class SignupSuccessPage extends PureComponent {
+class WelcomePage extends PureComponent {
 
     render() {
         return (
@@ -12,12 +12,12 @@ class SignupSuccessPage extends PureComponent {
                 <div className="section-login">
                     
                             <LoginBackground></LoginBackground>,
-                            <SignupSuccess></SignupSuccess>
+                            <Welcome></Welcome>
                       
                 </div>
             
         )
     }
 }
-module.exports = SignupSuccessPage
+module.exports = WelcomePage
 ;

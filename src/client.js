@@ -47,7 +47,7 @@ const rootRoute = {
       require('./routes/500'),
       require('./routes/login'),
       require('./routes/signUp'),
-      require('./routes/signupSuccess'),
+      require('./routes/welcome'),
       require('./routes/resetPassword'),
       require('./routes/forgotPassword'),
       require('./routes/forgotPasswordEmail'),
