@@ -1,0 +1,36 @@
+.modal-stepper {
+    > div + div{
+        width: 648px;
+    }
+    .MuiStep-horizontal-78{
+        padding-right: 0;
+    }
+    .stepper-label{
+        svg{
+            display: none;
+        }
+        .MuiStepLabel-labelContainer-91{
+             width: 160px;
+            .MuiStepLabel-active-84{
+                background-color: #2F467D !important;
+                display: inline-block;
+                width: 170px;
+                height: 8px;
+                border: 1px solid #ddd;
+                box-shadow: 0 2px 4px 0 #ddd;
+            }
+            .MuiTypography-root-44{
+                background-color: #fff;
+                display: inline-block;
+                width: 170px;
+                height: 8px;
+                border: 1px solid #ddd;
+                box-shadow: 0 2px 4px 0 #ddd;
+            }
+           
+        }
+    }
+    .MuiStepConnector-root-104{
+        display: none;
+    }
+}

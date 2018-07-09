@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'; 
-import Header from 'components/Header' 
-import Sidebar from 'components/Sidebar'
+// import Header from 'components/Header' 
+// import Sidebar from 'components/Sidebar'
+import StepperModal from 'components/StepperModal'
 
 class DashboardPageApp extends PureComponent {
   render() {
@@ -8,10 +9,10 @@ class DashboardPageApp extends PureComponent {
 
     return (
       <div className="main-app-container">
-       <Header/>
+       {/* <Header/>
       
-      <Sidebar/>
-      
+      <Sidebar/> */}
+      <StepperModal/>
      
         <section id="page-container" className="app-page-container">
          
