@@ -12,3 +12,54 @@ a{
         color: $bg_green-color_1 !important;
     }
 }
+
+.custom-txt-field{
+    margin-bottom: 15px !important;
+    width: 100%;
+    div{
+        &:after{
+            display: none;
+        }
+        &:before{
+            display: none;
+        }
+    }
+    input{
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 6px 12px;
+        &:disabled{
+            background-color: #eee;
+        }
+    }
+}
+
+.upload-box {
+    .btn-file {
+        background-color: #fff;
+        border: 1px solid $btn_primary;
+        color: $btn_primary;
+        position: relative;
+        overflow: hidden;
+        float: left;
+        padding: 10px 40px;
+        font: 14px/14px 'Roboto',sans-serif;
+        margin: 0 10px 0 0;
+        border-radius: 3px;
+        cursor: pointer;
+        input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            opacity: 0;
+            outline: none;
+            cursor: inherit;
+            display: block;
+            }
+    }
+}
+

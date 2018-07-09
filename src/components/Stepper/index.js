@@ -7,6 +7,11 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import Step1 from 'components/Step1';
+import Step2 from 'components/Step2';
+import Step3 from 'components/Step3';
+import Step4 from 'components/Step4';
+
 const styles = theme => ({
   root: {
     width: '90%',
@@ -27,13 +32,21 @@ function getSteps() {
 function getStepContent(stepIndex) {
   switch (stepIndex) {
     case 0:
-      return 'Step1';
+      return (
+        <Step1/>
+      );
     case 1:
-      return 'Step2';
+      return (
+        <Step2/>
+      );
     case 2:
-      return 'Step3';
+      return (
+        <Step3/>
+      );
     case 3:
-      return 'Step4';
+      return (
+        <Step4/>
+      );
     default:
       return 'Uknown stepIndex';
   }
@@ -91,7 +104,7 @@ class Wizzard extends PureComponent {
           ) : (
             <div>
               <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
-              <div>
+              <div className="footer-btn">
                 <Button
                   disabled={activeStep === 0}
                   onClick={this.handleBack}
@@ -99,7 +112,7 @@ class Wizzard extends PureComponent {
                 >
                   Back
                 </Button>
-                <Button variant="contained" color="primary" onClick={this.handleNext}>
+                <Button className="btn-primary" variant="contained" color="primary" onClick={this.handleNext} >
                   {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                 </Button>
               </div>

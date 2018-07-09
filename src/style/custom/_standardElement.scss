@@ -1,7 +1,8 @@
-$btn_bg_blue1: #3C83E2; 
+$btn_primary: #2258DE; 
 $btn_txt_color1: #fff; 
 
-$color_3: #999; 
+$color_gray1: #999; 
+$color_gray2: #E1E6EE; 
 $background_color_1: #090345; 
 $bg_green-color_1: #24BA4D; 
 $bg_green-color_2: #3b841a; 
@@ -9,6 +10,8 @@ $bg_green-color_2: #3b841a;
 
 $background_color_2: transparent; 
 $background_color_3: #f5f5f5; 
+
+
 $border-color: #e2e2e2; 
 html {
     width: 100%;
@@ -76,6 +79,9 @@ a:hover{color: #0289ea !important; text-decoration: none !important;}
 .pdT15{padding-top:15px}
 .pdT20{padding-top:20px}
 .pdT25{padding-top:25px}
+.pdT30{padding-top:30px}
+.pdT35{padding-top:35px}
+.pdT40{padding-top:40px !important}
 
 .pdB0{padding-bottom:0 !important}
 .pdB5{padding-bottom:5px !important}
@@ -239,4 +245,14 @@ color: #CCC;
         color: #fff!important;
     }
 }
-
+.btn-primary{
+    background-color: $btn_primary !important;
+    border-color: $btn_primary !important;
+}
+.btn-white{
+    background-color: #fff !important;
+    border-color: #fff !important;
+    border: 1px solid $btn_primary !important;
+    color: $btn_primary !important;
+    padding: 8px 30px !important;
+}
