@@ -7,11 +7,7 @@
 import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router'
-import Button from '@material-ui/core/Button'
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-
+import { Button, Card, CardContent, Typography } from '@material-ui/core'
 
 import { renderTextField } from 'reduxFormComponent'
 
@@ -59,7 +55,7 @@ class Login extends PureComponent {
                         <form className="form-login" onSubmit={handleSubmit((values) => this.showResults(values))}>
                             <Field className="mt-control mrB15" component={renderTextField} name="emailId" type="text" placeholder="Email" />
                             <Field className="mt-control mrB15" component={renderTextField} name="password" type="password" placeholder="Password" />
-                            <Link to="/forgot-password">Forgot Password</Link>
+                            <Link to="/forgot-password" className="fnt-13">Forgot Password</Link>
                             <div>
                                 <Button className="btn-green mrT20" disabled={invalid || submitting || pristine}>Sign in</Button>
                             </div>

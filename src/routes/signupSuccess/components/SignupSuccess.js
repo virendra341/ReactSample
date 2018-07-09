@@ -1,8 +1,10 @@
-import React, {  PureComponent } from 'react'
+import React, { PureComponent } from 'react'
 import { reduxForm } from 'redux-form'
-import { Link} from 'react-router'
+import { Link } from 'react-router'
+import { Button, Card, CardContent, Typography } from '@material-ui/core'
 
-   
+import { renderTextField } from 'reduxFormComponent'
+
 const validate = values => {
     const errors = {}
     const requiredFields = [
@@ -37,12 +39,24 @@ class SignupSuccess extends PureComponent {
         console.log('Props ', this.props);
 
         return (
-           <form onSubmit={handleSubmit((values) => this.showResults(values))}>
-                            <div>
-                                {/* <Button className="btn-green mrT20" disabled={!valid}>Done</Button>{' '} */}
-                                <Link className="btn btn-green mrT20" to="">Resent</Link>
-                            </div>
-                        </form>
+            <Card className="side-login-panel">
+                <div className="card-header sb-login-logo">
+                    <img src="assets/images/secberus-logo.png" />
+                </div>
+                <CardContent className="card-body">
+                    <Typography className="card-title mrB15" gutterBottom variant="headline" component="h2">
+                        WELCOME
+                </Typography>
+                    <Typography className="mrB15" component="p">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                </Typography>
+                    <form className="form-login" onSubmit={handleSubmit((values) => this.showResults(values))}>
+                        {/* <Button className="btn-green mrT20" disabled={!valid}>Done</Button>{' '} */}
+                        <Link className="btn-green mrT20" to="">Resent</Link>
+                    </form>
+                </CardContent>
+            </Card>
+
         )
     }
 }

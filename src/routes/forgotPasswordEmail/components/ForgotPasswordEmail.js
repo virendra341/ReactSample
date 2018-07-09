@@ -1,8 +1,7 @@
 import React, {  PureComponent } from 'react'
 import { reduxForm } from 'redux-form'
 import { Link } from 'react-router'
-
-
+import { Button, Card, CardContent, Typography } from '@material-ui/core'
 
 const validate = values => {
     const errors = {}
@@ -23,9 +22,6 @@ const validate = values => {
     return errors
 }
 
-
-
-
 class ForgotPasswordEmail extends PureComponent {
 
     componentWillMount() {
@@ -40,12 +36,26 @@ class ForgotPasswordEmail extends PureComponent {
         console.log('Props ', this.props);
 
         return (
-            <form onSubmit={handleSubmit((values) => this.showResults(values))}>
-                <div>
-                    {/* <Button className="btn-green mrT20" disabled={!valid}>Done</Button>{' '} */}
-                    <Link className="btn btn-green mrT20" to="/reset-password">Done</Link>
+            <Card className="side-login-panel">
+                <div className="card-header sb-login-logo">
+                    <img src="assets/images/secberus-logo.png" />
                 </div>
-            </form>
+                <CardContent className="card-body">
+                    <Typography className="card-title mrB15" gutterBottom variant="headline" component="h2">
+                        PASSWORD RESET EMAIL SEND!
+                    </Typography>
+                    <Typography className="mrB15" component="p">
+                        An email has been sent to john@gmail.com follow the directions in the email to reset your password
+                    </Typography>
+                    <form className="form-login" onSubmit={handleSubmit((values) => this.showResults(values))}>
+                        <div>
+                            {/* <Button className="btn-green mrT20" disabled={!valid}>Done</Button>{' '} */}
+                            <Link className="btn-green mrT20" to="/reset-password">Done</Link>
+                        </div>
+                    </form>
+                </CardContent>
+            </Card>
+           
         )
     }
 }

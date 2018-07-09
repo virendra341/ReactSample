@@ -18,6 +18,8 @@
         top: 0;
         bottom: 0;
         max-width: 25%;
+        overflow-y: auto;
+        overflow-x: hidden;
         .card-header {
             background-color: transparent;
             border-bottom: none;
@@ -28,6 +30,7 @@
         }
         .card-title{
             font-size: 13px;
+            font-weight: 500;
         }
         .card-body{
             padding: 0 40px 80px;
@@ -35,15 +38,24 @@
                 width: 100%;
                 .mt-control{
                     width: 100%;
+                    > div  {
+                       &:after{
+                            border-bottom: 2px solid $bg_green-color_1;
+                       }
+                    }
+                    &:after{
+                        border-bottom: 2px solid $bg_green-color_1;
+                   }
                     input{
                         font-size: 13px;
+                       
                     }
                 }
             }
         }
         .card-footer{
             padding: 0 40px;
-            min-height: 190px;
+            min-height: 90px;
             border-top: 1px solid #ddd;
             a{
                 text-decoration: none;
@@ -59,10 +71,11 @@
             .mt-checkbox{
                 width: auto;
             }
-            a{
-                font-size: 13px;
-            }
         }
     }
     
 }
+
+ 
+
+

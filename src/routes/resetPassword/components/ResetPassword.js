@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router'
+import { Button, Card, CardContent, Typography } from '@material-ui/core'
 
 import { renderTextField } from 'reduxFormComponent'
 
@@ -39,15 +40,22 @@ class ResetPassword extends PureComponent {
         // console.log('Props ', this.props);
 
         return (
-            <form onSubmit={handleSubmit((values) => this.showResults(values))}>
-                <Field component={renderTextField} name="password" type="password" placeholder="Password" />
-                <Field component={renderTextField} name="cpassword" type="password" placeholder="Confirm Password" />
-                <div>
-                    {/* <Button className="btn-green mrT20" disabled={!valid}>Save</Button> */}
-                    <Link className="btn btn-green mrT20" to="/Login">Save</Link>
+            <Card className="side-login-panel">
+                <div className="card-header sb-login-logo">
+                    <img src="assets/images/secberus-logo.png" />
                 </div>
-            </form>
-
+                <CardContent className="card-body">
+                    <Typography className="card-title mrB15" gutterBottom variant="headline" component="h2">
+                        NEW PASSWORD
+                </Typography>
+                    <form className="form-login" onSubmit={handleSubmit((values) => this.showResults(values))}>
+                        <Field className="mt-control mrB25" component={renderTextField} name="password" type="password" placeholder="Password" />
+                        <Field className="mt-control mrB25" component={renderTextField} name="cpassword" type="password" placeholder="Confirm Password" />
+                        {/* <Button className="btn-green mrT20" disabled={!valid}>Save</Button> */}
+                        <Link className="btn btn-green mrT20" to="/Login">Save</Link>
+                    </form>
+                </CardContent>
+            </Card>
         )
     }
 }

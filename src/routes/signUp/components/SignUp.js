@@ -1,15 +1,9 @@
 import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router'
-import Button from '@material-ui/core/Button'
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import { Grid } from '@material-ui/core';
-import Checkbox from '@material-ui/core/Checkbox';
+import {Button,Card,CardContent,Typography,Grid,Checkbox} from '@material-ui/core'
 
 import { renderTextField, renderSelectField } from 'reduxFormComponent'
-
 
 const validate = values => {
     const errors = {}
@@ -86,13 +80,13 @@ class SignUp extends PureComponent {
                 </Grid>
                 <Field className="mt-control mrB15" component={renderTextField} name="emailId" type="text" placeholder="Email" />
 
-                <Field className="mt-control mrB15" component={renderTextField} name="password" type="text" placeholder="Password" />
+                <Field className="mt-control mrB15" component={renderTextField} name="password" type="password" placeholder="Password" />
                 <Checkbox
                     value="checkedB"
                     color="primary"
                     className="mt-checkbox"
                 />
-                I am agree with of <a href="#">Service agreement</a>
+                <span className="fnt-12">I am agree with of <a href="#">Service agreement</a></span>
                 <div>
                     <Button className="btn-green" disabled={invalid || submitting || pristine}>Register</Button>{' '}
                 </div>
