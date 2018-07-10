@@ -2,14 +2,14 @@
  * @Author: Virendra Patidar 
  * @Date: 2018-07-05 18:18:44 
  * @Last Modified by: Virendra Patidar
- * @Last Modified time: 2018-07-06 16:42:36
+ * @Last Modified time: 2018-07-09 17:55:25
  */
 import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router'
 import { Button, Card, CardContent, Typography } from '@material-ui/core'
 
-import { renderTextField } from 'reduxFormComponent'
+import { renderTextField,renderPasswordField } from 'reduxFormComponent'
 
 const validate = values => {
     const errors = {}
@@ -33,7 +33,7 @@ const validate = values => {
 
 class Login extends PureComponent {
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.reset();
     }
 
@@ -54,7 +54,7 @@ class Login extends PureComponent {
                         </Typography>
                         <form className="form-login" onSubmit={handleSubmit((values) => this.showResults(values))}>
                             <Field className="mt-control mrB15" component={renderTextField} name="emailId" type="text" placeholder="Email" />
-                            <Field className="mt-control mrB15" component={renderTextField} name="password" type="password" placeholder="Password" />
+                            <Field className="mt-control mrB15" component={renderPasswordField} name="password" type="password" placeholder="Password" />
                             <Link to="/forgot-password" className="fnt-13">Forgot Password</Link>
                             <div>
                                 <Button className="btn-green mrT20" disabled={invalid || submitting || pristine}>Sign in</Button>
@@ -75,6 +75,6 @@ class Login extends PureComponent {
 module.exports = reduxForm({
     form: 'login',
     validate,
-    destroyOnUnmount: true,
-    forceUnregisterOnUnmount: true
+    // destroyOnUnmount: true,
+    // forceUnregisterOnUnmount: true
 })(Login);

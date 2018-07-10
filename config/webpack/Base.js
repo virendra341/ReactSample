@@ -83,10 +83,10 @@ class WebpackBaseConfig {
         contentBase: ['./public/', './src/'],
         publicPath: '/assets/',
         historyApiFallback: true,
-        disableHostCheck:true,
+        // disableHostCheck:true,
         hot: true,
         inline: true,
-        host: '0.0.0.0',
+        // host: '0.0.0.0',
         port: 8000
       },
       entry: './index.js',

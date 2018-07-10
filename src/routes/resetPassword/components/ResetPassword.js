@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router'
 import { Button, Card, CardContent, Typography } from '@material-ui/core'
 
-import { renderTextField } from 'reduxFormComponent'
+import { renderTextField, renderPasswordField } from 'reduxFormComponent'
 
 const validate = values => {
     const errors = {}
@@ -16,11 +16,19 @@ const validate = values => {
             errors[field] = 'This field is required'
         }
     })
+
     if (
-        values.emailId &&
-        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.emailId)
+        values.password &&
+        !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/i.test(values.password)
     ) {
-        errors.emailId = 'Invalid email address'
+        errors.password = 'Password is not strong'
+    }
+
+    if (
+        values.password && values.cpassword &&
+        values.cpassword !== values.password
+    ) {
+        errors.cpassword = 'Not match Password'
     }
     return errors
 }
@@ -49,8 +57,8 @@ class ResetPassword extends PureComponent {
                         NEW PASSWORD
                 </Typography>
                     <form className="form-login" onSubmit={handleSubmit((values) => this.showResults(values))}>
-                        <Field className="mt-control mrB25" component={renderTextField} name="password" type="password" placeholder="Password" />
-                        <Field className="mt-control mrB25" component={renderTextField} name="cpassword" type="password" placeholder="Confirm Password" />
+                        <Field className="mt-control mrB25" component={renderPasswordField} name="password" type="password" placeholder="Password" />
+                        <Field className="mt-control mrB25" component={renderPasswordField} name="cpassword" type="password" placeholder="Confirm Password" />
                         {/* <Button className="btn-green mrT20" disabled={!valid}>Save</Button> */}
                         <Link className="btn btn-green mrT20" to="/Login">Save</Link>
                     </form>
