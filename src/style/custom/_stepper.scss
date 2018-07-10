@@ -3,14 +3,14 @@
         width: 648px;
         border-radius: 0;
     }
-    .MuiStep-horizontal-77{
-        padding-right: 0;
-    }
+    // .MuiStep-horizontal-77{
+    //     padding-right: 0;
+    // }
     .stepper-label{
         svg{
             display: none;
         }
-        .MuiStepLabel-labelContainer-90{
+        > span{
              
             .MuiStepLabel-active-83{
                 background-color: #2F467D !important;
@@ -23,7 +23,7 @@
                 vertical-align: top;
             }
             
-            .MuiTypography-root-45{
+            > span{
                 background-color: #fff;
                 display: inline-block;
                 width: 142px;
@@ -38,27 +38,38 @@
             }
         }
     }
-    .MuiStepConnector-root-103{
-        display: none;
-    }
-    .modal-body > p > div {
-        width: 100%;
-        .MuiPaper-elevation0-18{
-            position: absolute;
-            top: 0;
-            padding: 0;
-            left: 0;
-            right: 0;
-        }
-        .Wizzard-instructions-71{
-            >div >div{
-                min-height: 430px;
-                padding: 0 50px 50px;
-                width: 100%;
-                margin: 0;
-            
+    // .MuiStepConnector-root-103{
+    //     display: none;
+    // }
+    .modal-body{
+         > p > div {
+            width: 100%;
+            > div {
+                position: absolute;
+                top: 0;
+                padding: 0;
+                left: 0;
+                right: 0;
+                > div {
+                    padding-right: 0;
+                    p > div > div{
+                        min-height: 430px;
+                        padding: 0 50px 50px;
+                        width: 100%;
+                        margin: 0;
+                    }
+                    >div{
+                        display: none;
+                    }
+                    .footer-btn{display: block !important;}
+                }
+                + div{
+                    position: relative;
+                }
             }
+            
         }
+      
         .radio-box{
             position: relative;
             > span{
@@ -96,9 +107,7 @@
         .service-name{
             text-align: center;
         }
-        .MuiTypography-root-44 + div{
-            text-align: right;
-        }
+
     }
    .acc-id{
        color: $color_gray1;
