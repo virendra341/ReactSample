@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router'
-import { Button, Card, CardContent, Typography } from '@material-ui/core'
+import { Card, CardContent, Typography } from '@material-ui/core'
 
 import { renderTextField } from 'reduxFormComponent'
 

@@ -2,7 +2,7 @@ module.exports = {
   path: 'welcome',
   getComponent(nextState, cb) {
     require.ensure([], (require) => {
-      cb(null, require('./components/SignupSuccessPage'));
+      cb(null, require('./components/WelcomePage'));
     });
   }
 };
