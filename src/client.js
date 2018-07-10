@@ -51,12 +51,10 @@ const rootRoute = {
       require('./routes/resetPassword'),
       require('./routes/forgotPassword'),
       require('./routes/forgotPasswordEmail'),
-
-      require('./routes/dashboard'),
-      {
-        path: '*',
-        indexRoute: { onEnter: (nextState, replace) => replace('/404') },
-      }
+      // {
+      //   path: '*',
+      //   indexRoute: { onEnter: (nextState, replace) => replace('/404') },
+      // }
     ]
   }]
 };

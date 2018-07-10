@@ -30,7 +30,7 @@ label{font-weight:400 !important}
 .form-control{font-size:13px !important; box-shadow:none !important}
 
 
-a{color: #0289ea;}
+a{color: #0289ea;text-decoration: none !important;}
 a:hover{color: #0289ea !important; text-decoration: none !important;}
 
 .bg-trans{background-color: transparent;}
@@ -67,7 +67,7 @@ a:hover{color: #0289ea !important; text-decoration: none !important;}
 
 .mrR0{margin-right:0 !important}
 .mrR5{margin-right:5px}
-.mrR10{margin-right:10px}
+.mrR10{margin-right:10px !important}
 .mrR15{margin-right:15px}
 .mrR20{margin-right:20px}
 .mrR25{margin-right:25px}
@@ -193,6 +193,10 @@ color: #CCC;
 .lineH-20{line-height:20px;}
 .lineH-22{line-height:22px;}
 .lineH-20{line-height:24px;}
+
+.display-block{
+    display: block;
+}
 
 .btn-green{
     background: $bg_green-color_1!important;

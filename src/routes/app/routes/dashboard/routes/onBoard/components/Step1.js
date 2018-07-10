@@ -15,6 +15,7 @@ class Step1 extends PureComponent {
       };
 
     render() {
+        const {selectedValue} = this.state
         return (
             <div>
                 <Grid container spacing={24}>
@@ -24,11 +25,11 @@ class Step1 extends PureComponent {
                     </Grid>
                     <Grid item sm={4} className="radio-box">
                         <Radio 
-                         checked={this.state.selectedValue === 'a'}
+                         checked={selectedValue === 'a'}
                         onChange={this.handleChange}
                         value="a" 
                         />
-                        <div className={this.state.selectedValue ==='a' ? 'active' :''}>
+                        <div className={selectedValue ==='a' ? 'active' :''}>
                             <div className="cloud-service">
                                 <img src="assets/images/aws.png" />
                             </div>
@@ -37,11 +38,11 @@ class Step1 extends PureComponent {
                     </Grid>
                     <Grid item sm={4} className="radio-box">
                         <Radio 
-                         checked={this.state.selectedValue === 'b'}
+                         checked={selectedValue === 'b'}
                          onChange={this.handleChange}
                          value="b" 
                         />
-                        <div className={this.state.selectedValue ==='b' ? 'active' :''}>
+                        <div className={selectedValue ==='b' ? 'active' :''}>
                             <div className="cloud-service">
                                 <img src="assets/images/ms-azure.png" />
                             </div>
@@ -50,11 +51,11 @@ class Step1 extends PureComponent {
                     </Grid>
                     <Grid item sm={4} className="radio-box">
                         <Radio 
-                         checked={this.state.selectedValue === 'c'}
+                         checked={selectedValue === 'c'}
                          onChange={this.handleChange}
                          value="c" 
                         />
-                        <div className={this.state.selectedValue ==='c' ? 'active' :''}>
+                        <div className={selectedValue ==='c' ? 'active' :''}>
                             <div className="cloud-service">
                                 <img src="assets/images/google-cloud.png" />
                             </div>
@@ -64,6 +65,7 @@ class Step1 extends PureComponent {
                 </Grid>
             </div>
         );
+
     }
 }
 module.exports = Step1;

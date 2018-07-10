@@ -1,4 +1,5 @@
-import React from 'react'; 
+import React from 'react'
+
 
 class MainApp extends React.Component {
   render() {
@@ -6,23 +7,13 @@ class MainApp extends React.Component {
 
     return (
       <div className="main-app-container">
-        {/* <Sidenav /> */}
-
-        <section id="page-container" className="app-page-container">
-          {/* <Header /> */}
-
+       <section id="page-container" className="app-page-container">
           <div className="app-content-wrapper">
-            <div className="app-content">
-              <div className="full-height">
-                {children}
-              </div>
-            </div>
-
-            {/* <Footer /> */}
+            <div className="full-height">
+              {children}
+            </div> 
           </div>
-        </section>
-
-        {/* <Customizer /> */}
+        </section> 
       </div>
     );
   }

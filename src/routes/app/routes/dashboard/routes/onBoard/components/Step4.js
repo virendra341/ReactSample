@@ -1,7 +1,16 @@
 import React, { PureComponent } from 'react'
 import { Grid,TextField,Button } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 
 
+const styles = theme => ({
+    button: {
+        borderColor: '#2258DE',
+        color: '#2258DE',
+        backgroundColor:'#fff'
+    }
+});
 class Step4 extends PureComponent {
     constructor(props) {
         super(props);
@@ -15,8 +24,9 @@ class Step4 extends PureComponent {
     };
 
     render() {
+        const { classes } = this.props;
         return (
-            <div>
+            <div >
                 <Grid container spacing={24}>
                     <Grid item sm={12}>
                         <h2 className="mrB5">Invite your team</h2>
@@ -37,7 +47,7 @@ class Step4 extends PureComponent {
                             id="margin-none"
                             className="custom-txt-field"
                         />
-                        <Button className='btn-white'>
+                        <Button variant="outlined" className={classes.button}>
                             Invite
                         </Button>
                     </Grid>
@@ -47,4 +57,8 @@ class Step4 extends PureComponent {
         );
     }
 }
-module.exports = Step4;
+
+Step4.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+module.exports = withStyles(styles)(Step4);

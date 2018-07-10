@@ -1,13 +1,13 @@
+
+
 import React, { PureComponent } from 'react'
-import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 
+import Wizard from './Wizard'
 
-import Wizzard from 'components/Stepper'
-
-class StepperModal extends PureComponent {
+class OnBoard extends PureComponent {
   state = {
     open: true,
   };
@@ -29,15 +29,13 @@ class StepperModal extends PureComponent {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
           className="modal-stepper"
-        >
-          {/* <DialogTitle id="alert-dialog-title" className="pdT40 pdB5 modal-title">
-            Cloud Environment
-          </DialogTitle> */}
-          
-          <DialogContent className="modal-body">
+          fullWidth={true}
+          maxWidth="sm"
+        >    
+          <DialogContent className="modal-processStepper">
             <DialogContentText id="alert-dialog-description">
           
-                <Wizzard/>
+                <Wizard/>
             </DialogContentText>
           </DialogContent>
         </Dialog>
@@ -47,4 +45,4 @@ class StepperModal extends PureComponent {
 }
 
 
-module.exports = StepperModal;
+module.exports = OnBoard;

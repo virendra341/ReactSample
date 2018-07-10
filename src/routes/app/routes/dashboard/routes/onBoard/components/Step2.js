@@ -18,7 +18,7 @@ class Step2 extends PureComponent {
         return (
             <div>
                 <Grid container spacing={24}>
-                    <Grid sm={12}>
+                    <Grid item sm={12}>
                         <h2 className="mrB5">Cloud Environment</h2>
                         <p className="mrT0 modal-txt">Please select your organization's cloud provider.</p>
                     </Grid>

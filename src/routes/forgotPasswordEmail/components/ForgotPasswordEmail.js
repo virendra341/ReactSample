@@ -1,7 +1,43 @@
-import React, {  PureComponent } from 'react'
+import React, { PureComponent } from 'react'
 import { reduxForm } from 'redux-form'
-import { Link } from 'react-router'
-import { Button, Card, CardContent, Typography } from '@material-ui/core'
+import { hashHistory} from 'react-router'
+import { Button, Card, CardHeader, CardContent, Typography, Grid } from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+
+const styles = theme => ({
+    logo: {
+        height: 'auto',
+        width: "200px"
+    },
+    cardImage: {
+        padding: '120px 40px 60px 40px'
+    },
+    formContent: {
+        padding: '0 40px 40px'
+    },
+    mtControl: {
+        marginBottom: "24px"
+    },
+    txtField: {
+        width: '100%',
+    },
+    cardBody: {
+        padding: '0 40px'
+    },
+    bdrTag: {
+        margin: '0 -40px',
+        borderColor: '#e1e6ee'
+    },
+    formSpacing: {
+        marginBottom: "70px"
+    },
+    button: {
+        borderColor: '#24BA4D',
+        color: '#24BA4D'
+    }
+
+});
 
 const validate = values => {
     const errors = {}
@@ -23,47 +59,54 @@ const validate = values => {
 }
 
 class ForgotPasswordEmail extends PureComponent {
-
     componentWillMount() {
         this.props.reset();
     }
-
     showResults = (values) => {
         console.log(values);
     }
     render() {
-        const { handleSubmit, valid } = this.props;
-        console.log('Props ', this.props);
-
+        const { handleSubmit, valid, classes } = this.props;
         return (
-            <Card className="side-login-panel">
-                <div className="card-header sb-login-logo">
-                    <img src="assets/images/secberus-logo.png" />
-                </div>
-                <CardContent className="card-body">
-                    <Typography className="card-title mrB15" gutterBottom variant="headline" component="h2">
-                        PASSWORD RESET EMAIL SEND!
-                    </Typography>
-                    <Typography className="mrB15" component="p">
-                        An email has been sent to john@gmail.com follow the directions in the email to reset your password
-                    </Typography>
-                    <form className="form-login" onSubmit={handleSubmit((values) => this.showResults(values))}>
-                        <div>
-                            {/* <Button className="btn-green mrT20" disabled={!valid}>Done</Button>{' '} */}
-                            <Link className="btn-green mrT20" to="/reset-password">Done</Link>
-                        </div>
-                    </form>
-                </CardContent>
-            </Card>
-           
-        )
+            <Grid sm={3}>
+                <Card className="side-login-panel">
+                    <CardHeader
+                        avatar={
+                            <img src="assets/images/secberus-logo.png" className={classes.logo} />
+                        }
+                        className={classes.cardImage}
+                    />
+                    {/* <img src="assets/images/secberus-logo.png" /> */}
+                    <CardContent className={classes.cardBody}>
+                        <Typography className="mrB15" gutterBottom variant="headline" component="label">
+                            PASSWORD RESET EMAIL SEND!
+                         </Typography>
+                        <Typography className="mrB15" gutterBottom variant="headline" component="p">
+                            An email has been sent to john@gmail.com follow the directions in the email to reset your password
+                        </Typography>
+
+                        <form className="form-login" onSubmit={handleSubmit((values) => this.showResults(values))}>
+                            <div>
+                                <Button onClick={()=>hashHistory.push('/reset-password')} variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}>Done</Button>
+                            </div>
+                        </form>
+
+                    </CardContent>
+                </Card>
+            </Grid>
+       )
     }
 }
 
+
+ForgotPasswordEmail.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+const ForgotEmailwithStyle = withStyles(styles)(ForgotPasswordEmail)
 
 module.exports = reduxForm({
     form: 'forgotpasswordemail',
     validate,
     destroyOnUnmount: true,
     forceUnregisterOnUnmount: true
-})(ForgotPasswordEmail);
+})(ForgotEmailwithStyle);

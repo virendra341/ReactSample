@@ -23,7 +23,7 @@ export const renderTextField = ({
                 {...input}
                 {...custom}
             />
-            {touched && error && <span>{error}</span>}
+            {touched && error && <span className="validation-error">{error}</span>}
         </Fragment>
     )
 
@@ -39,7 +39,7 @@ export const renderSelectField = ({ input, label, meta: { touched, error }, chil
             children={children}
             {...custom} />
 
-        {touched && error && <span>{error}</span>}
+        {touched && error && <span className="validation-error">{error}</span>}
     </Fragment>
 )
 
@@ -90,6 +90,6 @@ export const renderPasswordField = ({
                 {...input}
                 {...custom}
             />
-            {touched && error && <span>{error}</span>}
+            {touched && error && <span className="validation-error">{error}</span>}
         </Fragment>
     )

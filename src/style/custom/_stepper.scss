@@ -1,142 +1,94 @@
-.modal-stepper {
-    > div + div{
-        width: 648px;
+.modal-stepper{
+    > div{
         border-radius: 0;
     }
-    // .MuiStep-horizontal-77{
-    //     padding-right: 0;
-    // }
-    .stepper-label{
-        svg{
-            display: none;
+    .modal-processStepper{
+        padding: 0px !important;
+        .step-process.active{
+            background-color: #2f467d !important;
         }
-        > span{
-             
-            .MuiStepLabel-active-83{
-                background-color: #2F467D !important;
-                display: inline-block;
-                width: 142px;
-                height: 8px;
-                border: 1px solid #ddd;
-                box-shadow: 0 2px 4px 0 #ddd;
-                 margin: 0;
-                vertical-align: top;
-            }
+        .step-process.complete{
+            background-color: $bg_green-color_1 !important;
+        }
+        .step-process.in-active{
+            background-color: $btn_txt_color1 !important;
+        }
+        .step-process:first-child{
+            border-left: 0px !important;
+        }
+        .step-process{
+            border: solid 1px #eee;
+            border-left: 0 !important;
+            border-top:0px !important;
             
-            > span{
-                background-color: #fff;
-                display: inline-block;
-                width: 142px;
-                height: 8px;
-                border: 1px solid #ddd;
-                box-shadow: 0 2px 4px 0 #ddd;
-                margin: 0;
-                vertical-align: top;
+            > div:last-child{
+                display:none !important;        
             }
-            .MuiStepLabel-completed-84{
-                background-color: $bg_green-color_1 !important;
+            .stepper-label{
+                flex-direction: row !important;
+                line-height: initial !important;
+                height: 10px !important;
+                svg{
+                    display: none;
+                }
             }
+        }
+        .footer-btn{
+            background-color: #eee;
+            padding: 10px 15px;
+            button{
+                &:first-child{
+                    background-color: #fff;
+                   border:1px solid $btn_primary;
+                   color: $btn_primary;
+                }
+                &:disabled{
+                    opacity: 0.6;
+                    background-color: #eee;
+                }
+                
+            }
+        }
+        .help-txt{
+            float: right;
+            text-decoration: none;
         }
     }
-    // .MuiStepConnector-root-103{
-    //     display: none;
-    // }
-    .modal-body{
-         > p > div {
+    .radio-box{
+        position: relative;
+        > span{
+            position: absolute;
+            text-align: center;
             width: 100%;
-            > div {
-                position: absolute;
-                top: 0;
-                padding: 0;
-                left: 0;
-                right: 0;
-                > div {
-                    padding-right: 0;
-                    p > div > div{
-                        min-height: 430px;
-                        padding: 0 50px 50px;
-                        width: 100%;
-                        margin: 0;
-                    }
-                    >div{
-                        display: none;
-                    }
-                    .footer-btn{display: block !important;}
-                }
-                + div{
-                    position: relative;
-                }
-            }
-            
+            left: 0;
+            right: 0;
+            height: 95px;
+            opacity: 0;
         }
-      
-        .radio-box{
-            position: relative;
-            > span{
-                position: absolute;
-                text-align: center;
-                width: 100%;
-                left: 0;
-                right: 0;
-                height: 95px;
-                opacity: 0;
+           
+            .active{
+                border: 1px solid $bg_green-color_1;
             }
-               
-                .active{
-                    border: 1px solid $bg_green-color_1;
-                }
-                .service-box{
-                    border: 1px solid #ddd;
-                    padding: 15px 0;
-                }
-            
-        }
-       
-        .cloud-service {
+            .service-box{
+                border: 1px solid #ddd;
+                padding: 15px 0;
+            }
+        
+    }
+   
+    .cloud-service {
+        text-align: center;
+        margin: 0 auto;
+        min-height: 75px;
+        img{
+            width: auto;
+            height: 60px;
             text-align: center;
             margin: 0 auto;
-            min-height: 75px;
-            img{
-                width: auto;
-                height: 60px;
-                text-align: center;
-                margin: 0 auto;
-                vertical-align: middle;
-            }
-        }
-        .service-name{
-            text-align: center;
-        }
-
-    }
-   .acc-id{
-       color: $color_gray1;
-   }
-   .form-group{
-       label{
-           display: inline-block;
-       }
-       .help-txt{
-           float: right;
-           text-decoration: none;
-       }
-   }
-   .modal-title{
-       padding: 40px 50px 5px; 
-   }
-   .modal-body{
-    padding: 0;
-    .footer-btn{
-        background-color: #eee;
-        padding: 10px 50px;
-        button{
-            &:first-child{
-                background-color: #fff;
-               border:1px solid $btn_primary;
-               color: $btn_primary;
-            }
-            
+            vertical-align: middle;
         }
     }
-   }
+    .service-name{
+        text-align: center;
+    }
 }

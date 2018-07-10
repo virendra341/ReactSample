@@ -6,7 +6,7 @@ class LoginBackground extends PureComponent {
 
     render() {
         return (
-            <Grid sm={9} className="sb-loging-bg pd0">
+            <Grid sm={9} className="sb-loging-bg">
             </Grid>
         )
     }

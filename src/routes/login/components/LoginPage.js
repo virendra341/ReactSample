@@ -1,19 +1,36 @@
 
 import React, { PureComponent } from 'react'
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import { Grid} from '@material-ui/core';
 
 import Login from './Login'
 import LoginBackground from 'components/LoginBackground'
 
+const styles = theme => ({
+    root: {
+      minHeight: '100vh',
+      margin:'0px',
+      width:'100%'
+    }
+  });
 class LoginPage extends PureComponent {
 
     render() {
+        const { classes } = this.props;
         return (
+           
                 <div className="section-login">
-                    <LoginBackground></LoginBackground>
-                    <Login></Login>
+                    <Grid container spacing={24} className={classes.root}>
+                        <LoginBackground></LoginBackground>
+                        <Login></Login>
+                    </Grid>
                 </div>
-
+           
         )
     }
-}
-module.exports = LoginPage;
+};
+LoginPage.propTypes = {
+    classes: PropTypes.object,
+  };
+module.exports = withStyles(styles)(LoginPage);

@@ -1,81 +1,45 @@
 .section-login {
+    color: #000 !important;
+    text-transform: initial !important;
     .sb-loging-bg{
-        height: 100%;
+        height: auto;
         background-image: url('../assets/images/bg.png');
         background-size: cover;
         background-position: right center;
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 100%;
+       width: 100%;
     }
     .side-login-panel{
-        position: fixed;
-        right: 0;
-        border-radius: 0;
         height: 100%;
-        border: none;
-        top: 0;
-        bottom: 0;
-        max-width: 25%;
-        overflow-y: auto;
-        overflow-x: hidden;
         .card-header {
             background-color: transparent;
             border-bottom: none;
-            padding: 80px 40px;
             img{
                 width: 170px;
             }
         }
-        .card-title{
-            font-size: 13px;
-            font-weight: 500;
-        }
-        .card-body{
-            padding: 0 40px 80px;
-            .form-login{
-                width: 100%;
-                .mt-control{
-                    width: 100%;
-                    > div  {
-                       &:after{
-                            border-bottom: 2px solid $bg_green-color_1;
-                       }
-                    }
-                    &:after{
-                        border-bottom: 2px solid $bg_green-color_1;
-                   }
-                    input{
-                        font-size: 13px;
-                       
-                    }
-                }
-            }
-        }
-        .card-footer{
-            padding: 0 40px;
-            min-height: 90px;
-            border-top: 1px solid #ddd;
-            a{
-                text-decoration: none;
-            }
-        }
     }
-    .card-signup{
-        .card-header {
-            padding: 40px 40px;
-        }
-        .card-body{
-            padding: 0 40px 20px;
-            .mt-checkbox{
-                width: auto;
-            }
-        }
+    label{
+        font-size: 14px;
+        font-weight: 500 !important;
     }
-    
+   .validation-error {
+        color: red;
+        font-size: 12px;
+    }
+    ::placeholder {
+       font-size: 14px;
+       color: #4D4D4D !important;;
+    }
+    a{
+        font-size: 12px;
+    }
+    p{
+        font-size: 13px;
+        color: #6e6e6e;
+    }
 }
 
  
+
 
 

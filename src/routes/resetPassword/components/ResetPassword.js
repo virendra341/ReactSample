@@ -1,10 +1,45 @@
 import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { Link } from 'react-router'
-import { Button, Card, CardContent, Typography } from '@material-ui/core'
+import { hashHistory} from 'react-router'
+import { Button, Card, CardHeader, CardContent, Typography, Grid } from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 
-import { renderTextField, renderPasswordField } from 'reduxFormComponent'
+import {renderPasswordField } from 'reduxFormComponent'
 
+const styles = theme => ({
+    logo: {
+        height: 'auto',
+        width: "200px"
+    },
+    cardImage: {
+        padding: '120px 40px 60px 40px'
+    },
+    formContent: {
+        padding: '0 40px 40px'
+    },
+    mtControl: {
+        marginBottom: "24px"
+    },
+    txtField: {
+        width: '100%',
+    },
+    cardBody: {
+        padding: '0 40px'
+    },
+    bdrTag: {
+        margin: '0 -40px',
+        borderColor: '#e1e6ee'
+    },
+    formSpacing: {
+        marginBottom: "70px"
+    },
+    button: {
+        borderColor: '#24BA4D',
+        color: '#24BA4D'
+    }
+
+});
 const validate = values => {
     const errors = {}
     const requiredFields = [
@@ -44,34 +79,45 @@ class ResetPassword extends PureComponent {
         console.log(values);
     }
     render() {
-        const { handleSubmit, valid } = this.props;
-        // console.log('Props ', this.props);
+        const { handleSubmit, valid, classes } = this.props;
 
         return (
-            <Card className="side-login-panel">
-                <div className="card-header sb-login-logo">
-                    <img src="assets/images/secberus-logo.png" />
-                </div>
-                <CardContent className="card-body">
-                    <Typography className="card-title mrB15" gutterBottom variant="headline" component="h2">
-                        NEW PASSWORD
-                </Typography>
-                    <form className="form-login" onSubmit={handleSubmit((values) => this.showResults(values))}>
-                        <Field className="mt-control mrB25" component={renderPasswordField} name="password" type="password" placeholder="Password" />
-                        <Field className="mt-control mrB25" component={renderPasswordField} name="cpassword" type="password" placeholder="Confirm Password" />
-                        {/* <Button className="btn-green mrT20" disabled={!valid}>Save</Button> */}
-                        <Link className="btn btn-green mrT20" to="/Login">Save</Link>
-                    </form>
-                </CardContent>
-            </Card>
+            <Grid sm={3}>
+                <Card className="side-login-panel">
+                    <CardHeader
+                        avatar={
+                            <img src="assets/images/secberus-logo.png" className={classes.logo} />
+                        }
+                        className={classes.cardImage}
+                    />
+                    {/* <img src="assets/images/secberus-logo.png" /> */}
+                    <CardContent className={classes.cardBody}>
+                        <Typography className="mrB15" gutterBottom variant="headline" component="label">
+                            NEW PASSWORD
+                        </Typography>
+                        <form className={classes.formSpacing} onSubmit={handleSubmit((values) => this.showResults(values))}>
+                            <Grid item sm={12} className={classes.mtControl}>
+                                <Field className={classes.txtField} component={renderPasswordField} name="password" type="password" placeholder="Password" />
+                            </Grid>
+                            <Grid item sm={12} className={classes.mtControl}>
+                                <Field className={classes.txtField} component={renderPasswordField} name="cpassword" type="password" placeholder="Confirm Password" />
+                            </Grid>
+                            <Button onClick={()=>hashHistory.push('/login')} variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}>Save</Button>
+                        </form>
+                    </CardContent>
+                </Card>
+            </Grid>
         )
     }
 }
 
-
+ResetPassword.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+const ResetPasswordwithStyle = withStyles(styles)(ResetPassword)
 module.exports = reduxForm({
     form: 'resetpassword',
     validate,
     destroyOnUnmount: true,
     forceUnregisterOnUnmount: true
-})(ResetPassword);
+})(ResetPasswordwithStyle);

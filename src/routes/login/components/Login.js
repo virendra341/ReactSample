@@ -6,11 +6,45 @@
  */
 import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { Link } from 'react-router'
-import { Button, Card, CardContent, Typography } from '@material-ui/core'
+import { Link ,hashHistory} from 'react-router'
+import { Button, Card, CardContent, CardHeader, Typography, Grid } from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 
-import { renderTextField,renderPasswordField } from 'reduxFormComponent'
+import { renderTextField, renderPasswordField } from 'reduxFormComponent'
+const styles = theme => ({
+    logo: {
+        height: 'auto',
+        width: "200px"
+    },
+    cardImage: {
+        padding: '120px 40px 60px 40px'
+    },
+    formContent: {
+        padding: '0 40px 40px'
+    },
+    mtControl:{
+        marginBottom:"24px"
+    },
+    txtField:{
+        width:'100%',
+    },
+    cardBody:{
+        padding:'0 40px'
+    },
+    bdrTag:{
+        margin:'0 -40px',
+        borderColor:'#e1e6ee'
+    },
+    formSpacing:{
+        marginBottom:"70px"
+    },
+    button:{
+        borderColor:'#24BA4D',
+        color:'#24BA4D'
+    }
 
+});
 const validate = values => {
     const errors = {}
     const requiredFields = [
@@ -31,6 +65,7 @@ const validate = values => {
     return errors
 }
 
+
 class Login extends PureComponent {
 
     componentDidMount() {
@@ -42,39 +77,51 @@ class Login extends PureComponent {
     }
 
     render() {
-        const { handleSubmit, invalid, submitting, pristine } = this.props;
+        const { handleSubmit, invalid, submitting, pristine, classes } = this.props;
         return (
+            <Grid sm={3}>
                 <Card className="side-login-panel">
-                    <div className="card-header sb-login-logo">
-                        <img src="assets/images/secberus-logo.png" />
-                    </div>
-                    <CardContent className="card-body">
-                        <Typography className="card-title" gutterBottom variant="headline" component="h2">
+                    <CardHeader
+                        avatar={
+                            <img src="assets/images/secberus-logo.png" className={classes.logo} />
+                        }
+                        className={classes.cardImage}
+                    />
+                    {/* <img src="assets/images/secberus-logo.png" /> */}
+                    <CardContent className={classes.cardBody}>
+                        <Typography className="mrB15" gutterBottom variant="headline" component="label">
                             SIGN IN WITH SECBERUS
                         </Typography>
-                        <form className="form-login" onSubmit={handleSubmit((values) => this.showResults(values))}>
-                            <Field className="mt-control mrB15" component={renderTextField} name="emailId" type="text" placeholder="Email" />
-                            <Field className="mt-control mrB15" component={renderPasswordField} name="password" type="password" placeholder="Password" />
-                            <Link to="/forgot-password" className="fnt-13">Forgot Password</Link>
+
+                        <form onSubmit={handleSubmit((values) => this.showResults(values))} className={classes.formSpacing}>
+                            <Grid item sm={12} className={classes.mtControl}>
+                                <Field  className={classes.txtField}  component={renderTextField} name="emailId" type="text" placeholder="Email" />
+                            </Grid>
+                            <Grid item sm={12} className="mrB10">
+                                <Field className={classes.txtField} component={renderPasswordField} name="password" type="password" placeholder="Password" />
+                            </Grid>
+                            <div className="mrB20">
+                                <Link to="/forgot-password" >Forgot Password</Link>
+                            </div>
                             <div>
-                                <Button className="btn-green mrT20" disabled={invalid || submitting || pristine}>Sign in</Button>
+                                <Button variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }} disabled={invalid || submitting || pristine}>Sign in</Button>
                             </div>
                         </form>
+                        <hr className={ classes.bdrTag}/>
+                        <div className="mrT25">
+                            <p >Not Registered yet ?</p>
+                            <Button onClick={()=>hashHistory.push('/sign-up')} variant="outlined" className={classes.button}>Register</Button>
+                        </div>
                     </CardContent>
-                    <div className="card-footer">
-                        <p className="mrB25">Not Registered yet ?</p>
-                        <Link className="btn btn-green-boder mrT20" to="/sign-up">Register</Link>
-                    </div>
+
                 </Card>
+            </Grid>
 
         )
     }
 }
-
-
-module.exports = reduxForm({
-    form: 'login',
-    validate,
-    // destroyOnUnmount: true,
-    // forceUnregisterOnUnmount: true
-})(Login);
+Login.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+const loginwithStyle = withStyles(styles)(Login)
+module.exports = reduxForm({ form: 'login', validate })(loginwithStyle);
