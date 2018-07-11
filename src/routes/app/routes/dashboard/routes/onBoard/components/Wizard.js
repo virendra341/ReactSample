@@ -16,18 +16,25 @@ const styles = theme => ({
   root: {
     width: '100%',
   },
-  stepper:{
-    padding:'0px !important'
+  stepper: {
+    padding: '0px !important'
   },
   backButton: {
     marginRight: theme.spacing.unit,
   },
   instructions: {
-    padding:'0 15px',
-    height:'400px'
+    padding: '0 15px',
+    height: '480px'
   },
-  stepperContent:{
-    padding:'0'
+  stepperContent: {
+    padding: '0'
+  },
+  primaryButton:{
+    backgroundColor:'#2258DE !important',
+    borderColor:'#2258DE',
+    '&:disabled':{
+      color:'#000'
+    }
   }
 });
 
@@ -35,32 +42,12 @@ function getSteps() {
   return ['', '', '', ''];
 }
 
-function getStepContent(stepIndex) {
-  switch (stepIndex) {
-    case 0:
-      return (
-        <Step1 />
-      );
-    case 1:
-      return (
-        <Step2 />
-      );
-    case 2:
-      return (
-        <Step3 />
-      );
-    case 3:
-      return (
-        <Step4 />
-      );
-    default:
-      return 'Uknown stepIndex';
-  }
-}
+
 
 class Wizard extends PureComponent {
   state = {
     activeStep: 0,
+    provider:''
   };
 
   handleNext = () => {
@@ -79,18 +66,46 @@ class Wizard extends PureComponent {
 
   handleReset = () => {
     this.setState({
-      activeStep: 0,
+      activeStep: 0
     });
   };
+
+  getStepContent =(stepIndex)=> {
+    switch (stepIndex) {
+      case 0:
+        return (
+          <Step1 cloudProvider={this.cloudProvider} />
+        );
+      case 1:
+        return (
+          <Step2 />
+        );
+      case 2:
+        return (
+          <Step3 />
+        );
+      case 3:
+        return (
+          <Step4 />
+        );
+      default:
+        return 'Uknown stepIndex';
+    }
+  }
+
+  cloudProvider = (provider) => {
+    console.log('select provider ', provider);
+    this.setState({provider:provider})
+  }
 
   render() {
     const { classes } = this.props;
     const steps = getSteps();
-    const { activeStep } = this.state;
+    const { activeStep ,provider } = this.state;
     return (
       <div className={classes.root} >
         <Stepper activeStep={activeStep} alternativeLabel className={classes.stepper}
-         >
+        >
 
           {steps.map((label, index) => {
 
@@ -111,7 +126,7 @@ class Wizard extends PureComponent {
             </div>
           ) : (
               <div>
-                <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+                <div className={classes.instructions}>{this.getStepContent(activeStep)}</div>
                 <div className="footer-btn">
                   <Button
                     disabled={activeStep === 0}
@@ -120,7 +135,13 @@ class Wizard extends PureComponent {
                   >
                     Back
                 </Button>
-                  <Button className="btn-primary" variant="contained" color="primary" onClick={this.handleNext} >
+                  <Button
+                    className={classes.primaryButton}
+                    variant="contained"
+                    color="primary"
+                    onClick={this.handleNext}
+                    disabled ={!provider}
+                  >
                     {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                   </Button>
                 </div>
@@ -135,7 +156,5 @@ class Wizard extends PureComponent {
 Wizard.propTypes = {
   classes: PropTypes.object,
 };
-
-// export default withStyles(styles)(SideBar);
 
 module.exports = withStyles(styles)(Wizard);

@@ -5,6 +5,7 @@ import { Button, Card, CardHeader, CardContent, Typography, Grid } from '@materi
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
+import APPCONFIG from 'constants/Config'
 const styles = theme => ({
     logo: {
         height: 'auto',
@@ -68,15 +69,14 @@ class ForgotPasswordEmail extends PureComponent {
     render() {
         const { handleSubmit, valid, classes } = this.props;
         return (
-            <Grid sm={3}>
+            <Grid item sm={3} className="pd0">
                 <Card className="side-login-panel">
                     <CardHeader
                         avatar={
-                            <img src="assets/images/secberus-logo.png" className={classes.logo} />
+                            <img src={APPCONFIG.company_logo_path} className={classes.logo} />
                         }
                         className={classes.cardImage}
                     />
-                    {/* <img src="assets/images/secberus-logo.png" /> */}
                     <CardContent className={classes.cardBody}>
                         <Typography className="mrB15" gutterBottom variant="headline" component="label">
                             PASSWORD RESET EMAIL SEND!
@@ -84,13 +84,11 @@ class ForgotPasswordEmail extends PureComponent {
                         <Typography className="mrB15" gutterBottom variant="headline" component="p">
                             An email has been sent to john@gmail.com follow the directions in the email to reset your password
                         </Typography>
-
                         <form className="form-login" onSubmit={handleSubmit((values) => this.showResults(values))}>
                             <div>
-                                <Button onClick={()=>hashHistory.push('/reset-password')} variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}>Done</Button>
+                                <Button type="submit" onClick={()=>hashHistory.push('/reset-password')} variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}>Done</Button>
                             </div>
                         </form>
-
                     </CardContent>
                 </Card>
             </Grid>
@@ -98,10 +96,10 @@ class ForgotPasswordEmail extends PureComponent {
     }
 }
 
-
 ForgotPasswordEmail.propTypes = {
     classes: PropTypes.object.isRequired,
 };
+
 const ForgotEmailwithStyle = withStyles(styles)(ForgotPasswordEmail)
 
 module.exports = reduxForm({

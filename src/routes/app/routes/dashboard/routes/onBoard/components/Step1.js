@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import { Grid, Radio } from '@material-ui/core';
 
-
 class Step1 extends PureComponent {
     constructor(props) {
         super(props);
@@ -12,6 +11,7 @@ class Step1 extends PureComponent {
 
     handleChange = event => {
         this.setState({ selectedValue: event.target.value });
+        this.props.cloudProvider(event.target.value);
       };
 
     render() {

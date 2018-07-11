@@ -5,6 +5,7 @@ import { Button, Card, CardContent, CardHeader, Typography, Grid } from '@materi
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
+import APPCONFIG from 'constants/Config'
 import { renderTextField, renderAutoCompleteField, renderCheckbox, renderPasswordField } from 'reduxFormComponent'
 import { getSuggestions } from 'autoComplete'
 
@@ -20,7 +21,7 @@ const styles = theme => ({
         padding: '0 40px 40px'
     },
     mtControl: {
-        marginBottom: "24px"
+        marginBottom: "15px"
     },
     txtField: {
         width: '100%',
@@ -37,14 +38,16 @@ const styles = theme => ({
     },
     button: {
         borderColor: '#24BA4D',
-        color: '#24BA4D'
+        color: '#24BA4D',
+        '&:hover':{
+            backgroundColor:'#24BA4D',
+            color:'#fff'
+        }
     },
     CheckBoxWidth:{
         width:'auto',
         marginRight:'10px'
-
-    }
-
+    },
 });
 const validate = values => {
     const errors = {}
@@ -127,60 +130,59 @@ class SignUp extends PureComponent {
         const { handleSubmit, invalid, submitting, pristine, classes } = this.props;
         const { value, suggestions } = this.state;
         const inputProps = {
-            placeholder: 'Type a programming language',
+            placeholder: 'Select Country',
             value,
             onChange: this.handleChange,
         };
         return (
 
-            <Grid sm={3}>
+            <Grid item sm={3} className="pd0">
                 <Card className="side-login-panel">
                     <CardHeader
                         avatar={
-                            <img src="assets/images/secberus-logo.png" className={classes.logo} />
+                            <img src={APPCONFIG.company_logo_path} className={classes.logo} />
                         }
                         className={classes.cardImage}
                     />
-                    {/* <img src="assets/images/secberus-logo.png" /> */}
                     <CardContent className={classes.cardBody}>
                         <Typography className="mrB15" gutterBottom variant="headline" component="label">
                             REGISTER IN WITH SECBERUS
                         </Typography>
-
                         <form className={classes.formSpacing} onSubmit={handleSubmit((values) => this.showResults(values))}>
                             <Grid item sm={12} className={classes.mtControl}>
-                            <Field  className={classes.txtField} component={renderTextField} name="fullname" type="text" placeholder="Full Name" />
+                            <Field  className={classes.txtField} component={renderTextField} name="fullname" type="text" label="Full Name" />
                             </Grid>
                             <Grid item sm={12} className={classes.mtControl}>
-                            <Field className={classes.txtField} component={renderTextField} name="cname" type="text" placeholder="Company Name" />
+                            <Field className={classes.txtField} component={renderTextField} name="cname" type="text" label="Company Name" />
                             </Grid>
                             <Grid container spacing={16}>
                                 <Grid item sm={6} className={classes.mtControl}>
-                                    <Field className={classes.txtField} onSuggestionsClearRequested={this.onSuggestionsClearRequested} handleSuggestionsFetchRequested={this.handleSuggestionsFetchRequested} inputProps={inputProps} suggestions={this.state.suggestions} id="country" name="country" placeholder="Select country" component={renderAutoCompleteField} >
+                                    <Field className={classes.txtField +' mrR10'} onSuggestionsClearRequested={this.onSuggestionsClearRequested} handleSuggestionsFetchRequested={this.handleSuggestionsFetchRequested} inputProps={inputProps} suggestions={this.state.suggestions} id="country" name="country" label="Select country"  component={renderAutoCompleteField} >
                                     </Field>
                                 </Grid>
                                 <Grid item sm={6} className={classes.mtControl}>
-                                    <Field className={classes.txtField}  component={renderTextField} name="state" type="text" placeholder="State" />
+                                    <Field className={classes.txtField}  component={renderTextField} name="state" type="text" label="State" />
                                 </Grid>
                             </Grid>
                             <Grid container spacing={16}>
                                 <Grid item sm={3} className={classes.mtControl}>
-                                    <Field className={classes.txtField} component={renderTextField} name="countryCode" type="text" placeholder="+ 91" />
+                                    <Field className={classes.txtField + ' underline-solid'} component={renderTextField} name="countryCode" type="text" label="+ 91" disabled={true} 
+                                    />
                                 </Grid>
                                 <Grid item sm={9} className={classes.mtControl}>
-                                    <Field className={classes.txtField} component={renderTextField} name="contactNumber" type="text" placeholder="Contact Number" />
+                                    <Field className={classes.txtField} component={renderTextField} name="contactNumber" type="text" label="Contact Number" />
                                 </Grid>
                             </Grid>
                             <Grid item sm={12} className={classes.mtControl}>
-                            <Field className={classes.txtField} component={renderTextField} name="emailId" type="text" placeholder="Email" />
+                            <Field className={classes.txtField} component={renderTextField} name="emailId" type="text" label="Email"/>
                             </Grid>
                             <Grid item sm={12} className={classes.mtControl}>
-                            <Field className={classes.txtField} component={renderPasswordField} name="password" type="password" placeholder="Password" />
+                            <Field className={classes.txtField + ' icon-size'} component={renderPasswordField} name="password" type="password" label="Password" />
                             </Grid>
                                 <Field className={classes.CheckBoxWidth} name="iAgree" color="primary" component={renderCheckbox} label="iAgree" />
                                 <span className="fnt-12">I am agree with of <a href="#">Service agreement</a></span>
                             <div>
-                                <Button variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }} disabled={invalid || submitting || pristine}>Register</Button>{' '}
+                                <Button type="submit" variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }} disabled={invalid || submitting || pristine}>Register</Button>{' '}
                             </div>
                         </form>
                         <hr className={classes.bdrTag} />
@@ -189,12 +191,8 @@ class SignUp extends PureComponent {
                             <Button onClick={()=>hashHistory.push('/login')} variant="outlined" className={classes.button}>Sign In</Button>
                         </div>
                     </CardContent>
-
                 </Card>
             </Grid>
-
-
-
         )
     }
 }

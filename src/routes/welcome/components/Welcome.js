@@ -4,6 +4,8 @@ import { Card, CardContent, CardHeader, Typography, Grid,Button } from '@materia
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
+import APPCONFIG from 'constants/Config'
+
 const styles = theme => ({
     logo: {
         height: 'auto',
@@ -67,21 +69,20 @@ class Welcome extends PureComponent {
     showResults = (values) => {
         console.log(values);
     }
+
     render() {
         const { handleSubmit, valid, classes } = this.props;
         console.log('Props ', this.props);
 
         return (
-
-            <Grid sm={3}>
+            <Grid item sm={3} className="pd0">
                 <Card className="side-login-panel">
                     <CardHeader
                         avatar={
-                            <img src="assets/images/secberus-logo.png" className={classes.logo} />
+                            <img src={APPCONFIG.company_logo_path} className={classes.logo} />
                         }
                         className={classes.cardImage}
                     />
-                    {/* <img src="assets/images/secberus-logo.png" /> */}
                     <CardContent className={classes.cardBody}>
                         <Typography className="mrB15" gutterBottom variant="headline" component="label">
                             WELCOME
@@ -91,12 +92,10 @@ class Welcome extends PureComponent {
                          </Typography>
                         <form className={classes.formSpacing} onSubmit={handleSubmit((values) => this.showResults(values))}>
                             <Button variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}>Resent</Button>
-
                         </form>
                     </CardContent>
                 </Card>
             </Grid>
-
         )
     }
 }
@@ -104,6 +103,7 @@ class Welcome extends PureComponent {
 Welcome.propTypes = {
     classes: PropTypes.object.isRequired,
 };
+
 const WelcomewithStyle = withStyles(styles)(Welcome)
 module.exports = reduxForm({
     form: 'welcome',

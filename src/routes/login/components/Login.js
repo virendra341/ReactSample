@@ -8,10 +8,12 @@ import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { Link ,hashHistory} from 'react-router'
 import { Button, Card, CardContent, CardHeader, Typography, Grid } from '@material-ui/core'
-import { withStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles'
+import PropTypes from 'prop-types'
 
+import APPCONFIG from 'constants/Config'
 import { renderTextField, renderPasswordField } from 'reduxFormComponent'
+
 const styles = theme => ({
     logo: {
         height: 'auto',
@@ -41,10 +43,14 @@ const styles = theme => ({
     },
     button:{
         borderColor:'#24BA4D',
-        color:'#24BA4D'
+        color:'#24BA4D',
+        '&:hover':{
+            backgroundColor:'#24BA4D',
+            color:'#fff'
+        }
     }
-
 });
+
 const validate = values => {
     const errors = {}
     const requiredFields = [
@@ -79,15 +85,14 @@ class Login extends PureComponent {
     render() {
         const { handleSubmit, invalid, submitting, pristine, classes } = this.props;
         return (
-            <Grid sm={3}>
+            <Grid item sm={3} className="pd0">
                 <Card className="side-login-panel">
                     <CardHeader
                         avatar={
-                            <img src="assets/images/secberus-logo.png" className={classes.logo} />
+                            <img src={APPCONFIG.company_logo_path} className={classes.logo} />
                         }
                         className={classes.cardImage}
                     />
-                    {/* <img src="assets/images/secberus-logo.png" /> */}
                     <CardContent className={classes.cardBody}>
                         <Typography className="mrB15" gutterBottom variant="headline" component="label">
                             SIGN IN WITH SECBERUS
@@ -95,16 +100,16 @@ class Login extends PureComponent {
 
                         <form onSubmit={handleSubmit((values) => this.showResults(values))} className={classes.formSpacing}>
                             <Grid item sm={12} className={classes.mtControl}>
-                                <Field  className={classes.txtField}  component={renderTextField} name="emailId" type="text" placeholder="Email" />
+                                <Field  className={classes.txtField}  component={renderTextField} label="Email" name="emailId" type="text"/>
                             </Grid>
                             <Grid item sm={12} className="mrB10">
-                                <Field className={classes.txtField} component={renderPasswordField} name="password" type="password" placeholder="Password" />
+                                <Field className={classes.txtField + ' icon-size'} component={renderPasswordField}  name="password" type="password"/>
                             </Grid>
                             <div className="mrB20">
                                 <Link to="/forgot-password" >Forgot Password</Link>
                             </div>
                             <div>
-                                <Button variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }} disabled={invalid || submitting || pristine}>Sign in</Button>
+                                <Button type="submit" variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }} disabled={invalid || submitting || pristine}>Sign in</Button>
                             </div>
                         </form>
                         <hr className={ classes.bdrTag}/>
@@ -113,10 +118,8 @@ class Login extends PureComponent {
                             <Button onClick={()=>hashHistory.push('/sign-up')} variant="outlined" className={classes.button}>Register</Button>
                         </div>
                     </CardContent>
-
                 </Card>
             </Grid>
-
         )
     }
 }

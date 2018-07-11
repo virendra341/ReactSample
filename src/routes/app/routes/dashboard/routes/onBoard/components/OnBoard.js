@@ -33,10 +33,7 @@ class OnBoard extends PureComponent {
           maxWidth="sm"
         >    
           <DialogContent className="modal-processStepper">
-            <DialogContentText id="alert-dialog-description">
-          
-                <Wizard/>
-            </DialogContentText>
+            <Wizard/>
           </DialogContent>
         </Dialog>
       </div>
