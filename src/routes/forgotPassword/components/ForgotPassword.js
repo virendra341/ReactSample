@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, Typography,Grid,Button } from '@material
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
+import APPCONFIG from 'constants/Config'
 import { renderTextField } from 'reduxFormComponent'
 
 const styles = theme => ({
@@ -36,10 +37,15 @@ const styles = theme => ({
     },
     button: {
         borderColor: '#24BA4D',
-        color: '#24BA4D'
+        color: '#24BA4D',
+        '&:hover':{
+            backgroundColor:'#24BA4D',
+            color:'#fff'
+        }
     }
 
 });
+
 const validate = values => {
     const errors = {}
     const requiredFields = [
@@ -59,8 +65,6 @@ const validate = values => {
     return errors
 }
 
-
-
 class ForgotPassword extends PureComponent {
 
     componentWillMount() {
@@ -72,18 +76,16 @@ class ForgotPassword extends PureComponent {
     }
     render() {
         const { handleSubmit, valid, classes } = this.props;
-        // console.log('Props ', this.props);
 
         return (
-            <Grid sm={3}>
+            <Grid item sm={3} className="pd0">
                 <Card className="side-login-panel">
                     <CardHeader
                         avatar={
-                            <img src="assets/images/secberus-logo.png" className={classes.logo} />
+                            <img src={APPCONFIG.company_logo_path} className={classes.logo} />
                         }
                         className={classes.cardImage}
                     />
-                    {/* <img src="assets/images/secberus-logo.png" /> */}
                     <CardContent className={classes.cardBody}>
                         <Typography className="mrB15" gutterBottom variant="headline" component="label">
                             FORGOT PASSWORD
@@ -96,9 +98,9 @@ class ForgotPassword extends PureComponent {
                            <Grid item sm={12} className={classes.mtControl}>
                             <Field className={classes.txtField} component={renderTextField} name="emailId" type="text" placeholder="Email" />
                             </Grid>
-                            <Button onClick={()=>hashHistory.push('/forgot-password-email')} variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}>Password Reset</Button>
+                            <Button type="submit" onClick={()=>hashHistory.push('/forgot-password-email')} variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}>Password Reset</Button>
                         </form>
-                        <hr className={classes.bdrTag} />
+                        <hr className={classes. bdrTag} />
                         <div className="mrT25">
                             <p >Not Registered yet ?</p>
                             <Button onClick={()=>hashHistory.push('/sign-up')} variant="outlined" className={classes.button +' mrR10'}>Register</Button>
@@ -108,8 +110,6 @@ class ForgotPassword extends PureComponent {
 
                 </Card>
             </Grid>
-
-
         )
     }
 }
@@ -117,7 +117,9 @@ class ForgotPassword extends PureComponent {
 ForgotPassword.propTypes = {
     classes: PropTypes.object.isRequired,
 };
+
 const ForgotwithStyle = withStyles(styles)(ForgotPassword)
+
 module.exports = reduxForm({
     form: 'forgotpassword',
     validate,

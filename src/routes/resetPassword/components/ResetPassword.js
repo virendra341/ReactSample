@@ -5,6 +5,7 @@ import { Button, Card, CardHeader, CardContent, Typography, Grid } from '@materi
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
+import APPCONFIG from 'constants/Config'
 import {renderPasswordField } from 'reduxFormComponent'
 
 const styles = theme => ({
@@ -40,6 +41,7 @@ const styles = theme => ({
     }
 
 });
+
 const validate = values => {
     const errors = {}
     const requiredFields = [
@@ -68,7 +70,6 @@ const validate = values => {
     return errors
 }
 
-
 class ResetPassword extends PureComponent {
 
     componentWillMount() {
@@ -82,27 +83,26 @@ class ResetPassword extends PureComponent {
         const { handleSubmit, valid, classes } = this.props;
 
         return (
-            <Grid sm={3}>
+            <Grid item sm={3} className="pd0">
                 <Card className="side-login-panel">
                     <CardHeader
                         avatar={
-                            <img src="assets/images/secberus-logo.png" className={classes.logo} />
+                            <img src={APPCONFIG.company_logo_path} className={classes.logo} />
                         }
                         className={classes.cardImage}
                     />
-                    {/* <img src="assets/images/secberus-logo.png" /> */}
                     <CardContent className={classes.cardBody}>
                         <Typography className="mrB15" gutterBottom variant="headline" component="label">
                             NEW PASSWORD
                         </Typography>
                         <form className={classes.formSpacing} onSubmit={handleSubmit((values) => this.showResults(values))}>
                             <Grid item sm={12} className={classes.mtControl}>
-                                <Field className={classes.txtField} component={renderPasswordField} name="password" type="password" placeholder="Password" />
+                                <Field className={classes.txtField + ' icon-size'} component={renderPasswordField} name="password" type="password" placeholder="Password" />
                             </Grid>
                             <Grid item sm={12} className={classes.mtControl}>
-                                <Field className={classes.txtField} component={renderPasswordField} name="cpassword" type="password" placeholder="Confirm Password" />
+                                <Field className={classes.txtField + ' icon-size'} component={renderPasswordField} name="cpassword" type="password" placeholder="Confirm Password" />
                             </Grid>
-                            <Button onClick={()=>hashHistory.push('/login')} variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}>Save</Button>
+                            <Button type="submit" onClick={()=>hashHistory.push('/login')} variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}>Save</Button>
                         </form>
                     </CardContent>
                 </Card>
@@ -114,6 +114,7 @@ class ResetPassword extends PureComponent {
 ResetPassword.propTypes = {
     classes: PropTypes.object.isRequired,
 };
+
 const ResetPasswordwithStyle = withStyles(styles)(ResetPassword)
 module.exports = reduxForm({
     form: 'resetpassword',

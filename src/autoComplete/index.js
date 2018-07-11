@@ -6,11 +6,12 @@ import match from 'autosuggest-highlight/match'
 import parse from 'autosuggest-highlight/parse'
 
 export const renderInput = (inputProps) => {
-    const { classes, ref, ...other } = inputProps;
+    const { classes,placeholder, ref, ...other } = inputProps;
 
     return (
         <TextField
             fullWidth
+            label={placeholder}
             InputProps={{
                 inputRef: ref,
                 classes: {

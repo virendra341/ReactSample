@@ -26,7 +26,8 @@ const APPCONFIG = {
     colorOption: '14',                              // String: 11,12,13,14,15,16; 21,22,23,24,25,26; 31,32,33,34,35,36
     theme: 'light',                                 // light, gray, dark
   },
-  api_url:'http://dev-api-01.bixex.net/api/'
+  api_url:'http://dev-api-01.bixex.net/api/',
+  company_logo_path:'assets/images/secberus-logo.png'
 };
 
 module.exports = APPCONFIG;

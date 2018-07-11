@@ -6,8 +6,6 @@ import { renderInput, renderSuggestionsContainer, getSuggestionValue, renderSugg
 import Checkbox from '@material-ui/core/Checkbox'
 import PasswordField from 'material-ui-password-field'
 
-
-
 export const renderTextField = ({
     input,
     label,
@@ -17,9 +15,7 @@ export const renderTextField = ({
 }) => (
         <Fragment>
             <TextField
-                hintText={label}
                 label={label}
-                errorText={touched && error}
                 {...input}
                 {...custom}
             />
@@ -27,12 +23,10 @@ export const renderTextField = ({
         </Fragment>
     )
 
-
-
 export const renderSelectField = ({ input, label, meta: { touched, error }, children, ...custom }) => (
     <Fragment>
         <SelectField
-            floatingLabelText={label}
+            label={label}
             errorText={touched && error}
             {...input}
             onChange={(event, index, value) => input.onChange(value)}
@@ -44,7 +38,6 @@ export const renderSelectField = ({ input, label, meta: { touched, error }, chil
 )
 
 export const renderAutoCompleteField = ({ handleSuggestionsFetchRequested, handleSuggestionsClearRequested, inputProps, suggestions, value, input, fields, label, meta: { touched, error }, children, ...custom }) => (
-
 
     <Autosuggest
         theme={{
@@ -62,9 +55,9 @@ export const renderAutoCompleteField = ({ handleSuggestionsFetchRequested, handl
         renderSuggestion={renderSuggestion}
         inputProps={inputProps}
         {...input}
+        label={label}
     />
 )
-
 
 export const renderCheckbox = ({ input, label, ...custom }) => (
     <Checkbox
@@ -75,18 +68,16 @@ export const renderCheckbox = ({ input, label, ...custom }) => (
     />
 )
 
-
 export const renderPasswordField = ({
     input,
-    label,
+    //floatingLabelText,
     name,
     meta: { touched, error },
     ...custom
 }) => (
         <Fragment>
-            <PasswordField hintText={label}
-                floatingLabelText={label}
-                errorText={touched && error}
+            <PasswordField 
+                //  floatingLabelText={floatingLabelText}
                 {...input}
                 {...custom}
             />
