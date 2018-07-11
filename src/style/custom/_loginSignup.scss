@@ -50,6 +50,33 @@
             }
         }
     }
+    .auto-suggesation{
+        > div > div{
+            &:last-child{
+            position: absolute;
+            left: 0;
+            right: 0;
+            z-index: 1;
+                ul{
+                    list-style: none;
+                    padding: 0;
+                }
+            }
+        }
+    }
+    .form-login{
+        > div > div{ 
+            label[data-shrink ='true']  {
+                color: $bg_green-color_1 !important;
+                + div{
+                    &:after{
+                        border-bottom: 2px solid $bg_green-color_1 !important;
+                    }
+                }
+                
+            }
+        }
+    }
 }
 
  

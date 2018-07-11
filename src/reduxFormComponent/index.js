@@ -37,7 +37,7 @@ export const renderSelectField = ({ input, label, meta: { touched, error }, chil
     </Fragment>
 )
 
-export const renderAutoCompleteField = ({ handleSuggestionsFetchRequested, handleSuggestionsClearRequested, inputProps, suggestions, value, input, fields, label, meta: { touched, error }, children, ...custom }) => (
+export const renderAutoCompleteField = ({ handleSuggestionsFetchRequested, onSuggestionsClearRequested, inputProps, suggestions, value, input, fields, label, meta: { touched, error }, children, ...custom }) => (
 
     <Autosuggest
         theme={{
@@ -49,13 +49,14 @@ export const renderAutoCompleteField = ({ handleSuggestionsFetchRequested, handl
         renderInputComponent={renderInput}
         suggestions={suggestions}
         onSuggestionsFetchRequested={handleSuggestionsFetchRequested}
-        onSuggestionsClearRequested={handleSuggestionsClearRequested}
+        onSuggestionsClearRequested={onSuggestionsClearRequested}
         renderSuggestionsContainer={renderSuggestionsContainer}
         getSuggestionValue={getSuggestionValue}
         renderSuggestion={renderSuggestion}
         inputProps={inputProps}
         {...input}
         label={label}
+        {...custom} 
     />
 )
 

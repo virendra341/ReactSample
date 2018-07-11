@@ -98,7 +98,7 @@ class Login extends PureComponent {
                             SIGN IN WITH SECBERUS
                         </Typography>
 
-                        <form onSubmit={handleSubmit((values) => this.showResults(values))} className={classes.formSpacing}>
+                        <form onSubmit={handleSubmit((values) => this.showResults(values))} className={classes.formSpacing + ' form-login'}>
                             <Grid item sm={12} className={classes.mtControl}>
                                 <Field  className={classes.txtField}  component={renderTextField} label="Email" name="emailId" type="text"/>
                             </Grid>

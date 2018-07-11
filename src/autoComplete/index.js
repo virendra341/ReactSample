@@ -73,7 +73,7 @@ export const getSuggestions = (value, suggestions) => {
         ? []
         : suggestions.filter(suggestion => {
             const keep =
-                count < 5 && suggestion.name.toLowerCase().slice(0, inputLength) === inputValue;
+                count < 5 && inputValue.includes(suggestion.name.toLowerCase().slice(0, inputLength));
 
             if (keep) {
                 count += 1;

@@ -15,13 +15,14 @@ const styles = theme => ({
         width: "200px"
     },
     cardImage: {
-        padding: '120px 40px 60px 40px'
+        padding: '80px 40px 60px 40px'
     },
     formContent: {
         padding: '0 40px 40px'
     },
     mtControl: {
-        marginBottom: "15px"
+        marginBottom: "15px",
+        position:'relative'
     },
     txtField: {
         width: '100%',
@@ -34,7 +35,7 @@ const styles = theme => ({
         borderColor: '#e1e6ee'
     },
     formSpacing: {
-        marginBottom: "70px"
+        marginBottom: "40px"
     },
     button: {
         borderColor: '#24BA4D',
@@ -103,7 +104,7 @@ class SignUp extends PureComponent {
         });
     };
 
-    handleSuggestionsClearRequested = () => {
+    onSuggestionsClearRequested = () => {
         this.setState({
             suggestions: [],
         });
@@ -148,7 +149,7 @@ class SignUp extends PureComponent {
                         <Typography className="mrB15" gutterBottom variant="headline" component="label">
                             REGISTER IN WITH SECBERUS
                         </Typography>
-                        <form className={classes.formSpacing} onSubmit={handleSubmit((values) => this.showResults(values))}>
+                        <form className={classes.formSpacing + ' form-login'} onSubmit={handleSubmit((values) => this.showResults(values))}>
                             <Grid item sm={12} className={classes.mtControl}>
                             <Field  className={classes.txtField} component={renderTextField} name="fullname" type="text" label="Full Name" />
                             </Grid>
@@ -156,7 +157,7 @@ class SignUp extends PureComponent {
                             <Field className={classes.txtField} component={renderTextField} name="cname" type="text" label="Company Name" />
                             </Grid>
                             <Grid container spacing={16}>
-                                <Grid item sm={6} className={classes.mtControl}>
+                                <Grid item sm={6} className={classes.mtControl + ' auto-suggesation'}>
                                     <Field className={classes.txtField +' mrR10'} onSuggestionsClearRequested={this.onSuggestionsClearRequested} handleSuggestionsFetchRequested={this.handleSuggestionsFetchRequested} inputProps={inputProps} suggestions={this.state.suggestions} id="country" name="country" label="Select country"  component={renderAutoCompleteField} >
                                     </Field>
                                 </Grid>

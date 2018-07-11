@@ -94,9 +94,9 @@ class ForgotPassword extends PureComponent {
                             Please enter your email id to request a password reset
                          </Typography>
 
-                        <form className={classes.formSpacing} onSubmit={handleSubmit((values) => this.showResults(values))}>
+                        <form className={classes.formSpacing + ' form-login'} onSubmit={handleSubmit((values) => this.showResults(values))}>
                            <Grid item sm={12} className={classes.mtControl}>
-                            <Field className={classes.txtField} component={renderTextField} name="emailId" type="text" placeholder="Email" />
+                            <Field className={classes.txtField} component={renderTextField} label="Email" name="emailId" type="text" placeholder="Email" />
                             </Grid>
                             <Button type="submit" onClick={()=>hashHistory.push('/forgot-password-email')} variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}>Password Reset</Button>
                         </form>
