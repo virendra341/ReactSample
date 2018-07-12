@@ -13,7 +13,6 @@ import MenuItem from '@material-ui/core/MenuItem'
 import match from 'autosuggest-highlight/match'
 import parse from 'autosuggest-highlight/parse'
 
-
 let dataSourceConfig = {
     text: 'name',
     value: 'id',
@@ -41,7 +40,6 @@ export const renderInput = (inputProps) => {
     );
 }
 
-
 export const renderSuggestion = (suggestion, { query, isHighlighted }) => {
 
     const matches = match(suggestion[dataSourceConfig.text], query);
@@ -67,7 +65,6 @@ export const renderSuggestion = (suggestion, { query, isHighlighted }) => {
     );
 }
 
-
 export const renderSuggestionsContainer = (options) => {
     const { containerProps, children } = options;
 
@@ -82,7 +79,6 @@ export const getSuggestionValue = (suggestion) => {
 
     return suggestion[dataSourceConfig.text];
 }
-
 
 export const getSuggestions = (value, suggestions) => {
     const inputValue = value.trim().toLowerCase();
@@ -104,7 +100,6 @@ export const getSuggestions = (value, suggestions) => {
             
         });
 }
-
 
 export const styles = theme => ({
     container: {

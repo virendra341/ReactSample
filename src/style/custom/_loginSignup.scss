@@ -9,8 +9,7 @@
             height: auto;
             background-image: url('../assets/images/bg.png');
             background-size: cover;
-            background-position: right center;
-        width: 100%;
+       width: 100%;
         }
         .side-login-panel{
             box-shadow: none;
@@ -65,7 +64,7 @@
         }
       
         .form-panel{
-            padding: 20vh 4vh 0vh 4vh !important;
+            padding: 20vh 4vh 4vh 4vh !important;
             min-height:100vh;
             .side-login-panel{
                 .logo-qaud{
@@ -97,7 +96,14 @@
                             margin-bottom:15px;
                             .text-field{
                                 width:100%;
+                                svg{
+                                    width: 0.8em;
+                                    height: 0.8em;
+                                }
                             }
+                        }
+                        .auto-suggesation{
+                            position: relative;
                         }
                         .mt-checkbox{
                             width:auto;
@@ -112,9 +118,7 @@
                 }
             }
         }
-        .signup-quad{
-            padding: 15vh 4vh 0vh 4vh !important;
-        }
+
     }
 }
 

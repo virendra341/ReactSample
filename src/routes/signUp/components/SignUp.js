@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { hashHistory } from 'react-router'
-
 import { Button, Card, CardContent, CardHeader, Typography, Grid } from '@material-ui/core'
-
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as signupActions from '../../../actions/signupAction'
 
 import APPCONFIG from 'constants/Config'
 
@@ -15,11 +16,10 @@ const validate = values => {
     const requiredFields = [
         'fullname',
         'cname',
-        'country',
         'contactNumber',
         'emailId',
         'password',
-        'isAgree'
+        //'isAgree'
     ]
 
     requiredFields.forEach(field => {
@@ -115,6 +115,8 @@ class SignUp extends PureComponent {
 
     showResults = (values) => {
         console.log(values);
+        this.props.actions.signup(values).
+            then(result => { console.log('signup response ', result) });
     }
 
     render() {
@@ -134,7 +136,7 @@ class SignUp extends PureComponent {
         };
         return (
 
-            <Grid item sm={3} className="form-panel signup-quad">
+            <Grid item sm={3} className="form-panel">
                 <Card className="side-login-panel">
                     <CardHeader
                         avatar={
@@ -158,7 +160,7 @@ class SignUp extends PureComponent {
                                     <Field className="text-field" id="country" name="country" onSuggestionsClearRequested={this.handleSuggestionsClearRequestedCountry} handleSuggestionsFetchRequested={this.handleSuggestionsFetchRequestedCountry} inputProps={countryInputProps} suggestions={this.state.countrySuggestions} dataSourceConfig={dataSourceConfig} component={renderAutoCompleteField} >
                                     </Field>
                                 </Grid>
-                                <Grid item sm={6} className="qaud-grid">
+                                <Grid item sm={6} className="qaud-grid auto-suggesation">
                                     <Field className="text-field" id="state" name="state" onSuggestionsClearRequested={this.handleSuggestionsClearRequestedState} handleSuggestionsFetchRequested={this.handleSuggestionsFetchRequestedState} inputProps={stateInputProps} suggestions={this.state.stateSuggestions} dataSourceConfig={stateDataSourceConfig} component={renderAutoCompleteField} >
                                     </Field>
                                 </Grid>
@@ -181,7 +183,7 @@ class SignUp extends PureComponent {
                             <Field className="mt-checkbox" name="iAgree" color="primary" component={renderCheckbox} label="iAgree" />
                             <span className="fnt-12">I am agree with of <a href="#">Service agreement</a></span>
                             <div>
-                                <Button type="submit" variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }} disabled={invalid || submitting || pristine}>Register</Button>{' '}
+                                <Button type="submit" variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}>Register</Button>{' '}
                             </div>
                         </form>
                         <hr className="divider" />
@@ -196,9 +198,16 @@ class SignUp extends PureComponent {
     }
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(signupActions, dispatch)
+    };
+}
+
 module.exports = reduxForm({
     form: 'signup',
     validate,
     destroyOnUnmount: true,
     forceUnregisterOnUnmount: true
-})(SignUp);
+})(connect(null, mapDispatchToProps)(SignUp));
+
