@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { hashHistory } from 'react-router'
+import { actionCreators } from 'redux-form'
+
 import { Button, Card, CardContent, CardHeader, Typography, Grid } from '@material-ui/core'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -64,10 +66,12 @@ class SignUp extends PureComponent {
         countryList: [{ id: 1, name: 'Indina' }, { id: 2, name: 'japan' }, { id: 3, name: 'Indo' }],
         countryValue: '',
         countrySuggestions: [],
+        selectedCountry: {},
 
         stateList: [{ id: 1, stateName: 'Rajsthan' }, { id: 2, stateName: 'MP' }, { id: 3, stateName: 'Pune' }],
         stateValue: '',
-        stateSuggestions: []
+        stateSuggestions: [],
+        selectedState: {},
     }
 
     handleSuggestionsFetchRequestedCountry = ({ value }) => {
@@ -86,8 +90,16 @@ class SignUp extends PureComponent {
         setConfig(dataSourceConfig);
         this.setState({
             countryValue: newValue,
-        }, () => { console.log(' countryValue ', this.state.countryValue); });
+        });
     };
+
+    onSelectStateCountry = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) => {
+        event.preventDefault()
+        this.setState({ selectedCountry: suggestion }, () => {
+            this.props.change('country', suggestion)
+        });
+    };
+
 
 
     handleSuggestionsFetchRequestedState = ({ value }) => {
@@ -109,6 +121,13 @@ class SignUp extends PureComponent {
         });
     };
 
+    onSelectState = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) => {
+        event.preventDefault()
+        this.setState({ selectedState: suggestion }, () => {
+            this.props.change('state', suggestion)
+        });
+    };
+
     componentWillMount() {
         this.props.reset();
     }
@@ -126,12 +145,14 @@ class SignUp extends PureComponent {
         const countryInputProps = {
             placeholder: 'Select Country',
             value: countryValue,
+            type: 'search',
             onChange: this.handleChangeCountry,
         };
 
         const stateInputProps = {
             placeholder: 'Select State',
             value: stateValue,
+            type: 'search',
             onChange: this.handleChangeState,
         };
         return (
@@ -157,11 +178,11 @@ class SignUp extends PureComponent {
                             </Grid>
                             <Grid container spacing={16}>
                                 <Grid item sm={6} className="qaud-grid auto-suggesation">
-                                    <Field className="text-field" id="country" name="country" onSuggestionsClearRequested={this.handleSuggestionsClearRequestedCountry} handleSuggestionsFetchRequested={this.handleSuggestionsFetchRequestedCountry} inputProps={countryInputProps} suggestions={this.state.countrySuggestions} dataSourceConfig={dataSourceConfig} component={renderAutoCompleteField} >
+                                    <Field className="text-field" id="country" name="country" onSuggestionsClearRequested={this.handleSuggestionsClearRequestedCountry} handleSuggestionsFetchRequested={this.handleSuggestionsFetchRequestedCountry} inputProps={countryInputProps} suggestions={this.state.countrySuggestions} dataSourceConfig={dataSourceConfig} component={renderAutoCompleteField} onSuggestionSelected={this.onSelectStateCountry}>
                                     </Field>
                                 </Grid>
                                 <Grid item sm={6} className="qaud-grid auto-suggesation">
-                                    <Field className="text-field" id="state" name="state" onSuggestionsClearRequested={this.handleSuggestionsClearRequestedState} handleSuggestionsFetchRequested={this.handleSuggestionsFetchRequestedState} inputProps={stateInputProps} suggestions={this.state.stateSuggestions} dataSourceConfig={stateDataSourceConfig} component={renderAutoCompleteField} >
+                                    <Field className="text-field" id="state" name="state" onSuggestionSelected={this.onSelectState} onSuggestionsClearRequested={this.handleSuggestionsClearRequestedState} handleSuggestionsFetchRequested={this.handleSuggestionsFetchRequestedState} inputProps={stateInputProps} suggestions={this.state.stateSuggestions} dataSourceConfig={stateDataSourceConfig} component={renderAutoCompleteField} >
                                     </Field>
                                 </Grid>
                             </Grid>
@@ -183,7 +204,7 @@ class SignUp extends PureComponent {
                             <Field className="mt-checkbox" name="iAgree" color="primary" component={renderCheckbox} label="iAgree" />
                             <span className="fnt-12">I am agree with of <a href="#">Service agreement</a></span>
                             <div>
-                                <Button type="submit" variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}>Register</Button>{' '}
+                                <Button type="submit" variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}  disabled={invalid || submitting || pristine}>Register</Button>{' '}
                             </div>
                         </form>
                         <hr className="divider" />
