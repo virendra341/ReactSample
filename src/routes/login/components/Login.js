@@ -2,13 +2,13 @@
  * @Author: Virendra Patidar 
  * @Date: 2018-07-05 18:18:44 
  * @Last Modified by: Virendra Patidar
- * @Last Modified time: 2018-07-12 14:33:21
+ * @Last Modified time: 2018-07-12 14:35:33
  */
 import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { Link, hashHistory } from 'react-router'
 import { Button, Card, CardContent, CardHeader, Typography, Grid } from '@material-ui/core'
-
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as loginActions from '../../../actions/loginAction'
 import APPCONFIG from 'constants/Config'
