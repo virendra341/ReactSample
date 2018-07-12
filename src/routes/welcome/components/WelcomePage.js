@@ -1,19 +1,10 @@
 
 import React, { PureComponent } from 'react'
-import { withStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
 import { Grid} from '@material-ui/core';
 
 import Welcome from './Welcome'
 import LoginBackground from 'components/LoginBackground'
 
-const styles = theme => ({
-    root: {
-      minHeight: '100vh',
-      margin:'0px',
-      width:'100%'
-    }
-  });
 class WelcomePage extends PureComponent {
 
     render() {
@@ -21,7 +12,7 @@ class WelcomePage extends PureComponent {
         return (
             
                 <div className="section-login">
-                    <Grid container spacing={24} className={classes.root}>
+                    <Grid container spacing={24} className="quad-container">
                             <LoginBackground></LoginBackground>
                             <Welcome></Welcome>
                       </Grid>
@@ -30,7 +21,5 @@ class WelcomePage extends PureComponent {
         )
     }
 }
-WelcomePage.propTypes = {
-    classes: PropTypes.object,
-  };
-module.exports = withStyles(styles)(WelcomePage);
+
+module.exports = WelcomePage;

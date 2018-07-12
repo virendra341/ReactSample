@@ -2,7 +2,7 @@
  * @Author: Virendra Patidar 
  * @Date: 2018-07-11 16:39:16 
  * @Last Modified by: Virendra Patidar
- * @Last Modified time: 2018-07-12 14:12:52
+ * @Last Modified time: 2018-07-12 14:33:52
  */
 import React, { Fragment } from 'react'
 import TextField from '@material-ui/core/TextField'
@@ -70,13 +70,14 @@ export const renderAutoCompleteField = ({ handleSuggestionsFetchRequested, handl
         renderInputComponent={renderInput}
         suggestions={suggestions}
         onSuggestionsFetchRequested={handleSuggestionsFetchRequested}
-        onSuggestionsClearRequested={handleSuggestionsClearRequested}
+        onSuggestionsClearRequested={onSuggestionsClearRequested}
         renderSuggestionsContainer={renderSuggestionsContainer}
         getSuggestionValue={getSuggestionValue}
         renderSuggestion={renderSuggestion}
         inputProps={inputProps}
         {...input}
         label={label}
+        {...custom} 
     />
 )
 

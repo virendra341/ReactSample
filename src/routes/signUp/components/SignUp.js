@@ -3,54 +3,13 @@ import { Field, reduxForm } from 'redux-form'
 import { hashHistory } from 'react-router'
 
 import { Button, Card, CardContent, CardHeader, Typography, Grid } from '@material-ui/core'
-import { withStyles } from '@material-ui/core/styles'
 
-import PropTypes from 'prop-types'
+
 import APPCONFIG from 'constants/Config'
 
 import { renderTextField, renderAutoCompleteField, renderCheckbox, renderPasswordField } from 'reduxFormComponent'
-import { getSuggestions,setConfig } from '../../../reduxFormComponent/AutoComplete'
+import { getSuggestions, setConfig } from '../../../reduxFormComponent/AutoComplete'
 
-const styles = theme => ({
-    logo: {
-        height: 'auto',
-        width: "200px"
-    },
-    cardImage: {
-        padding: '120px 40px 60px 40px'
-    },
-    formContent: {
-        padding: '0 40px 40px'
-    },
-    mtControl: {
-        marginBottom: "15px"
-    },
-    txtField: {
-        width: '100%',
-    },
-    cardBody: {
-        padding: '0 40px'
-    },
-    bdrTag: {
-        margin: '0 -40px',
-        borderColor: '#e1e6ee'
-    },
-    formSpacing: {
-        marginBottom: "70px"
-    },
-    button: {
-        borderColor: '#24BA4D',
-        color: '#24BA4D',
-        '&:hover': {
-            backgroundColor: '#24BA4D',
-            color: '#fff'
-        }
-    },
-    CheckBoxWidth: {
-        width: 'auto',
-        marginRight: '10px'
-    },
-});
 const validate = values => {
     const errors = {}
     const requiredFields = [
@@ -127,7 +86,7 @@ class SignUp extends PureComponent {
         setConfig(dataSourceConfig);
         this.setState({
             countryValue: newValue,
-        }, () => { console.log(' countryValue ',this.state.countryValue);  });
+        }, () => { console.log(' countryValue ', this.state.countryValue); });
     };
 
 
@@ -158,10 +117,8 @@ class SignUp extends PureComponent {
         console.log(values);
     }
 
-
-
     render() {
-        const { handleSubmit, invalid, submitting, pristine, classes } = this.props;
+        const { handleSubmit, invalid, submitting, pristine } = this.props;
         const { countryValue, stateValue } = this.state;
 
         const countryInputProps = {
@@ -177,60 +134,60 @@ class SignUp extends PureComponent {
         };
         return (
 
-            <Grid item sm={3} className="pd0">
+            <Grid item sm={3} className="form-panel signup-quad">
                 <Card className="side-login-panel">
                     <CardHeader
                         avatar={
-                            <img src={APPCONFIG.company_logo_path} className={classes.logo} />
+                            <img src={APPCONFIG.company_logo_path} className="logo-icon" />
                         }
-                        className={classes.cardImage}
+                        className="logo-qaud"
                     />
-                    <CardContent className={classes.cardBody}>
+                    <CardContent className="quad-content">
                         <Typography className="mrB15" gutterBottom variant="headline" component="label">
                             REGISTER IN WITH SECBERUS
                         </Typography>
-                        <form className={classes.formSpacing} onSubmit={handleSubmit((values) => this.showResults(values))}>
-                            <Grid item sm={12} className={classes.mtControl}>
-                                <Field className={classes.txtField} component={renderTextField} name="fullname" type="text" label="Full Name" />
+                        <form className="form-qaud" onSubmit={handleSubmit((values) => this.showResults(values))}>
+                            <Grid item sm={12} className="qaud-grid">
+                                <Field className="text-field" component={renderTextField} name="fullname" type="text" label="Full Name" />
                             </Grid>
-                            <Grid item sm={12} className={classes.mtControl}>
-                                <Field className={classes.txtField} component={renderTextField} name="cname" type="text" label="Company Name" />
-                            </Grid>
-                            <Grid container spacing={16}>
-                                <Grid item sm={6} className={classes.mtControl}>
-                                    <Field className={classes.txtField + ' mrR10'} id="country" name="country" onSuggestionsClearRequested={this.handleSuggestionsClearRequestedCountry} handleSuggestionsFetchRequested={this.handleSuggestionsFetchRequestedCountry} inputProps={countryInputProps} suggestions={this.state.countrySuggestions} dataSourceConfig={dataSourceConfig} component={renderAutoCompleteField} >
-                                    </Field>
-                                </Grid>
-                                <Grid item sm={6} className={classes.mtControl}>
-                                    <Field className={classes.txtField + ' mrR10'} id="state" name="state" onSuggestionsClearRequested={this.handleSuggestionsClearRequestedState} handleSuggestionsFetchRequested={this.handleSuggestionsFetchRequestedState} inputProps={stateInputProps} suggestions={this.state.stateSuggestions} dataSourceConfig={stateDataSourceConfig} component={renderAutoCompleteField} >
-                                    </Field>
-                                </Grid>
+                            <Grid item sm={12} className="qaud-grid">
+                                <Field className="text-field" component={renderTextField} name="cname" type="text" label="Company Name" />
                             </Grid>
                             <Grid container spacing={16}>
-                                <Grid item sm={3} className={classes.mtControl}>
-                                    <Field className={classes.txtField + ' underline-solid'} component={renderTextField} name="countryCode" type="text" label="+ 91" disabled={true}
+                                <Grid item sm={6} className="qaud-grid auto-suggesation">
+                                    <Field className="text-field" id="country" name="country" onSuggestionsClearRequested={this.handleSuggestionsClearRequestedCountry} handleSuggestionsFetchRequested={this.handleSuggestionsFetchRequestedCountry} inputProps={countryInputProps} suggestions={this.state.countrySuggestions} dataSourceConfig={dataSourceConfig} component={renderAutoCompleteField} >
+                                    </Field>
+                                </Grid>
+                                <Grid item sm={6} className="qaud-grid">
+                                    <Field className="text-field" id="state" name="state" onSuggestionsClearRequested={this.handleSuggestionsClearRequestedState} handleSuggestionsFetchRequested={this.handleSuggestionsFetchRequestedState} inputProps={stateInputProps} suggestions={this.state.stateSuggestions} dataSourceConfig={stateDataSourceConfig} component={renderAutoCompleteField} >
+                                    </Field>
+                                </Grid>
+                            </Grid>
+                            <Grid container spacing={16}>
+                                <Grid item sm={3} className="qaud-grid">
+                                    <Field className="text-field underline-solid" component={renderTextField} name="countryCode" type="text" label="+ 91" disabled={true}
                                     />
                                 </Grid>
-                                <Grid item sm={9} className={classes.mtControl}>
-                                    <Field className={classes.txtField} component={renderTextField} name="contactNumber" type="text" label="Contact Number" />
+                                <Grid item sm={9} className="qaud-grid">
+                                    <Field className="text-field" component={renderTextField} name="contactNumber" type="text" label="Contact Number" />
                                 </Grid>
                             </Grid>
-                            <Grid item sm={12} className={classes.mtControl}>
-                                <Field className={classes.txtField} component={renderTextField} name="emailId" type="text" label="Email" />
+                            <Grid item sm={12} className="qaud-grid">
+                                <Field className="text-field" component={renderTextField} name="emailId" type="text" label="Email" />
                             </Grid>
-                            <Grid item sm={12} className={classes.mtControl}>
-                                <Field className={classes.txtField + ' icon-size'} component={renderPasswordField} name="password" type="password" label="Password" />
+                            <Grid item sm={12} className="qaud-grid">
+                                <Field className="text-field icon-size" component={renderPasswordField} name="password" type="password" label="Password" />
                             </Grid>
-                            <Field className={classes.CheckBoxWidth} name="iAgree" color="primary" component={renderCheckbox} label="iAgree" />
+                            <Field className="mt-checkbox" name="iAgree" color="primary" component={renderCheckbox} label="iAgree" />
                             <span className="fnt-12">I am agree with of <a href="#">Service agreement</a></span>
                             <div>
                                 <Button type="submit" variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }} disabled={invalid || submitting || pristine}>Register</Button>{' '}
                             </div>
                         </form>
-                        <hr className={classes.bdrTag} />
+                        <hr className="divider" />
                         <div className="mrT25">
                             <p >Already Registered ?</p>
-                            <Button onClick={() => hashHistory.push('/login')} variant="outlined" className={classes.button}>Sign In</Button>
+                            <Button onClick={() => hashHistory.push('/login')} variant="outlined" className="btn-outline">Sign In</Button>
                         </div>
                     </CardContent>
                 </Card>
@@ -239,14 +196,9 @@ class SignUp extends PureComponent {
     }
 }
 
-SignUp.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
-
-const signupwithStyle = withStyles(styles)(SignUp)
 module.exports = reduxForm({
     form: 'signup',
     validate,
     destroyOnUnmount: true,
     forceUnregisterOnUnmount: true
-})(signupwithStyle);
+})(SignUp);
