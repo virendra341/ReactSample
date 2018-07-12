@@ -2,49 +2,9 @@ import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { hashHistory} from 'react-router'
 import { Card, CardContent, CardHeader, Typography,Grid,Button } from '@material-ui/core'
-import { withStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
 
 import APPCONFIG from 'constants/Config'
 import { renderTextField } from 'reduxFormComponent'
-
-const styles = theme => ({
-    logo: {
-        height: 'auto',
-        width: "200px"
-    },
-    cardImage: {
-        padding: '120px 40px 60px 40px'
-    },
-    formContent: {
-        padding: '0 40px 40px'
-    },
-    mtControl: {
-        marginBottom: "24px"
-    },
-    txtField: {
-        width: '100%',
-    },
-    cardBody: {
-        padding: '0 40px'
-    },
-    bdrTag: {
-        margin: '0 -40px',
-        borderColor: '#e1e6ee'
-    },
-    formSpacing: {
-        marginBottom: "70px"
-    },
-    button: {
-        borderColor: '#24BA4D',
-        color: '#24BA4D',
-        '&:hover':{
-            backgroundColor:'#24BA4D',
-            color:'#fff'
-        }
-    }
-
-});
 
 const validate = values => {
     const errors = {}
@@ -75,18 +35,18 @@ class ForgotPassword extends PureComponent {
         console.log(values);
     }
     render() {
-        const { handleSubmit, valid, classes } = this.props;
+        const { handleSubmit} = this.props;
 
         return (
-            <Grid item sm={3} className="pd0">
+            <Grid item sm={3} className="form-panel">
                 <Card className="side-login-panel">
                     <CardHeader
                         avatar={
-                            <img src={APPCONFIG.company_logo_path} className={classes.logo} />
+                            <img src={APPCONFIG.company_logo_path} className="logo-icon" />
                         }
-                        className={classes.cardImage}
+                        className="logo-qaud"
                     />
-                    <CardContent className={classes.cardBody}>
+                    <CardContent className="quad-content">
                         <Typography className="mrB15" gutterBottom variant="headline" component="label">
                             FORGOT PASSWORD
                         </Typography>
@@ -94,17 +54,17 @@ class ForgotPassword extends PureComponent {
                             Please enter your email id to request a password reset
                          </Typography>
 
-                        <form className={classes.formSpacing + ' form-login'} onSubmit={handleSubmit((values) => this.showResults(values))}>
-                           <Grid item sm={12} className={classes.mtControl}>
-                            <Field className={classes.txtField} component={renderTextField} label="Email" name="emailId" type="text" placeholder="Email" />
+                        <form className="form-qaud" onSubmit={handleSubmit((values) => this.showResults(values))}>
+                           <Grid item sm={12} className="qaud-grid">
+                            <Field className="text-field" component={renderTextField} label="Email" name="emailId" type="text" placeholder="Email" />
                             </Grid>
                             <Button type="submit" onClick={()=>hashHistory.push('/forgot-password-email')} variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}>Password Reset</Button>
                         </form>
-                        <hr className={classes. bdrTag} />
+                        <hr className="divider"/>
                         <div className="mrT25">
                             <p >Not Registered yet ?</p>
-                            <Button onClick={()=>hashHistory.push('/sign-up')} variant="outlined" className={classes.button +' mrR10'}>Register</Button>
-                            <Button onClick={()=>hashHistory.push('/login')} variant="outlined" className={classes.button}>Sign in</Button>
+                            <Button onClick={()=>hashHistory.push('/sign-up')} variant="outlined" className="btn-outline mrR10">Register</Button>
+                            <Button onClick={()=>hashHistory.push('/login')} variant="outlined" className="btn-outline">Sign in</Button>
                         </div> 
                     </CardContent>
 
@@ -114,15 +74,9 @@ class ForgotPassword extends PureComponent {
     }
 }
 
-ForgotPassword.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
-
-const ForgotwithStyle = withStyles(styles)(ForgotPassword)
-
 module.exports = reduxForm({
     form: 'forgotpassword',
     validate,
     destroyOnUnmount: true,
     forceUnregisterOnUnmount: true
-})(ForgotwithStyle);
+})(ForgotPassword);

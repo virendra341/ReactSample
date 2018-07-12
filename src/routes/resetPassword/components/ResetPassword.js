@@ -2,45 +2,9 @@ import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { hashHistory} from 'react-router'
 import { Button, Card, CardHeader, CardContent, Typography, Grid } from '@material-ui/core'
-import { withStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
 
 import APPCONFIG from 'constants/Config'
 import {renderPasswordField } from 'reduxFormComponent'
-
-const styles = theme => ({
-    logo: {
-        height: 'auto',
-        width: "200px"
-    },
-    cardImage: {
-        padding: '120px 40px 60px 40px'
-    },
-    formContent: {
-        padding: '0 40px 40px'
-    },
-    mtControl: {
-        marginBottom: "24px"
-    },
-    txtField: {
-        width: '100%',
-    },
-    cardBody: {
-        padding: '0 40px'
-    },
-    bdrTag: {
-        margin: '0 -40px',
-        borderColor: '#e1e6ee'
-    },
-    formSpacing: {
-        marginBottom: "70px"
-    },
-    button: {
-        borderColor: '#24BA4D',
-        color: '#24BA4D'
-    }
-
-});
 
 const validate = values => {
     const errors = {}
@@ -80,27 +44,27 @@ class ResetPassword extends PureComponent {
         console.log(values);
     }
     render() {
-        const { handleSubmit, valid, classes } = this.props;
+        const { handleSubmit} = this.props;
 
         return (
-            <Grid item sm={3} className="pd0">
+            <Grid item sm={3} className="form-panel">
                 <Card className="side-login-panel">
                     <CardHeader
                         avatar={
-                            <img src={APPCONFIG.company_logo_path} className={classes.logo} />
+                            <img src={APPCONFIG.company_logo_path} className="logo-icon" />
                         }
-                        className={classes.cardImage}
+                        className="logo-qaud"
                     />
-                    <CardContent className={classes.cardBody}>
+                    <CardContent className="quad-content">
                         <Typography className="mrB15" gutterBottom variant="headline" component="label">
                             NEW PASSWORD
                         </Typography>
-                        <form className={classes.formSpacing} onSubmit={handleSubmit((values) => this.showResults(values))}>
-                            <Grid item sm={12} className={classes.mtControl}>
-                                <Field className={classes.txtField + ' icon-size'} component={renderPasswordField} name="password" type="password" placeholder="Password" />
+                        <form className="form-qaud" onSubmit={handleSubmit((values) => this.showResults(values))}>
+                            <Grid item sm={12} className="qaud-grid">
+                                <Field className="text-field icon-size"  component={renderPasswordField} name="password" type="password" placeholder="Password" />
                             </Grid>
-                            <Grid item sm={12} className={classes.mtControl}>
-                                <Field className={classes.txtField + ' icon-size'} component={renderPasswordField} name="cpassword" type="password" placeholder="Confirm Password" />
+                            <Grid item sm={12} className="qaud-grid">
+                                <Field className="text-field icon-size"  component={renderPasswordField} name="cpassword" type="password" placeholder="Confirm Password" />
                             </Grid>
                             <Button type="submit" onClick={()=>hashHistory.push('/login')} variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}>Save</Button>
                         </form>
@@ -111,14 +75,9 @@ class ResetPassword extends PureComponent {
     }
 }
 
-ResetPassword.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
-
-const ResetPasswordwithStyle = withStyles(styles)(ResetPassword)
 module.exports = reduxForm({
     form: 'resetpassword',
     validate,
     destroyOnUnmount: true,
     forceUnregisterOnUnmount: true
-})(ResetPasswordwithStyle);
+})(ResetPassword);

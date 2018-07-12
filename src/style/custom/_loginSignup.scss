@@ -1,80 +1,119 @@
 .section-login {
-    color: #000 !important;
-    text-transform: initial !important;
-    .sb-loging-bg{
-        height: auto;
-        background-image: url('../assets/images/bg.png');
-        background-size: cover;
-        background-position: right center;
-       width: 100%;
-    }
-    .side-login-panel{
-        height: 100%;
-        .card-header {
-            background-color: transparent;
-            border-bottom: none;
-            img{
-                width: 170px;
-            }
+        color: #000 !important;
+        text-transform: initial !important;
+        .quad-container{
+            min-height: 100vh;
+            margin:0px;
+            width:100%;
+        .sb-loging-bg{
+            height: auto;
+            background-image: url('../assets/images/bg.png');
+            background-size: cover;
+            background-position: right center;
+        width: 100%;
         }
-    }
-    label{
+        .side-login-panel{
+            box-shadow: none;
+            overflow: visible;
+        
+        }
+        label{
+            font-size: 14px;
+            font-weight: 500 !important;
+        }
+    .validation-error {
+            color: red;
+            font-size: 12px;
+        }
+        ::placeholder {
         font-size: 14px;
-        font-weight: 500 !important;
-    }
-   .validation-error {
-        color: red;
-        font-size: 12px;
-    }
-    ::placeholder {
-       font-size: 14px;
-       color: #4D4D4D !important;
-    }
-    a{
-        font-size: 12px;
-    }
-    p{
-        font-size: 13px;
-        color: #6e6e6e;
-    }
-    .icon-size  {
-        > div > button > span > div{
-            width: 18px;
-            height: 18px;
+        color: #4D4D4D !important;
         }
-    }
-    .underline-solid{
-        > div {
-            &:before{
-                border-bottom: 1px solid rgba(0, 0, 0, 0.42) !important;
+        a{
+            font-size: 12px;
+        }
+        p{
+            font-size: 13px;
+            color: #6e6e6e;
+        }
+        .icon-size  {
+            > div > button > span > div{
+                width: 18px;
+                height: 18px;
             }
         }
-    }
-    .auto-suggesation{
-        > div > div{
-            &:last-child{
-            position: absolute;
-            left: 0;
-            right: 0;
-            z-index: 1;
-                ul{
-                    list-style: none;
-                    padding: 0;
+        .underline-solid{
+            > div {
+                &:before{
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.42) !important;
                 }
             }
         }
-    }
-    .form-login{
-        > div > div{ 
-            label[data-shrink ='true']  {
-                color: $bg_green-color_1 !important;
-                + div{
-                    &:after{
-                        border-bottom: 2px solid $bg_green-color_1 !important;
+        .auto-suggesation{
+            > div > div{
+                &:last-child{
+                position: absolute;
+                left: 0;
+                right: 0;
+                z-index: 1;
+                    ul{
+                        list-style: none;
+                        padding: 0;
                     }
                 }
-                
             }
+        }
+      
+        .form-panel{
+            padding: 20vh 4vh 0vh 4vh !important;
+            min-height:100vh;
+            .side-login-panel{
+                .logo-qaud{
+                    padding: 0;
+                    padding-bottom: 70px !important;
+                    height: 0px;
+                    .logo-icon{
+                        height: auto;
+                        width: 170px;
+                        display: block;
+                    }
+                }
+                .quad-content{
+                    padding: 0;  
+                    .form-qaud{
+                        margin-bottom: 70px;
+                        > div > div{ 
+                            label[data-shrink ='true']  {
+                                color: $bg_green-color_1 !important;
+                                + div{
+                                    &:after{
+                                        border-bottom: 2px solid $bg_green-color_1 !important;
+                                    }
+                                }
+                                
+                            }
+                        }
+                        .qaud-grid{
+                            margin-bottom:15px;
+                            .text-field{
+                                width:100%;
+                            }
+                        }
+                        .mt-checkbox{
+                            width:auto;
+                           margin-right:10px;
+                        }
+                    }
+                    .divider   
+                    {
+                        margin: 0 -4vh !important;
+                        border-color:#e1e6ee;
+                    }
+                }
+            }
+        }
+        .signup-quad{
+            padding: 15vh 4vh 0vh 4vh !important;
         }
     }
 }

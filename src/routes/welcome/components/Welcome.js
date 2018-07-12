@@ -1,44 +1,8 @@
 import React, { PureComponent } from 'react'
 import { reduxForm } from 'redux-form'
 import { Card, CardContent, CardHeader, Typography, Grid,Button } from '@material-ui/core'
-import { withStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
 
 import APPCONFIG from 'constants/Config'
-
-const styles = theme => ({
-    logo: {
-        height: 'auto',
-        width: "200px"
-    },
-    cardImage: {
-        padding: '120px 40px 60px 40px'
-    },
-    formContent: {
-        padding: '0 40px 40px'
-    },
-    mtControl: {
-        marginBottom: "24px"
-    },
-    txtField: {
-        width: '100%',
-    },
-    cardBody: {
-        padding: '0 40px'
-    },
-    bdrTag: {
-        margin: '0 -40px',
-        borderColor: '#e1e6ee'
-    },
-    formSpacing: {
-        marginBottom: "70px"
-    },
-    button: {
-        borderColor: '#24BA4D',
-        color: '#24BA4D'
-    }
-
-});
 
 const validate = values => {
     const errors = {}
@@ -59,7 +23,6 @@ const validate = values => {
     return errors
 }
 
-
 class Welcome extends PureComponent {
 
     componentWillMount() {
@@ -71,26 +34,26 @@ class Welcome extends PureComponent {
     }
 
     render() {
-        const { handleSubmit, valid, classes } = this.props;
+        const { handleSubmit } = this.props;
         console.log('Props ', this.props);
 
         return (
-            <Grid item sm={3} className="pd0">
+            <Grid item sm={3} className="form-panel">
                 <Card className="side-login-panel">
-                    <CardHeader
+                     <CardHeader
                         avatar={
-                            <img src={APPCONFIG.company_logo_path} className={classes.logo} />
+                            <img src={APPCONFIG.company_logo_path} className="logo-icon" />
                         }
-                        className={classes.cardImage}
+                        className="logo-qaud"
                     />
-                    <CardContent className={classes.cardBody}>
+                    <CardContent  className="quad-content">
                         <Typography className="mrB15" gutterBottom variant="headline" component="label">
                             WELCOME
                         </Typography>
                         <Typography className="mrB15" gutterBottom variant="headline" component="p">
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                          </Typography>
-                        <form className={classes.formSpacing} onSubmit={handleSubmit((values) => this.showResults(values))}>
+                        <form className="form-qaud" onSubmit={handleSubmit((values) => this.showResults(values))}>
                             <Button variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}>Resent</Button>
                         </form>
                     </CardContent>
@@ -100,14 +63,9 @@ class Welcome extends PureComponent {
     }
 }
 
-Welcome.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
-
-const WelcomewithStyle = withStyles(styles)(Welcome)
 module.exports = reduxForm({
     form: 'welcome',
     validate,
     destroyOnUnmount: true,
     forceUnregisterOnUnmount: true
-})(WelcomewithStyle);
+})(Welcome);

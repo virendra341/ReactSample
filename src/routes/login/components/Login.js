@@ -8,48 +8,9 @@ import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { Link ,hashHistory} from 'react-router'
 import { Button, Card, CardContent, CardHeader, Typography, Grid } from '@material-ui/core'
-import { withStyles } from '@material-ui/core/styles'
-import PropTypes from 'prop-types'
 
 import APPCONFIG from 'constants/Config'
 import { renderTextField, renderPasswordField } from 'reduxFormComponent'
-
-const styles = theme => ({
-    logo: {
-        height: 'auto',
-        width: "200px"
-    },
-    cardImage: {
-        padding: '120px 40px 60px 40px'
-    },
-    formContent: {
-        padding: '0 40px 40px'
-    },
-    mtControl:{
-        marginBottom:"24px"
-    },
-    txtField:{
-        width:'100%',
-    },
-    cardBody:{
-        padding:'0 40px'
-    },
-    bdrTag:{
-        margin:'0 -40px',
-        borderColor:'#e1e6ee'
-    },
-    formSpacing:{
-        marginBottom:"70px"
-    },
-    button:{
-        borderColor:'#24BA4D',
-        color:'#24BA4D',
-        '&:hover':{
-            backgroundColor:'#24BA4D',
-            color:'#fff'
-        }
-    }
-});
 
 const validate = values => {
     const errors = {}
@@ -83,27 +44,27 @@ class Login extends PureComponent {
     }
 
     render() {
-        const { handleSubmit, invalid, submitting, pristine, classes } = this.props;
+        const { handleSubmit, invalid, submitting, pristine} = this.props;
         return (
-            <Grid item sm={3} className="pd0">
+            <Grid item sm={3} className="form-panel">
                 <Card className="side-login-panel">
                     <CardHeader
                         avatar={
-                            <img src={APPCONFIG.company_logo_path} className={classes.logo} />
+                            <img src={APPCONFIG.company_logo_path} className="logo-icon" />
                         }
-                        className={classes.cardImage}
+                        className="logo-qaud"
                     />
-                    <CardContent className={classes.cardBody}>
+                    <CardContent className="quad-content">
                         <Typography className="mrB15" gutterBottom variant="headline" component="label">
                             SIGN IN WITH SECBERUS
                         </Typography>
 
-                        <form onSubmit={handleSubmit((values) => this.showResults(values))} className={classes.formSpacing + ' form-login'}>
-                            <Grid item sm={12} className={classes.mtControl}>
-                                <Field  className={classes.txtField}  component={renderTextField} label="Email" name="emailId" type="text"/>
+                        <form onSubmit={handleSubmit((values) => this.showResults(values))} className="form-qaud">
+                            <Grid item sm={12} className="qaud-grid">
+                                <Field  className="text-field"  component={renderTextField} label="Email" name="emailId" type="text"/>
                             </Grid>
-                            <Grid item sm={12} className="mrB10">
-                                <Field className={classes.txtField + ' icon-size'} component={renderPasswordField}  name="password" type="password"/>
+                            <Grid item sm={12} className="qaud-grid mrB10">
+                                <Field className="text-field icon-size" component={renderPasswordField}  name="password" type="password"/>
                             </Grid>
                             <div className="mrB20">
                                 <Link to="/forgot-password" >Forgot Password</Link>
@@ -112,10 +73,10 @@ class Login extends PureComponent {
                                 <Button type="submit" variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }} disabled={invalid || submitting || pristine}>Sign in</Button>
                             </div>
                         </form>
-                        <hr className={ classes.bdrTag}/>
+                        <hr className="divider"/>
                         <div className="mrT25">
-                            <p >Not Registered yet ?</p>
-                            <Button onClick={()=>hashHistory.push('/sign-up')} variant="outlined" className={classes.button}>Register</Button>
+                            <p>Not Registered yet ?</p>
+                            <Button onClick={()=>hashHistory.push('/sign-up')} variant="outlined" className="btn-outline">Register</Button>
                         </div>
                     </CardContent>
                 </Card>
@@ -123,8 +84,5 @@ class Login extends PureComponent {
         )
     }
 }
-Login.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
-const loginwithStyle = withStyles(styles)(Login)
-module.exports = reduxForm({ form: 'login', validate })(loginwithStyle);
+
+module.exports = reduxForm({ form: 'login', validate })(Login);
