@@ -2,7 +2,7 @@
  * @Author: Virendra Patidar 
  * @Date: 2018-07-11 16:39:16 
  * @Last Modified by: Virendra Patidar
- * @Last Modified time: 2018-07-12 14:39:46
+ * @Last Modified time: 2018-07-12 15:41:29
  */
 import React, { Fragment } from 'react'
 import TextField from '@material-ui/core/TextField'
@@ -54,11 +54,15 @@ export const renderSelectField = ({ input, label, meta: { touched, error }, chil
     </Fragment>
 )
 
+const onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) => {
+    event.preventDefault()
+};
+
 /**
  * Used for render autocomplete field
  * @param {*} param0 
  */
-export const renderAutoCompleteField = ({ handleSuggestionsFetchRequested, onSuggestionsClearRequested, inputProps, suggestions, value, input, fields, label, meta: { touched, error }, children, ...custom }) => (
+export const renderAutoCompleteField = ({  handleSuggestionsFetchRequested, onSuggestionsClearRequested, inputProps, suggestions, value, input, fields, label, meta: { touched, error }, children, ...custom }) => (
 
     <Autosuggest
         theme={{
@@ -74,6 +78,8 @@ export const renderAutoCompleteField = ({ handleSuggestionsFetchRequested, onSug
         renderSuggestionsContainer={renderSuggestionsContainer}
         getSuggestionValue={getSuggestionValue}
         renderSuggestion={renderSuggestion}
+        OnSuggestionSelected={onSuggestionSelected}
+      
         inputProps={inputProps}
         {...input}
         label={label}
