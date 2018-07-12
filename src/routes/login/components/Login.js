@@ -2,7 +2,7 @@
  * @Author: Virendra Patidar 
  * @Date: 2018-07-05 18:18:44 
  * @Last Modified by: Virendra Patidar
- * @Last Modified time: 2018-07-11 16:20:54
+ * @Last Modified time: 2018-07-11 17:20:02
  */
 import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
@@ -58,7 +58,7 @@ const styles = theme => ({
 const validate = values => {
     const errors = {}
     const requiredFields = [
-        'username',
+        'emailId',
         'password'
     ]
     requiredFields.forEach(field => {
@@ -67,10 +67,10 @@ const validate = values => {
         }
     })
     if (
-        values.username &&
-        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.username)
+        values.emailId &&
+        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.emailId)
     ) {
-        errors.username = 'Invalid email address'
+        errors.emailId = 'Invalid email address'
     }
     return errors
 }
@@ -110,7 +110,7 @@ class Login extends PureComponent {
                                 <Field  className={classes.txtField}  component={renderTextField} label="Email" name="emailId" type="text"/>
                             </Grid>
                             <Grid item sm={12} className="mrB10">
-                                <Field className={classes.txtField + ' icon-size'} component={renderPasswordField}  name="password" type="password"/>
+                                <Field className={classes.txtField + ' icon-size'} label="Password" component={renderPasswordField}  name="password" type="password"/>
                             </Grid>
                             <div className="mrB20">
                                 <Link to="/forgot-password" >Forgot Password</Link>

@@ -1,13 +1,15 @@
 import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { hashHistory} from 'react-router'
-import { Button, Card, CardContent, CardHeader, Typography, Grid } from '@material-ui/core'
-import { withStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
+import { hashHistory } from 'react-router'
 
+import { Button, Card, CardContent, CardHeader, Typography, Grid } from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles'
+
+import PropTypes from 'prop-types'
 import APPCONFIG from 'constants/Config'
+
 import { renderTextField, renderAutoCompleteField, renderCheckbox, renderPasswordField } from 'reduxFormComponent'
-import { getSuggestions } from 'autoComplete'
+import { getSuggestions,setConfig } from '../../../reduxFormComponent/AutoComplete'
 
 const styles = theme => ({
     logo: {
@@ -39,14 +41,14 @@ const styles = theme => ({
     button: {
         borderColor: '#24BA4D',
         color: '#24BA4D',
-        '&:hover':{
-            backgroundColor:'#24BA4D',
-            color:'#fff'
+        '&:hover': {
+            backgroundColor: '#24BA4D',
+            color: '#fff'
         }
     },
-    CheckBoxWidth:{
-        width:'auto',
-        marginRight:'10px'
+    CheckBoxWidth: {
+        width: 'auto',
+        marginRight: '10px'
     },
 });
 const validate = values => {
@@ -88,33 +90,65 @@ const validate = values => {
     return errors
 }
 
+const dataSourceConfig = {
+    text: 'name',
+    value: 'id',
+};
 
+const stateDataSourceConfig = {
+    text: 'stateName',
+    value: 'id',
+};
 class SignUp extends PureComponent {
 
     state = {
         countryList: [{ id: 1, name: 'Indina' }, { id: 2, name: 'japan' }, { id: 3, name: 'Indo' }],
-        value: '',
-        suggestions: []
+        countryValue: '',
+        countrySuggestions: [],
+
+        stateList: [{ id: 1, stateName: 'Rajsthan' }, { id: 2, stateName: 'MP' }, { id: 3, stateName: 'Pune' }],
+        stateValue: '',
+        stateSuggestions: []
     }
 
-    handleSuggestionsFetchRequested = ({ value }) => {
+    handleSuggestionsFetchRequestedCountry = ({ value }) => {
         this.setState({
-            suggestions: getSuggestions(value, this.state.countryList),
+            countrySuggestions: getSuggestions(value, this.state.countryList),
         });
     };
 
-    handleSuggestionsClearRequested = () => {
+    handleSuggestionsClearRequestedCountry = () => {
         this.setState({
-            suggestions: [],
+            countrySuggestions: [],
         });
     };
 
-    handleChange = (event, { newValue }) => {
+    handleChangeCountry = (event, { newValue }) => {
+        setConfig(dataSourceConfig);
         this.setState({
-            value: newValue,
+            countryValue: newValue,
+        }, () => { console.log(' countryValue ',this.state.countryValue);  });
+    };
+
+
+    handleSuggestionsFetchRequestedState = ({ value }) => {
+        this.setState({
+            stateSuggestions: getSuggestions(value, this.state.stateList),
         });
     };
 
+    handleSuggestionsClearRequestedState = () => {
+        this.setState({
+            stateSuggestions: [],
+        });
+    };
+
+    handleChangeState = (event, { newValue }) => {
+        setConfig(stateDataSourceConfig);
+        this.setState({
+            stateValue: newValue,
+        });
+    };
 
     componentWillMount() {
         this.props.reset();
@@ -128,11 +162,18 @@ class SignUp extends PureComponent {
 
     render() {
         const { handleSubmit, invalid, submitting, pristine, classes } = this.props;
-        const { value, suggestions } = this.state;
-        const inputProps = {
+        const { countryValue, stateValue } = this.state;
+
+        const countryInputProps = {
             placeholder: 'Select Country',
-            value,
-            onChange: this.handleChange,
+            value: countryValue,
+            onChange: this.handleChangeCountry,
+        };
+
+        const stateInputProps = {
+            placeholder: 'Select State',
+            value: stateValue,
+            onChange: this.handleChangeState,
         };
         return (
 
@@ -150,23 +191,24 @@ class SignUp extends PureComponent {
                         </Typography>
                         <form className={classes.formSpacing} onSubmit={handleSubmit((values) => this.showResults(values))}>
                             <Grid item sm={12} className={classes.mtControl}>
-                            <Field  className={classes.txtField} component={renderTextField} name="fullname" type="text" label="Full Name" />
+                                <Field className={classes.txtField} component={renderTextField} name="fullname" type="text" label="Full Name" />
                             </Grid>
                             <Grid item sm={12} className={classes.mtControl}>
-                            <Field className={classes.txtField} component={renderTextField} name="cname" type="text" label="Company Name" />
+                                <Field className={classes.txtField} component={renderTextField} name="cname" type="text" label="Company Name" />
                             </Grid>
                             <Grid container spacing={16}>
                                 <Grid item sm={6} className={classes.mtControl}>
-                                    <Field className={classes.txtField +' mrR10'} onSuggestionsClearRequested={this.onSuggestionsClearRequested} handleSuggestionsFetchRequested={this.handleSuggestionsFetchRequested} inputProps={inputProps} suggestions={this.state.suggestions} id="country" name="country" label="Select country"  component={renderAutoCompleteField} >
+                                    <Field className={classes.txtField + ' mrR10'} id="country" name="country" onSuggestionsClearRequested={this.handleSuggestionsClearRequestedCountry} handleSuggestionsFetchRequested={this.handleSuggestionsFetchRequestedCountry} inputProps={countryInputProps} suggestions={this.state.countrySuggestions} dataSourceConfig={dataSourceConfig} component={renderAutoCompleteField} >
                                     </Field>
                                 </Grid>
                                 <Grid item sm={6} className={classes.mtControl}>
-                                    <Field className={classes.txtField}  component={renderTextField} name="state" type="text" label="State" />
+                                    <Field className={classes.txtField + ' mrR10'} id="state" name="state" onSuggestionsClearRequested={this.handleSuggestionsClearRequestedState} handleSuggestionsFetchRequested={this.handleSuggestionsFetchRequestedState} inputProps={stateInputProps} suggestions={this.state.stateSuggestions} dataSourceConfig={stateDataSourceConfig} component={renderAutoCompleteField} >
+                                    </Field>
                                 </Grid>
                             </Grid>
                             <Grid container spacing={16}>
                                 <Grid item sm={3} className={classes.mtControl}>
-                                    <Field className={classes.txtField + ' underline-solid'} component={renderTextField} name="countryCode" type="text" label="+ 91" disabled={true} 
+                                    <Field className={classes.txtField + ' underline-solid'} component={renderTextField} name="countryCode" type="text" label="+ 91" disabled={true}
                                     />
                                 </Grid>
                                 <Grid item sm={9} className={classes.mtControl}>
@@ -174,13 +216,13 @@ class SignUp extends PureComponent {
                                 </Grid>
                             </Grid>
                             <Grid item sm={12} className={classes.mtControl}>
-                            <Field className={classes.txtField} component={renderTextField} name="emailId" type="text" label="Email"/>
+                                <Field className={classes.txtField} component={renderTextField} name="emailId" type="text" label="Email" />
                             </Grid>
                             <Grid item sm={12} className={classes.mtControl}>
-                            <Field className={classes.txtField + ' icon-size'} component={renderPasswordField} name="password" type="password" label="Password" />
+                                <Field className={classes.txtField + ' icon-size'} component={renderPasswordField} name="password" type="password" label="Password" />
                             </Grid>
-                                <Field className={classes.CheckBoxWidth} name="iAgree" color="primary" component={renderCheckbox} label="iAgree" />
-                                <span className="fnt-12">I am agree with of <a href="#">Service agreement</a></span>
+                            <Field className={classes.CheckBoxWidth} name="iAgree" color="primary" component={renderCheckbox} label="iAgree" />
+                            <span className="fnt-12">I am agree with of <a href="#">Service agreement</a></span>
                             <div>
                                 <Button type="submit" variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }} disabled={invalid || submitting || pristine}>Register</Button>{' '}
                             </div>
@@ -188,7 +230,7 @@ class SignUp extends PureComponent {
                         <hr className={classes.bdrTag} />
                         <div className="mrT25">
                             <p >Already Registered ?</p>
-                            <Button onClick={()=>hashHistory.push('/login')} variant="outlined" className={classes.button}>Sign In</Button>
+                            <Button onClick={() => hashHistory.push('/login')} variant="outlined" className={classes.button}>Sign In</Button>
                         </div>
                     </CardContent>
                 </Card>

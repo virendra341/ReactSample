@@ -1,12 +1,29 @@
-import React, { Fragment } from 'react'
+/*
+ * @Author: Virendra Patidar 
+ * @Date: 2018-07-11 16:44:23 
+ * @Last Modified by: Virendra Patidar
+ * @Last Modified time: 2018-07-12 14:19:37
+ */
+import React from 'react'
+
 import TextField from '@material-ui/core/TextField'
 import Paper from '@material-ui/core/Paper'
 import MenuItem from '@material-ui/core/MenuItem'
+
 import match from 'autosuggest-highlight/match'
 import parse from 'autosuggest-highlight/parse'
 
+
+let dataSourceConfig = {
+    text: 'name',
+    value: 'id',
+};
+
+export const setConfig = (config) => {
+    dataSourceConfig = config
+}
 export const renderInput = (inputProps) => {
-    const { classes,placeholder, ref, ...other } = inputProps;
+    const { classes, placeholder, ref, ...other } = inputProps;
 
     return (
         <TextField
@@ -26,8 +43,10 @@ export const renderInput = (inputProps) => {
 
 
 export const renderSuggestion = (suggestion, { query, isHighlighted }) => {
-    const matches = match(suggestion.name, query);
-    const parts = parse(suggestion.name, matches);
+
+    const matches = match(suggestion[dataSourceConfig.text], query);
+    const parts = parse(suggestion[dataSourceConfig.text], matches);
+
 
     return (
         <MenuItem selected={isHighlighted} component="div">
@@ -60,7 +79,8 @@ export const renderSuggestionsContainer = (options) => {
 }
 
 export const getSuggestionValue = (suggestion) => {
-    return suggestion.name;
+
+    return suggestion[dataSourceConfig.text];
 }
 
 
@@ -68,18 +88,20 @@ export const getSuggestions = (value, suggestions) => {
     const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
     let count = 0;
-
     return inputLength === 0
         ? []
         : suggestions.filter(suggestion => {
-            const keep =
-                count < 5 && suggestion.name.toLowerCase().slice(0, inputLength) === inputValue;
+            let suggestValue = suggestion[dataSourceConfig.text]
+            if (suggestValue !== undefined) {
+                const keep =
+                    count < 5 && suggestValue.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1;
 
-            if (keep) {
-                count += 1;
+                if (keep) {
+                    count += 1;
+                }
+                return keep;
             }
-
-            return keep;
+            
         });
 }
 

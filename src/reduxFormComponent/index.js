@@ -1,11 +1,23 @@
+/*
+ * @Author: Virendra Patidar 
+ * @Date: 2018-07-11 16:39:16 
+ * @Last Modified by: Virendra Patidar
+ * @Last Modified time: 2018-07-12 14:12:52
+ */
 import React, { Fragment } from 'react'
 import TextField from '@material-ui/core/TextField'
 import SelectField from '@material-ui/core/Select'
 import Autosuggest from 'react-autosuggest'
-import { renderInput, renderSuggestionsContainer, getSuggestionValue, renderSuggestion, styles } from '../autoComplete'
 import Checkbox from '@material-ui/core/Checkbox'
-import PasswordField from 'material-ui-password-field'
 
+import PasswordField from './PasswordField'
+
+import { renderInput, renderSuggestionsContainer, getSuggestionValue, renderSuggestion, styles } from './AutoComplete'
+
+/**
+ * Used for render text field
+ * @param {*} param0 
+ */
 export const renderTextField = ({
     input,
     label,
@@ -23,6 +35,11 @@ export const renderTextField = ({
         </Fragment>
     )
 
+
+/**
+ * Used for render select field
+ * @param {*} param0 
+ */
 export const renderSelectField = ({ input, label, meta: { touched, error }, children, ...custom }) => (
     <Fragment>
         <SelectField
@@ -37,6 +54,10 @@ export const renderSelectField = ({ input, label, meta: { touched, error }, chil
     </Fragment>
 )
 
+/**
+ * Used for render autocomplete field
+ * @param {*} param0 
+ */
 export const renderAutoCompleteField = ({ handleSuggestionsFetchRequested, handleSuggestionsClearRequested, inputProps, suggestions, value, input, fields, label, meta: { touched, error }, children, ...custom }) => (
 
     <Autosuggest
@@ -59,6 +80,10 @@ export const renderAutoCompleteField = ({ handleSuggestionsFetchRequested, handl
     />
 )
 
+/**
+ * Used for render checkbox
+ * @param {*} param0 
+ */
 export const renderCheckbox = ({ input, label, ...custom }) => (
     <Checkbox
         label={label}
@@ -68,16 +93,18 @@ export const renderCheckbox = ({ input, label, ...custom }) => (
     />
 )
 
+/**
+ * Used for render password
+ * @param {*} param0 
+ */
 export const renderPasswordField = ({
     input,
-    //floatingLabelText,
     name,
     meta: { touched, error },
     ...custom
 }) => (
         <Fragment>
-            <PasswordField 
-                //  floatingLabelText={floatingLabelText}
+            <PasswordField
                 {...input}
                 {...custom}
             />
