@@ -14,10 +14,10 @@ class WelcomePage extends PureComponent {
 
             <div className="section-login">
                 <Grid container spacing={24} className="quad-container">
-                    <ErrorBoundary>
+                    <ErrorBoundary error="bg-error">
                         <LoginBackground></LoginBackground>
                     </ErrorBoundary>
-                    <ErrorBoundary>
+                    <ErrorBoundary error="login-error">
                         <Welcome></Welcome>
                     </ErrorBoundary>
                 </Grid>

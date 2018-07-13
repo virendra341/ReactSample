@@ -35,8 +35,6 @@ class Welcome extends PureComponent {
 
     render() {
         const { handleSubmit } = this.props;
-        console.log('Props ', this.props);
-
         return (
             <Grid item sm={3} className="form-panel">
                 <Card className="side-login-panel">

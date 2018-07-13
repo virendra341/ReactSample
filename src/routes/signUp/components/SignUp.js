@@ -1,9 +1,3 @@
-/*
- * @Author: Virendra Patidar 
- * @Date: 2018-07-13 10:33:44 
- * @Last Modified by: Virendra Patidar
- * @Last Modified time: 2018-07-13 12:50:11
- */
 import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { hashHistory } from 'react-router'
@@ -11,12 +5,12 @@ import { Button, Card, CardContent, CardHeader, Typography, Grid } from '@materi
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import * as signupActions from '../../../actions/signupAction'
 
 import APPCONFIG from 'constants/Config'
 
 import { renderTextField, renderAutoCompleteField, renderCheckbox, renderPasswordField } from 'reduxFormComponent'
 import { getSuggestions, setConfig } from '../../../reduxFormComponent/AutoComplete'
-import * as signupActions from '../../../actions/signupAction'
 
 const validate = values => {
     const errors = {}
@@ -26,7 +20,7 @@ const validate = values => {
         'contactNumber',
         'emailId',
         'password',
-        'isAgree'
+        //'isAgree'
     ]
 
     requiredFields.forEach(field => {
@@ -106,6 +100,7 @@ class SignUp extends PureComponent {
     };
 
 
+
     handleSuggestionsFetchRequestedState = ({ value }) => {
         this.setState({
             stateSuggestions: getSuggestions(value, this.state.stateList),
@@ -137,11 +132,13 @@ class SignUp extends PureComponent {
     }
 
     showResults = (values) => {
+        console.log(values);
         this.props.actions.signup(values).
             then(result => { console.log('signup response ', result) });
     }
 
     render() {
+       
         const { handleSubmit, invalid, submitting, pristine } = this.props;
         const { countryValue, stateValue } = this.state;
 
@@ -158,8 +155,8 @@ class SignUp extends PureComponent {
             type: 'search',
             onChange: this.handleChangeState,
         };
+       
         return (
-
             <Grid item sm={3} className="form-panel">
                 <Card className="side-login-panel">
                     <CardHeader

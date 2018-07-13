@@ -71,7 +71,7 @@ class Login extends PureComponent {
                                 <Field className="text-field" component={renderTextField} label="Email" name="username" type="text" />
                             </Grid>
                             <Grid item sm={12} className="qaud-grid mrB10">
-                                <Field className="text-field icon-size" component={renderPasswordField}  name="password" label="Password" type="password"/>
+                                <Field className="text-field icon-size" component={renderPasswordField} name="password" label="Password" type="password" />
                             </Grid>
                             <div className="mrB20">
                                 <Link to="/forgot-password" >Forgot Password</Link>
