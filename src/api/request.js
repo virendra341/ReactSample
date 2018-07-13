@@ -2,7 +2,7 @@
  * @Author: Virendra Patidar 
  * @Date: 2018-07-11 14:09:03 
  * @Last Modified by: Virendra Patidar
- * @Last Modified time: 2018-07-11 14:47:17
+ * @Last Modified time: 2018-07-13 09:40:14
  */
 import axios from 'axios'
 import Config from 'constants/Config'
@@ -11,7 +11,8 @@ import Config from 'constants/Config'
  * Create an Axios Client with defaults
  */
 const client = axios.create({
-    baseURL: Config.api_url
+    baseURL: Config.api_url,
+    headers: { 'Content-Type': 'application/json' },
 });
 
 /**

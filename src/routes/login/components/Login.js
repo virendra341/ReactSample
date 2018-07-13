@@ -2,7 +2,7 @@
  * @Author: Virendra Patidar 
  * @Date: 2018-07-05 18:18:44 
  * @Last Modified by: Virendra Patidar
- * @Last Modified time: 2018-07-12 14:35:33
+ * @Last Modified time: 2018-07-13 12:49:59
  */
 import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
@@ -10,6 +10,7 @@ import { Link, hashHistory } from 'react-router'
 import { Button, Card, CardContent, CardHeader, Typography, Grid } from '@material-ui/core'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+
 import * as loginActions from '../../../actions/loginAction'
 import APPCONFIG from 'constants/Config'
 
@@ -18,7 +19,7 @@ import { renderTextField, renderPasswordField } from 'reduxFormComponent'
 const validate = values => {
     const errors = {}
     const requiredFields = [
-        'emailId',
+        'username',
         'password'
     ]
     requiredFields.forEach(field => {
@@ -27,10 +28,10 @@ const validate = values => {
         }
     })
     if (
-        values.emailId &&
-        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.emailId)
+        values.username &&
+        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.username)
     ) {
-        errors.emailId = 'Invalid email address'
+        errors.username = 'Invalid email address'
     }
     return errors
 }
@@ -50,7 +51,7 @@ class Login extends PureComponent {
     }
 
     render() {
-        const { handleSubmit, invalid, submitting, pristine} = this.props;
+        const { handleSubmit, invalid, submitting, pristine } = this.props;
         return (
             <Grid item sm={3} className="form-panel">
                 <Card className="side-login-panel">
@@ -67,7 +68,7 @@ class Login extends PureComponent {
 
                         <form onSubmit={handleSubmit((values) => this.showResults(values))} className="form-qaud">
                             <Grid item sm={12} className="qaud-grid">
-                                <Field  className="text-field"  component={renderTextField} label="Email" name="emailId" type="text"/>
+                                <Field className="text-field" component={renderTextField} label="Email" name="username" type="text" />
                             </Grid>
                             <Grid item sm={12} className="qaud-grid mrB10">
                                 <Field className="text-field icon-size" component={renderPasswordField}  name="password" label="Password" type="password"/>
@@ -79,10 +80,10 @@ class Login extends PureComponent {
                                 <Button type="submit" variant="contained" className="btn-success" disabled={invalid || submitting || pristine}>Sign in</Button>
                             </div>
                         </form>
-                        <hr className="divider"/>
+                        <hr className="divider" />
                         <div className="mrT25">
                             <p>Not Registered yet ?</p>
-                            <Button onClick={()=>hashHistory.push('/sign-up')} variant="outlined" className="btn-outline">Register</Button>
+                            <Button onClick={() => hashHistory.push('/sign-up')} variant="outlined" className="btn-outline">Register</Button>
                         </div>
                     </CardContent>
                 </Card>
