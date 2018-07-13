@@ -15,12 +15,13 @@ import { getSuggestions, setConfig } from '../../../reduxFormComponent/AutoCompl
 const validate = values => {
     const errors = {}
     const requiredFields = [
-        'fullname',
-        'cname',
-        'contactNumber',
-        'emailId',
+        'first_name',
+        'company',
+        'phone_number',
+        'email',
         'password',
-        //'isAgree'
+        'country',
+        'state'
     ]
 
     requiredFields.forEach(field => {
@@ -95,11 +96,13 @@ class SignUp extends PureComponent {
     onSelectStateCountry = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) => {
         event.preventDefault()
         this.setState({ selectedCountry: suggestion }, () => {
-            this.props.change('country', suggestion)
+            this.props.change('country', suggestion[dataSourceConfig.value])
         });
     };
 
 
+
+    
 
     handleSuggestionsFetchRequestedState = ({ value }) => {
         this.setState({
@@ -123,7 +126,7 @@ class SignUp extends PureComponent {
     onSelectState = (event, { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) => {
         event.preventDefault()
         this.setState({ selectedState: suggestion }, () => {
-            this.props.change('state', suggestion)
+            this.props.change('state', suggestion[stateDataSourceConfig.value])
         });
     };
 
@@ -171,10 +174,10 @@ class SignUp extends PureComponent {
                         </Typography>
                         <form className="form-qaud" onSubmit={handleSubmit((values) => this.showResults(values))}>
                             <Grid item sm={12} className="qaud-grid">
-                                <Field className="text-field" component={renderTextField} name="fullname" type="text" label="Full Name" />
+                                <Field className="text-field" component={renderTextField} name="first_name" type="text" label="Full Name" />
                             </Grid>
                             <Grid item sm={12} className="qaud-grid">
-                                <Field className="text-field" component={renderTextField} name="cname" type="text" label="Company Name" />
+                                <Field className="text-field" component={renderTextField} name="company" type="text" label="Company Name" />
                             </Grid>
                             <Grid container spacing={16}>
                                 <Grid item sm={6} className="qaud-grid auto-suggesation">
@@ -192,11 +195,11 @@ class SignUp extends PureComponent {
                                     />
                                 </Grid>
                                 <Grid item sm={9} className="qaud-grid">
-                                    <Field className="text-field" component={renderTextField} name="contactNumber" type="text" label="Contact Number" />
+                                    <Field className="text-field" component={renderTextField} name="phone_number" type="text" label="Contact Number" />
                                 </Grid>
                             </Grid>
                             <Grid item sm={12} className="qaud-grid">
-                                <Field className="text-field" component={renderTextField} name="emailId" type="text" label="Email" />
+                                <Field className="text-field" component={renderTextField} name="email" type="text" label="Email" />
                             </Grid>
                             <Grid item sm={12} className="qaud-grid">
                                 <Field className="text-field icon-size" component={renderPasswordField} name="password" type="password" label="Password" />

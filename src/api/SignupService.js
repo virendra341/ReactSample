@@ -9,7 +9,7 @@ import request from './request'
 
 function registration(data) {
     return request({
-      url:    'signup',
+      url:    'users/create/',
       method: 'POST',
       data
     });

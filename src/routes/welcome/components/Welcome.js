@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react'
 import { reduxForm } from 'redux-form'
+import { hashHistory} from 'react-router'
 import { Card, CardContent, CardHeader, Typography, Grid,Button } from '@material-ui/core'
 
 import APPCONFIG from 'constants/Config'
@@ -52,7 +53,8 @@ class Welcome extends PureComponent {
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                          </Typography>
                         <form className="form-qaud" onSubmit={handleSubmit((values) => this.showResults(values))}>
-                            <Button variant="contained" className="btn-success">Resent</Button>
+                            <Button variant="contained" className="btn-success mrR10">Resent</Button>
+                            <Button variant="contained" className="btn-success" onClick={()=>hashHistory.push('/login')}>Login</Button>
                         </form>
                     </CardContent>
                 </Card>
