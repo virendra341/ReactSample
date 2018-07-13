@@ -51,7 +51,7 @@ class ForgotPasswordEmail extends PureComponent {
                         </Typography>
                         <form className="form-qaud" onSubmit={handleSubmit((values) => this.showResults(values))}>
                             <div>
-                                <Button type="submit" onClick={()=>hashHistory.push('/reset-password')} variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}>Done</Button>
+                                <Button type="submit" onClick={()=>hashHistory.push('/reset-password')} variant="contained" className="btn-success">Done</Button>
                             </div>
                         </form>
                     </CardContent>

@@ -203,7 +203,7 @@ class SignUp extends PureComponent {
                             <Field className="mt-checkbox" name="iAgree" color="primary" component={renderCheckbox} label="iAgree" />
                             <span className="fnt-12">I am agree with of <a href="#">Service agreement</a></span>
                             <div>
-                                <Button type="submit" variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}  disabled={invalid || submitting || pristine}>Register</Button>{' '}
+                                <Button type="submit" variant="contained" className="btn-success"  disabled={invalid || submitting || pristine}>Register</Button>{' '}
                             </div>
                         </form>
                         <hr className="divider" />

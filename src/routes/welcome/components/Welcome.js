@@ -54,7 +54,7 @@ class Welcome extends PureComponent {
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                          </Typography>
                         <form className="form-qaud" onSubmit={handleSubmit((values) => this.showResults(values))}>
-                            <Button variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}>Resent</Button>
+                            <Button variant="contained" className="btn-success">Resent</Button>
                         </form>
                     </CardContent>
                 </Card>
