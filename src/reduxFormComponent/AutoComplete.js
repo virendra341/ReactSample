@@ -2,7 +2,7 @@
  * @Author: Virendra Patidar 
  * @Date: 2018-07-11 16:44:23 
  * @Last Modified by: Virendra Patidar
- * @Last Modified time: 2018-07-12 14:33:39
+ * @Last Modified time: 2018-07-13 10:28:18
  */
 import React from 'react'
 
@@ -44,8 +44,6 @@ export const renderSuggestion = (suggestion, { query, isHighlighted }) => {
 
     const matches = match(suggestion[dataSourceConfig.text], query);
     const parts = parse(suggestion[dataSourceConfig.text], matches);
-
-
     return (
         <MenuItem selected={isHighlighted} component="div">
             <div>
@@ -76,7 +74,6 @@ export const renderSuggestionsContainer = (options) => {
 }
 
 export const getSuggestionValue = (suggestion) => {
-
     return suggestion[dataSourceConfig.text];
 }
 

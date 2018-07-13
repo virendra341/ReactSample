@@ -1,17 +1,22 @@
+/*
+ * @Author: Virendra Patidar 
+ * @Date: 2018-07-13 10:33:44 
+ * @Last Modified by: Virendra Patidar
+ * @Last Modified time: 2018-07-13 12:43:49
+ */
 import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { hashHistory } from 'react-router'
-import { actionCreators } from 'redux-form'
 
 import { Button, Card, CardContent, CardHeader, Typography, Grid } from '@material-ui/core'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as signupActions from '../../../actions/signupAction'
 
 import APPCONFIG from 'constants/Config'
 
 import { renderTextField, renderAutoCompleteField, renderCheckbox, renderPasswordField } from 'reduxFormComponent'
 import { getSuggestions, setConfig } from '../../../reduxFormComponent/AutoComplete'
+import * as signupActions from '../../../actions/signupAction'
 
 const validate = values => {
     const errors = {}
@@ -21,7 +26,7 @@ const validate = values => {
         'contactNumber',
         'emailId',
         'password',
-        //'isAgree'
+        'isAgree'
     ]
 
     requiredFields.forEach(field => {
@@ -101,7 +106,6 @@ class SignUp extends PureComponent {
     };
 
 
-
     handleSuggestionsFetchRequestedState = ({ value }) => {
         this.setState({
             stateSuggestions: getSuggestions(value, this.state.stateList),
@@ -133,7 +137,6 @@ class SignUp extends PureComponent {
     }
 
     showResults = (values) => {
-        console.log(values);
         this.props.actions.signup(values).
             then(result => { console.log('signup response ', result) });
     }

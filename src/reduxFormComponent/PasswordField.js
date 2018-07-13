@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import IconButton from '@material-ui/core/IconButton'
 import Input from '@material-ui/core/Input'
 import InputLabel from '@material-ui/core/InputLabel'
@@ -48,7 +47,5 @@ class PasswordField extends React.Component {
         );
     }
 }
-
-
 
 export default PasswordField;
