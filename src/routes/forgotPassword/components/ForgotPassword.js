@@ -64,7 +64,7 @@ class ForgotPassword extends PureComponent {
                            <Grid item sm={12} className="qaud-grid">
                             <Field className="text-field" component={renderTextField} label="Email" name="emailId" type="text" placeholder="Email" />
                             </Grid>
-                            <Button type="submit" disabled={invalid || submitting || pristine} variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}>Password Reset</Button>
+                            <Button type="submit" disabled={invalid || submitting || pristine} variant="contained" className="btn-success">Password Reset</Button>
                         </form>
                         <hr className="divider"/>
                         <div className="mrT25">

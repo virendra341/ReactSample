@@ -72,7 +72,7 @@ class ResetPassword extends PureComponent {
                             <Grid item sm={12} className="qaud-grid">
                                 <Field className="text-field icon-size"  component={renderPasswordField} name="cpassword" type="password" label="Confirm Password" />
                             </Grid>
-                            <Button type="submit" disabled={invalid || submitting || pristine}  variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}>Save</Button>
+                            <Button type="submit" disabled={invalid || submitting || pristine}  variant="contained" className="btn-success">Save</Button>
                         </form>
                     </CardContent>
                 </Card>
