@@ -5,11 +5,15 @@
             min-height: 100vh;
             margin:0px;
             width:100%;
+            display: table;
         .sb-loging-bg{
-            height: auto;
+            height: 100%;
             background-image: url('../assets/images/bg.png');
             background-size: cover;
-       width: 100%;
+            width: 75%;
+            position: fixed;
+            left: 0;
+            float: left;
         }
         .side-login-panel{
             box-shadow: none;
@@ -64,8 +68,10 @@
         }
       
         .form-panel{
-            padding: 18vh 4vh 4vh 4vh !important;
+            padding: 15vh 4vh 4vh 4vh !important;
             min-height:100vh;
+            float: right;
+            width: 25%;
             .side-login-panel{
                 .logo-qaud{
                     padding: 0;

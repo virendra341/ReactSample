@@ -65,12 +65,6 @@ const onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIn
 export const renderAutoCompleteField = ({  handleSuggestionsFetchRequested, onSuggestionsClearRequested, inputProps, suggestions, value, input, fields, label, meta: { touched, error }, children, ...custom }) => (
 
     <Autosuggest
-        theme={{
-            container: styles.container,
-            suggestionsContainerOpen: styles.suggestionsContainerOpen,
-            suggestionsList: styles.suggestionsList,
-            suggestion: styles.suggestion,
-        }}
         renderInputComponent={renderInput}
         suggestions={suggestions}
         onSuggestionsFetchRequested={handleSuggestionsFetchRequested}
@@ -107,6 +101,7 @@ export const renderCheckbox = ({ input, label, ...custom }) => (
 export const renderPasswordField = ({
     input,
     name,
+    placeholder,
     meta: { touched, error },
     ...custom
 }) => (
@@ -114,6 +109,7 @@ export const renderPasswordField = ({
             <PasswordField
                 {...input}
                 {...custom}
+                placeholder={placeholder}
             />
             {touched && error && <span className="validation-error">{error}</span>}
         </Fragment>

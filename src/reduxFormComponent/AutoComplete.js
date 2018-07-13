@@ -100,33 +100,3 @@ export const getSuggestions = (value, suggestions) => {
             
         });
 }
-
-export const styles = theme => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        position: 'relative',
-        height: 250,
-    },
-    suggestionsContainerOpen: {
-        position: 'absolute',
-        zIndex: 1,
-        marginTop: theme.spacing.unit,
-        left: 0,
-        right: 0,
-    },
-    suggestion: {
-        display: 'block',
-    },
-    suggestionsList: {
-        margin: 0,
-        padding: 0,
-        listStyleType: 'none',
-    },
-
-    textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        width: 200,
-    },
-});

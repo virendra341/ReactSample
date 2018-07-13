@@ -7,7 +7,7 @@
  */
 import request from './request'
 
-function authenticate(data) {
+function registration(data) {
     return request({
       url:    'signup',
       method: 'POST',
@@ -16,7 +16,7 @@ function authenticate(data) {
   }
 
   const SignupService = {
-      authenticate
+      registration
   }
 
   export default SignupService;

@@ -1,9 +1,8 @@
 import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { hashHistory } from 'react-router'
-import { actionCreators } from 'redux-form'
-
 import { Button, Card, CardContent, CardHeader, Typography, Grid } from '@material-ui/core'
+
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as signupActions from '../../../actions/signupAction'

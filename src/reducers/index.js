@@ -4,6 +4,7 @@ import { routerReducer } from 'react-router-redux'
 import settings from './settings'
 import userReducer from './userReducer'
 import signupReducer from './signupReducer'
+import {resetPasswordReducer,forgotPasswordReducer} from './forgotPasswordReducer'
 import { reducer as formReducer } from 'redux-form'
 
 const reducers = {
@@ -11,6 +12,8 @@ const reducers = {
   settings,
   userReducer,
   signupReducer,
+  forgotPasswordReducer,
+  resetPasswordReducer,
   form: formReducer
 };
 

@@ -70,13 +70,13 @@ class Login extends PureComponent {
                                 <Field  className="text-field"  component={renderTextField} label="Email" name="emailId" type="text"/>
                             </Grid>
                             <Grid item sm={12} className="qaud-grid mrB10">
-                                <Field className="text-field icon-size" component={renderPasswordField}  name="password" type="password"/>
+                                <Field className="text-field icon-size" component={renderPasswordField}  name="password" label="Password" type="password"/>
                             </Grid>
                             <div className="mrB20">
                                 <Link to="/forgot-password" >Forgot Password</Link>
                             </div>
                             <div>
-                                <Button type="submit" variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }} disabled={invalid || submitting || pristine}>Sign in</Button>
+                                <Button type="submit" variant="contained" className="btn-success" disabled={invalid || submitting || pristine}>Sign in</Button>
                             </div>
                         </form>
                         <hr className="divider"/>

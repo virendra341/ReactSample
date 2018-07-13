@@ -22,11 +22,11 @@ class PasswordField extends React.Component {
     };
 
     render() {
-        const {...other } = this.props;
+        const {label,...other } = this.props;
         return (
             <div className="qaud-password">
                 <FormControl className="text-field">
-                    <InputLabel htmlFor="adornment-password">Password</InputLabel>
+                    <InputLabel htmlFor="adornment-password">{label}</InputLabel>
                     <Input
                         {...other}
                         type={this.state.showPassword ? 'text' : 'password'}
@@ -48,7 +48,5 @@ class PasswordField extends React.Component {
         );
     }
 }
-
-
 
 export default PasswordField;

@@ -3,6 +3,10 @@ import { Field, reduxForm } from 'redux-form'
 import { hashHistory} from 'react-router'
 import { Button, Card, CardHeader, CardContent, Typography, Grid } from '@material-ui/core'
 
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as forgotPasswordActions from '../../../actions/forgotPasswordAction'
+
 import APPCONFIG from 'constants/Config'
 import {renderPasswordField } from 'reduxFormComponent'
 
@@ -42,9 +46,11 @@ class ResetPassword extends PureComponent {
 
     showResults = (values) => {
         console.log(values);
+        this.props.actions.resetPassword(values).
+        then(result => { console.log('reset password response ', result) });
     }
     render() {
-        const { handleSubmit} = this.props;
+        const { handleSubmit,invalid, submitting, pristine} = this.props;
 
         return (
             <Grid item sm={3} className="form-panel">
@@ -61,12 +67,12 @@ class ResetPassword extends PureComponent {
                         </Typography>
                         <form className="form-qaud" onSubmit={handleSubmit((values) => this.showResults(values))}>
                             <Grid item sm={12} className="qaud-grid">
-                                <Field className="text-field icon-size"  component={renderPasswordField} name="password" type="password" placeholder="Password" />
+                                <Field className="text-field icon-size"  component={renderPasswordField} name="password" type="password" label="Password" />
                             </Grid>
                             <Grid item sm={12} className="qaud-grid">
-                                <Field className="text-field icon-size"  component={renderPasswordField} name="cpassword" type="password" placeholder="Confirm Password" />
+                                <Field className="text-field icon-size"  component={renderPasswordField} name="cpassword" type="password" label="Confirm Password" />
                             </Grid>
-                            <Button type="submit" onClick={()=>hashHistory.push('/login')} variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}>Save</Button>
+                            <Button type="submit" disabled={invalid || submitting || pristine}  variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}>Save</Button>
                         </form>
                     </CardContent>
                 </Card>
@@ -75,9 +81,15 @@ class ResetPassword extends PureComponent {
     }
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(forgotPasswordActions, dispatch)
+    };
+}
+
 module.exports = reduxForm({
     form: 'resetpassword',
     validate,
     destroyOnUnmount: true,
     forceUnregisterOnUnmount: true
-})(ResetPassword);
+})(connect(null, mapDispatchToProps)(ResetPassword));

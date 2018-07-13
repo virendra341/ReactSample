@@ -3,6 +3,10 @@ import { Field, reduxForm } from 'redux-form'
 import { hashHistory} from 'react-router'
 import { Card, CardContent, CardHeader, Typography,Grid,Button } from '@material-ui/core'
 
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as forgotPasswordActions from '../../../actions/forgotPasswordAction'
+
 import APPCONFIG from 'constants/Config'
 import { renderTextField } from 'reduxFormComponent'
 
@@ -33,9 +37,11 @@ class ForgotPassword extends PureComponent {
 
     showResults = (values) => {
         console.log(values);
+        this.props.actions.forgotPassword(values).
+        then(result => { console.log('forgot password response ', result) });
     }
     render() {
-        const { handleSubmit} = this.props;
+        const { handleSubmit,invalid, submitting, pristine} = this.props;
 
         return (
             <Grid item sm={3} className="form-panel">
@@ -58,7 +64,7 @@ class ForgotPassword extends PureComponent {
                            <Grid item sm={12} className="qaud-grid">
                             <Field className="text-field" component={renderTextField} label="Email" name="emailId" type="text" placeholder="Email" />
                             </Grid>
-                            <Button type="submit" onClick={()=>hashHistory.push('/forgot-password-email')} variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}>Password Reset</Button>
+                            <Button type="submit" disabled={invalid || submitting || pristine} variant="contained" style={{ backgroundColor: '#24BA4D', color: '#fff' }}>Password Reset</Button>
                         </form>
                         <hr className="divider"/>
                         <div className="mrT25">
@@ -67,11 +73,16 @@ class ForgotPassword extends PureComponent {
                             <Button onClick={()=>hashHistory.push('/login')} variant="outlined" className="btn-outline">Sign in</Button>
                         </div> 
                     </CardContent>
-
                 </Card>
             </Grid>
         )
     }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(forgotPasswordActions, dispatch)
+    };
 }
 
 module.exports = reduxForm({
@@ -79,4 +90,4 @@ module.exports = reduxForm({
     validate,
     destroyOnUnmount: true,
     forceUnregisterOnUnmount: true
-})(ForgotPassword);
+})(connect(null, mapDispatchToProps)(ForgotPassword));

@@ -13,7 +13,7 @@ import SignupService from '../api/SignupService'
  */
 export function signup(signupPayload) {
   return function (dispatch) {
-    return SignupService.authenticate(signupPayload).then(response => {
+    return SignupService.registration(signupPayload).then(response => {
       console.log('response......',response)
       if (response.error) {
         return response.errorMessage;
