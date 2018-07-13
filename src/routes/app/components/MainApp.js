@@ -3,7 +3,7 @@ import React from 'react'
 
 class MainApp extends React.Component {
   render() {
-    const { children, location } = this.props;
+    const { children } = this.props;
 
     return (
       <div className="main-app-container">
