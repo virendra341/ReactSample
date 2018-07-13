@@ -2,7 +2,7 @@
  * @Author: Virendra Patidar 
  * @Date: 2018-07-05 18:18:44 
  * @Last Modified by: Virendra Patidar
- * @Last Modified time: 2018-07-13 12:49:59
+ * @Last Modified time: 2018-07-13 17:42:13
  */
 import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
@@ -44,14 +44,13 @@ class Login extends PureComponent {
     }
 
     showResults = (values) => {
-        console.log(values);
-
         this.props.actions.login(values).
             then(result => { console.log('login response ', result) });
     }
 
     render() {
         const { handleSubmit, invalid, submitting, pristine } = this.props;
+
         return (
             <Grid item sm={3} className="form-panel">
                 <Card className="side-login-panel">
@@ -91,7 +90,6 @@ class Login extends PureComponent {
         )
     }
 }
-
 
 function mapDispatchToProps(dispatch) {
     return {

@@ -11,11 +11,11 @@ class LoginPage extends PureComponent {
     render() {
         return (
             <div className="section-login">
-                <Grid container spacing={24} className="quad-container">
-                    <ErrorBoundary>
+                <Grid container spacing={24} className="quad-container"  id="section-login">
+                    <ErrorBoundary width={70}>
                         <LoginBackground></LoginBackground>
                     </ErrorBoundary>
-                    <ErrorBoundary>
+                    <ErrorBoundary width={30}>
                         <Login></Login>
                     </ErrorBoundary>
                 </Grid>
