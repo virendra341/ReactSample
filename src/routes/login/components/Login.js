@@ -15,6 +15,7 @@ import * as loginActions from '../../../actions/loginAction'
 import APPCONFIG from 'constants/Config'
 
 import { renderTextField, renderPasswordField } from 'reduxFormComponent'
+import SnackbarMessage from 'components/SnackbarMessage'
 
 const validate = values => {
     const errors = {}
@@ -95,6 +96,10 @@ class Login extends PureComponent {
                         </div>
                     </CardContent>
                 </Card>
+                {/* <SnackbarMessage
+                    open={this.state.showSnackbarState}
+                    message={this.state.message}
+                /> */}
             </Grid>
         )
     }

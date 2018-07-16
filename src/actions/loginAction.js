@@ -34,3 +34,9 @@ export function login(loginPayload) {
 export function loginSuccess(loginUser) {
   return { type: types.LOGIN_SUCCESS, loginUser };
 }
+
+
+
+export function loadLogin() {
+  return { type: types.LOAD_LOGIN };
+  };

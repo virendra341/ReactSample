@@ -50,7 +50,7 @@ class Welcome extends PureComponent {
                             WELCOME
                         </Typography>
                         <Typography className="mrB15" gutterBottom variant="headline" component="p">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                           You have successfully signed up.
                          </Typography>
                         <form className="form-qaud" onSubmit={handleSubmit((values) => this.showResults(values))}>
                             <Button variant="contained" className="btn-success mrR10">Resent</Button>
