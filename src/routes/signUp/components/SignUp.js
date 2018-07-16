@@ -63,6 +63,7 @@ const stateDataSourceConfig = {
 class SignUp extends PureComponent {
 
     state = {
+        errorMessage: '',
         countryList: [{ id: 1, name: 'Indina' }, { id: 2, name: 'japan' }, { id: 3, name: 'Indo' }],
         countryValue: '',
         countrySuggestions: [],
@@ -102,7 +103,7 @@ class SignUp extends PureComponent {
 
 
 
-    
+
 
     handleSuggestionsFetchRequestedState = ({ value }) => {
         this.setState({
@@ -137,11 +138,16 @@ class SignUp extends PureComponent {
     showResults = (values) => {
         console.log(values);
         this.props.actions.signup(values).
-            then(result => { console.log('signup response ', result) });
+            then(result => {
+                this.setState({ errorMessage: result })
+                setTimeout(() => {
+                    this.setState({ errorMessage: '' })
+                }, 5000);
+            });
     }
 
     render() {
-       
+
         const { handleSubmit, invalid, submitting, pristine } = this.props;
         const { countryValue, stateValue } = this.state;
 
@@ -158,7 +164,7 @@ class SignUp extends PureComponent {
             type: 'search',
             onChange: this.handleChangeState,
         };
-       
+
         return (
             <Grid item sm={3} className="form-panel">
                 <Card className="side-login-panel">
@@ -171,6 +177,8 @@ class SignUp extends PureComponent {
                     <CardContent className="quad-content">
                         <Typography className="mrB15" gutterBottom variant="headline" component="label">
                             REGISTER IN WITH SECBERUS
+
+                               <br /><span className="validation-error">{this.state.errorMessage}</span>
                         </Typography>
                         <form className="form-qaud" onSubmit={handleSubmit((values) => this.showResults(values))}>
                             <Grid item sm={12} className="qaud-grid">
@@ -207,7 +215,7 @@ class SignUp extends PureComponent {
                             <Field className="mt-checkbox" name="iAgree" color="primary" component={renderCheckbox} label="iAgree" />
                             <span className="fnt-12">I am agree with of <a href="#">Service agreement</a></span>
                             <div>
-                                <Button type="submit" variant="contained" className="btn-success"  disabled={invalid || submitting || pristine}>Register</Button>{' '}
+                                <Button type="submit" variant="contained" className="btn-success" disabled={invalid || submitting || pristine}>Register</Button>{' '}
                             </div>
                         </form>
                         <hr className="divider" />

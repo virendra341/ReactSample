@@ -2,7 +2,7 @@
  * @Author: Virendra Patidar 
  * @Date: 2018-07-11 14:09:03 
  * @Last Modified by: Virendra Patidar
- * @Last Modified time: 2018-07-13 14:01:13
+ * @Last Modified time: 2018-07-16 15:25:21
  */
 import axios from 'axios'
 import Config from 'constants/Config'
@@ -32,6 +32,8 @@ const request = function (options) {
             console.error('Status:', error.response.status);
             console.error('Data:', error.response.data);
             console.error('Headers:', error.response.headers);
+
+            
 
         } else if (error.request) {
             // The request was made but no response was received

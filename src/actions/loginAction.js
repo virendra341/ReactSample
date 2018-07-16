@@ -2,7 +2,7 @@
  * @Author: Virendra Patidar 
  * @Date: 2018-07-11 11:40:03 
  * @Last Modified by: Virendra Patidar
- * @Last Modified time: 2018-07-11 14:16:14
+ * @Last Modified time: 2018-07-16 17:12:35
  */
 import * as types from '../constants/ActionTypes'
 import LoginService from '../api/LoginService'
@@ -22,7 +22,7 @@ export function login(loginPayload) {
         return response;
       }
     }).catch(error => {
-      throw (error);
+      return error.data.items.non_field_errors[0];
     });
   };
 }

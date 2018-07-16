@@ -2,7 +2,7 @@
  * @Author: Virendra Patidar 
  * @Date: 2018-07-05 18:18:44 
  * @Last Modified by: Virendra Patidar
- * @Last Modified time: 2018-07-13 17:42:13
+ * @Last Modified time: 2018-07-16 17:19:18
  */
 import React, { PureComponent } from 'react'
 import { Field, reduxForm } from 'redux-form'
@@ -39,13 +39,21 @@ const validate = values => {
 
 class Login extends PureComponent {
 
+    state = { errorMessage: '' }
     componentDidMount() {
         this.props.reset();
     }
 
     showResults = (values) => {
         this.props.actions.login(values).
-            then(result => { console.log('login response ', result) });
+            then(result => {
+                this.setState({ errorMessage: result })
+                setTimeout(() => {
+                    this.setState({ errorMessage: '' })
+                }, 5000);
+
+
+            });
     }
 
     render() {
@@ -63,6 +71,7 @@ class Login extends PureComponent {
                     <CardContent className="quad-content">
                         <Typography className="mrB15" gutterBottom variant="headline" component="label">
                             SIGN IN WITH SECBERUS
+                            <br /><span className="validation-error">{this.state.errorMessage}</span>
                         </Typography>
 
                         <form onSubmit={handleSubmit((values) => this.showResults(values))} className="form-qaud">
