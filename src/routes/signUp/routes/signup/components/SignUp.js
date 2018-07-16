@@ -12,6 +12,8 @@ import APPCONFIG from 'constants/Config'
 import { renderTextField, renderAutoCompleteField, renderCheckbox, renderPasswordField } from 'reduxFormComponent'
 import { getSuggestions, setConfig } from '../../../../../reduxFormComponent/AutoComplete'
 
+import { SubmissionError } from 'redux-form';
+
 const validate = values => {
     const errors = {}
     const requiredFields = [
@@ -63,7 +65,7 @@ const stateDataSourceConfig = {
 class SignUp extends PureComponent {
 
     state = {
-        errorMessage:'',
+        errorMessage: '',
         countryList: [{ id: 1, name: 'Indina' }, { id: 2, name: 'japan' }, { id: 3, name: 'Indo' }],
         countryValue: '',
         countrySuggestions: [],
@@ -137,12 +139,9 @@ class SignUp extends PureComponent {
 
     showResults = (values) => {
         console.log(values);
-        this.props.actions.signup(values).
+        return this.props.actions.signup(values).
             then(result => {
-                this.setState({ errorMessage: result })
-                setTimeout(() => {
-                    this.setState({ errorMessage: '' })
-                }, 5000);
+                throw new SubmissionError(result)
             });
     }
 

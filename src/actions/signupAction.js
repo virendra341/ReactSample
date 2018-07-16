@@ -2,7 +2,7 @@
  * @Author: Virendra Patidar 
  * @Date: 2018-07-11 11:40:03 
  * @Last Modified by: Virendra Patidar
- * @Last Modified time: 2018-07-16 17:18:13
+ * @Last Modified time: 2018-07-16 17:39:39
  */
 import * as types from '../constants/ActionTypes'
 import SignupService from '../api/SignupService'
@@ -23,7 +23,7 @@ export function signup(signupPayload) {
         return response;
       }
     }).catch(error => {
-      return error.data.message;
+      return error.data.items;
     });
   };
 }
