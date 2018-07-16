@@ -64,12 +64,12 @@ class SignUp extends PureComponent {
 
     state = {
         errorMessage:'',
-        countryList: [{ id: 1, name: 'Indina' }, { id: 2, name: 'japan' }, { id: 3, name: 'Indo' }],
+        countryList: [{ id: 1, name: 'Canada' },{ id: 2, name: 'France' },{ id: 3, name: 'India' }, { id: 4, name: 'Japan' },{ id: 5, name: 'Spain' }],
         countryValue: '',
         countrySuggestions: [],
         selectedCountry: {},
 
-        stateList: [{ id: 1, stateName: 'Rajsthan' }, { id: 2, stateName: 'MP' }, { id: 3, stateName: 'Pune' }],
+        stateList: [{ id: 1, stateName: 'Alberta' },{ id: 2, stateName: 'Asturias' },{ id: 3, stateName: 'Lyon' }, { id: 4, stateName: 'Pune' },{ id: 5, stateName: 'Sendai' }],
         stateValue: '',
         stateSuggestions: [],
         selectedState: {},
