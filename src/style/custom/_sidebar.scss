@@ -1,26 +1,17 @@
 
 .app-sidebar {
-    display: block;
-    z-index: 99;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    top: 0;
-    height: 100vh;
-    width: 60px;
-    overflow: auto;
-    background-color: #3D3D3D;    
-    text-align: center;
-
-    .sidebar-header{
-        display: block;
-        position: relative;
-        height: 60px;
-    }
-    .nav-item{
+    background-color: #3D3D3D !important;    
+    .side-nav{
         .nav-link{
-            color: #777;
-            font-size: 14px;
+            .fa{
+                font-size: 20px;
+                color: #777;
+                margin-right: 16px;
+                &:hover{
+                    color: $bg_green-color_1;
+                }
+            }
         }
+       
     }
 }

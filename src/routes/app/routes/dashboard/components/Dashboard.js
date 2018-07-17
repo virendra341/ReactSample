@@ -6,13 +6,12 @@ class Dashboard extends PureComponent {
         const { children, location } = this.props;
 
         return (
-            <div className="row module-row-cont">
-              
-                    {children}
-               
-                {/* <div className="col-md-4 module-sidebar">
-                    Right Side Menu
-                </div> */}
+            <div>
+                <div className="toolbar">
+                </div>
+                <div>
+                    Main Content
+                </div>
             </div>
         );
     }

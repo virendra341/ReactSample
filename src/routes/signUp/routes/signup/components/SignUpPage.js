@@ -10,7 +10,6 @@ class SignUpPage extends PureComponent {
 
     render() {
         return (
-
             <div className="section-login">
                 <Grid container spacing={24} className="quad-container">
                     <ErrorBoundary error="bg-error">
