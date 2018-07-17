@@ -2,7 +2,7 @@
  * @Author: Virendra Patidar 
  * @Date: 2018-07-11 16:44:23 
  * @Last Modified by: Virendra Patidar
- * @Last Modified time: 2018-07-13 10:28:18
+ * @Last Modified time: 2018-07-17 17:47:26
  */
 import React from 'react'
 
@@ -21,9 +21,12 @@ let dataSourceConfig = {
 export const setConfig = (config) => {
     dataSourceConfig = config
 }
+
+
+
+
 export const renderInput = (inputProps) => {
     const { classes, placeholder, ref, ...other } = inputProps;
-
     return (
         <TextField
             fullWidth
@@ -94,6 +97,6 @@ export const getSuggestions = (value, suggestions) => {
                 }
                 return keep;
             }
-            
+
         });
 }

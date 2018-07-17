@@ -21,9 +21,7 @@ const validate = values => {
         'company',
         'phone_number',
         'email',
-        'password',
-        'country',
-        'state'
+        'password'
     ]
 
     requiredFields.forEach(field => {
@@ -45,8 +43,9 @@ const validate = values => {
         errors.password = 'Password is not strong'
     }
 
+    
     if (
-        values.country === undefined
+        values.country === undefined || values.country===0
     ) {
         errors.country = 'This field is required'
     }
@@ -90,6 +89,7 @@ class SignUp extends PureComponent {
     };
 
     handleChangeCountry = (event, { newValue }) => {
+        this.props.change('country', 0)
         setConfig(dataSourceConfig);
         this.setState({
             countryValue: newValue,
@@ -102,9 +102,6 @@ class SignUp extends PureComponent {
             this.props.change('country', suggestion[dataSourceConfig.value])
         });
     };
-
-
-
 
 
     handleSuggestionsFetchRequestedState = ({ value }) => {
@@ -133,7 +130,7 @@ class SignUp extends PureComponent {
         });
     };
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.reset();
     }
 
@@ -236,8 +233,6 @@ function mapDispatchToProps(dispatch) {
 
 module.exports = reduxForm({
     form: 'signup',
-    validate,
-    destroyOnUnmount: true,
-    forceUnregisterOnUnmount: true
+    validate
 })(connect(null, mapDispatchToProps)(SignUp));
 
