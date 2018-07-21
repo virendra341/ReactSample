@@ -2,7 +2,7 @@
  * @Author: Virendra Patidar 
  * @Date: 2018-07-11 16:39:16 
  * @Last Modified by: Virendra Patidar
- * @Last Modified time: 2018-07-17 18:16:13
+ * @Last Modified time: 2018-07-21 12:13:35
  */
 import React, { Fragment } from 'react'
 import TextField from '@material-ui/core/TextField'
@@ -12,7 +12,6 @@ import Checkbox from '@material-ui/core/Checkbox'
 
 import PasswordField from './PasswordField'
 
-import { renderInput, renderSuggestionsContainer, getSuggestionValue, renderSuggestion, styles } from './AutoComplete'
 
 /**
  * Used for render text field
@@ -58,29 +57,6 @@ const onSuggestionSelected = (event, { suggestion, suggestionValue, suggestionIn
     event.preventDefault()
 };
 
-/**
- * Used for render autocomplete field
- * @param {*} param0 
- */
-export const renderAutoCompleteField = ({ handleSuggestionsFetchRequested, onSuggestionsClearRequested, inputProps, suggestions, value, input, fields, label, meta: { touched, error }, children, ...custom }) => (
-    <Fragment>
-        <Autosuggest
-            renderInputComponent={renderInput}
-            suggestions={suggestions}
-            onSuggestionsFetchRequested={handleSuggestionsFetchRequested}
-            onSuggestionsClearRequested={onSuggestionsClearRequested}
-            renderSuggestionsContainer={renderSuggestionsContainer}
-            getSuggestionValue={getSuggestionValue}
-            renderSuggestion={renderSuggestion}
-            OnSuggestionSelected={onSuggestionSelected}
-            inputProps={inputProps}
-            {...input}
-            label={label}
-            {...custom}
-        />
-        
-    </Fragment>
-)
 
 /**
  * Used for render checkbox

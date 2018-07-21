@@ -27,7 +27,6 @@ const APPCONFIG = {
     theme: 'light',                                 // light, gray, dark
   },
   api_url:'http://35.199.19.153/',
-  company_logo_path:'assets/images/secberus-logo.png'
 };
 
 module.exports = APPCONFIG;

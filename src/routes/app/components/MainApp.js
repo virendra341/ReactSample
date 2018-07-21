@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from 'components/Header'
-import Sidebar from 'components/Sidebar'
+import Footer from 'components/Footer'
 class MainApp extends React.Component {
   render() {
     const { children } = this.props;
@@ -8,7 +8,7 @@ class MainApp extends React.Component {
     return (
       <div className="main-app-container">
          <Header />
-         <Sidebar/>
+         <br />
         <section id="page-container" className="app-page-container">
             <div className="app-content-wrapper">
               <div className="full-height">
@@ -16,6 +16,8 @@ class MainApp extends React.Component {
               </div> 
             </div>
           </section> 
+          <br />
+          <Footer />
       </div>
     );
   }

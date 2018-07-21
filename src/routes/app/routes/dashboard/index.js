@@ -6,12 +6,12 @@ module.exports = {
     })
   },
 
-  indexRoute: { onEnter: (nextState, replace) => replace('/app/dashboard/onBoard') },
+  indexRoute: { onEnter: (nextState, replace) => replace('/app/dashboard/home') },
   //onEnter:requireAuth,
   getChildRoutes(partialNextState, cb) {
     require.ensure([], require => {
       cb(null, [
-        require("./routes/onBoard"),
+        require("./routes/home"),
       ])
 
     })

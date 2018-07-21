@@ -1,11 +1,12 @@
 
+
 import React, { PureComponent } from 'react'
-class Header extends PureComponent {
+class Home extends PureComponent {
 
     render() {
         return (
-            <div>Header</div>
+<div></div>
         )
     }
 }
-module.exports = Header;
+module.exports = Home;

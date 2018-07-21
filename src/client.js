@@ -1,16 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { createStore, combineReducers, applyMiddleware, compose } from "redux"
+import { createStore, applyMiddleware, compose } from "redux"
 import { persistStore, autoRehydrate } from "redux-persist"
-import { routerReducer } from "react-router-redux"
 import thunk from "redux-thunk"
 import { Provider } from 'react-redux';
-import { Router, Route, hashHistory, IndexRedirect, Redirect, browserHistory } from 'react-router';
-import { syncHistoryWithStore, routerMiddleware, push } from 'react-router-redux';
+import { Router, Route, hashHistory,browserHistory } from 'react-router';
+import { syncHistoryWithStore} from 'react-router-redux';
 import reducers from './reducers'
 import { } from 'babel-polyfill'
-// import reducers from './reducers';
-// import App from './containers/App';
 
 export const store = createStore(
   reducers,
@@ -40,21 +37,16 @@ const rootRoute = {
   childRoutes: [{
     path: '/',
     component: require('./containers/App'),
-    indexRoute: { onEnter: (nextState, replace) => replace('/login') },
+    indexRoute: { onEnter: (nextState, replace) => replace('/app/dashboard') },
     childRoutes: [
       require('./routes/app'),
       require('./routes/404'),
       require('./routes/500'),
-      require('./routes/login'),
-      require('./routes/signUp'),
-      require('./routes/welcome'),
-      require('./routes/resetPassword'),
-      require('./routes/forgotPassword'),
-      require('./routes/forgotPasswordEmail'),
-      // {
-      //   path: '*',
-      //   indexRoute: { onEnter: (nextState, replace) => replace('/404') },
-      // }
+      require('./routes/app'),
+      {
+        path: '*',
+        indexRoute: { onEnter: (nextState, replace) => replace('/404') },
+      }
     ]
   }]
 };
