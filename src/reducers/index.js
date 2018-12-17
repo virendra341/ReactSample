@@ -5,6 +5,6 @@ import settings from './settings';
 const reducers = {
   routing: routerReducer,
   settings
-};
+}; 
 
 module.exports = combineReducers(reducers);
